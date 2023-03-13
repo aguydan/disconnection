@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
    [SerializeField] ItemPopup itemPopup;
 
     public static UIManager instance;
-    public bool popupIsActive = false;
 
     private void Awake()
     {
@@ -18,13 +17,11 @@ public class UIManager : MonoBehaviour
     {
         itemPopup.UpdateItemPopupPositive(key);
         itemPopup.gameObject.SetActive(true);
-        popupIsActive = true;
     }
 
     public void CallItemPopupNegative(string key)
     {
         itemPopup.UpdateItemPopupNegative(key);
         itemPopup.gameObject.SetActive(true);
-        popupIsActive = true;
     }
 }

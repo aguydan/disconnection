@@ -43,7 +43,6 @@ public class ItemPopup : MonoBehaviour
 
     public void DeactivatePopup()
     {
-        UIManager.instance.popupIsActive = false;
         gameObject.SetActive(false);
     }
 }

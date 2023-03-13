@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Item : MonoBehaviour, IPointerDownHandler
+public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 {
     public SpriteRenderer look;
     public CapsuleCollider2D capsuleCollider;
@@ -21,9 +21,9 @@ public class Item : MonoBehaviour, IPointerDownHandler
         distanceToHero = Vector2.Distance(transform.position, GameManager.instance.heroPosition);
     }
 
-    void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!UIManager.instance.popupIsActive) animator.Play("ItemHover");
+        animator.Play("ItemHover");
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -33,6 +33,7 @@ public class Item : MonoBehaviour, IPointerDownHandler
             Debug.Log("win, win");
             ScoreManager.instance.IncreaseScore();
             UIManager.instance.CallItemPopupPositive(look.sprite.name);
+            GameManager.instance.SpawnDoorToNextLevel();
 
             Destroy(gameObject);
         } else if (distanceToHero < 4) {
