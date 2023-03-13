@@ -10,21 +10,23 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] Material outline;
     [SerializeField] RandomSpriteGenerator spriteGenerator;
 
+    [ColorUsage(true, true)]
+    [SerializeField] Color[] hintColors;
+
     List<Item> spawnedItems = new List<Item>();
     int winningItemIndex;
     [SerializeField] Item winningItem;
     float maxDistance = 5;
+    int canUpdateHintsTimes = 2;
 
     void Start()
     {
-        winningItemIndex = Random.Range(0, 50);
+        winningItemIndex = Random.Range(0, ScoreManager.instance.MaxItemAmount);
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < ScoreManager.instance.MaxItemAmount; i++)
         {
             SpawnRandomItem(new Vector2(Random.Range(-7f, 7f), Random.Range(-3.5f, 2f)));
         }
-
-        winningItem.look.color = Color.green;
     }
 
     void SpawnRandomItem(Vector2 position)
@@ -46,6 +48,7 @@ public class ItemSpawner : MonoBehaviour
 
     public void CompleteChallenge()
     {
+        outline.color = hintColors[canUpdateHintsTimes];
         List<Item> currentItems = new List<Item>();
 
         foreach(Item item in spawnedItems)
@@ -53,9 +56,19 @@ public class ItemSpawner : MonoBehaviour
             if (item) currentItems.Add(item);
         }
 
-        UpdateHints(winningItem, currentItems, maxDistance);
+        if (canUpdateHintsTimes == 0)
+        {
+            RestoreStandartMaterials(currentItems);
 
-        maxDistance -= 2.5f;
+            winningItem.look.material = outline;
+        }
+        else
+        {
+            UpdateHints(winningItem, currentItems, maxDistance);
+
+            maxDistance -= 2.5f;
+            canUpdateHintsTimes -= 1;
+        }
     }
 
     void UpdateHints(Item winningItem, List<Item> currentItems, float maxDistance)
