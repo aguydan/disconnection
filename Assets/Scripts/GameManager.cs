@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     public Vector2 heroPosition;
+    public bool IsLevelCompleted { get; private set; } = false;
 
     private void Awake()
     {
@@ -29,5 +30,6 @@ public class GameManager : MonoBehaviour
     public void SpawnDoorToNextLevel()
     {
         Instantiate(doorPrefab, Scoring.doorCoordinates, Quaternion.identity);
+        IsLevelCompleted = true;
     }
 }

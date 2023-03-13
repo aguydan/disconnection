@@ -14,9 +14,16 @@ public class ActionItem : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("you equipped " + _actionItemType);
-        ActionItemManager.instance.EnableActionItemButton(_actionItemType);
+        if (GameManager.instance.IsLevelCompleted)
+        {
+            Debug.Log("Come Forward!!!");
+        }
+        else
+        {
+            Debug.Log("you equipped " + _actionItemType);
+            ActionItemManager.instance.EnableActionItemButton(_actionItemType);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

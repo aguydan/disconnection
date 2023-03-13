@@ -13,7 +13,7 @@ public class ItemSpawner : MonoBehaviour
     List<Item> spawnedItems = new List<Item>();
     int winningItemIndex;
     [SerializeField] Item winningItem;
-    int maxDistance = 5;
+    float maxDistance = 5;
 
     void Start()
     {
@@ -48,16 +48,17 @@ public class ItemSpawner : MonoBehaviour
     {
         List<Item> currentItems = new List<Item>();
 
-        foreach(Item item in spawnedItems) {
+        foreach(Item item in spawnedItems)
+        {
             if (item) currentItems.Add(item);
         }
 
         UpdateHints(winningItem, currentItems, maxDistance);
 
-        maxDistance -= 2;
+        maxDistance -= 2.5f;
     }
 
-    void UpdateHints(Item winningItem, List<Item> currentItems, int maxDistance)
+    void UpdateHints(Item winningItem, List<Item> currentItems, float maxDistance)
     {
         RestoreStandartMaterials(currentItems);
         for (int i = 0; i < currentItems.Count; i++)
