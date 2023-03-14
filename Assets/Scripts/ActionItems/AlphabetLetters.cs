@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Letter {
+public class Letter
+{
     public string Name;
     public GameObject letterPrefab;
 }

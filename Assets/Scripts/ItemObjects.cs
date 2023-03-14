@@ -1,7 +1,8 @@
 using UnityEngine;
 
 [System.Serializable]
-public class ItemObject {
+public class ItemObject
+{
     public string ItemKey;
     public Sprite ItemSprite;
     public string ItemText;

@@ -5,10 +5,12 @@ using UnityEngine;
 public class BookItem : MonoBehaviour
 {
     [SerializeField] GridGenerator _gridGenerator;
+    [SerializeField] WordsObject _wordsObject;
 
     private void Start()
     {
-       _gridGenerator.CreateLeftGrid();
        _gridGenerator.CreateRightGrid();
+       _gridGenerator.CreateLeftSpawnPoints();
+       _gridGenerator.CreateLeftGrid();
     }
 }

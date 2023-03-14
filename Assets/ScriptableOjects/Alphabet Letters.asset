@@ -13,69 +13,69 @@ MonoBehaviour:
   m_Name: Alphabet Letters
   m_EditorClassIdentifier: 
   Letters:
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
-  - Name: 
-    LetterSprite: {fileID: 0}
+  - Name: "\u0430"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0431"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0432"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0433"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0434"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0435"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0451"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0436"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0437"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0438"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0439"
+    letterPrefab: {fileID: 0}
+  - Name: "\u043A"
+    letterPrefab: {fileID: 0}
+  - Name: "\u043B"
+    letterPrefab: {fileID: 0}
+  - Name: "\u043C"
+    letterPrefab: {fileID: 0}
+  - Name: "\u043D"
+    letterPrefab: {fileID: 0}
+  - Name: "\u043E"
+    letterPrefab: {fileID: 0}
+  - Name: "\u043F"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0440"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0441"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0442"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0443"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0444"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0445"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0446"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0447"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0448"
+    letterPrefab: {fileID: 0}
+  - Name: "\u0449"
+    letterPrefab: {fileID: 0}
+  - Name: "\u044A"
+    letterPrefab: {fileID: 0}
+  - Name: "\u044B"
+    letterPrefab: {fileID: 0}
+  - Name: "\u044C"
+    letterPrefab: {fileID: 0}
+  - Name: "\u044D"
+    letterPrefab: {fileID: 0}
+  - Name: "\u044E"
+    letterPrefab: {fileID: 0}
+  - Name: "\u044F"
+    letterPrefab: {fileID: 0}
