@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class BookItem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GridGenerator _gridGenerator;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+       _gridGenerator.CreateLeftGrid();
+       _gridGenerator.CreateRightGrid();
     }
 }
