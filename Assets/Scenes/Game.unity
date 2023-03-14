@@ -1285,7 +1285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &756468282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1323,6 +1323,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gridGenerator: {fileID: 756468284}
   _wordsObject: {fileID: 11400000, guid: bb5fb0d4a31afd3468292cc441f998b7, type: 2}
+  _alphabetBlueprint:
+  - LetterName: "\u0430"
+    letterPrefab: {fileID: 6278380122392833987, guid: c90f6ac683d52c2488dfbb9bd5d4cf19, type: 3}
+  - LetterName: "\u0431"
+    letterPrefab: {fileID: 6278380122392833987, guid: 4995c97432167ed49a68f0ad02e9a009, type: 3}
+  - LetterName: "\u0432"
+    letterPrefab: {fileID: 6278380122392833987, guid: 44a1960b044775844a7a6bf4307d6bc9, type: 3}
+  - LetterName: "\u0433"
+    letterPrefab: {fileID: 6278380122392833987, guid: e701cfe2ae9860145ad74f4cc9f772d0, type: 3}
+  - LetterName: "\u0434"
+    letterPrefab: {fileID: 6278380122392833987, guid: 279eb111dafa0bb43a829cb8a4f5d069, type: 3}
+  - LetterName: "\u0435"
+    letterPrefab: {fileID: 6278380122392833987, guid: 55e7be3cb326c7447968fcf6b866b1fd, type: 3}
+  - LetterName: "\u0451"
+    letterPrefab: {fileID: 6278380122392833987, guid: 68cea779f70f95746955ea0f60af5df2, type: 3}
+  - LetterName: "\u0436"
+    letterPrefab: {fileID: 6278380122392833987, guid: 576e50714fa87fe40885db6b0fd42f98, type: 3}
+  - LetterName: "\u0437"
+    letterPrefab: {fileID: 6278380122392833987, guid: baf1b46e97cb82447b7efffc29063e04, type: 3}
+  - LetterName: "\u0438"
+    letterPrefab: {fileID: 6278380122392833987, guid: 88f6e4376bae45740bd62933acccaf5e, type: 3}
+  - LetterName: "\u0439"
+    letterPrefab: {fileID: 6278380122392833987, guid: d8d8c87ee90a17f4bbd452b9c00652bc, type: 3}
+  - LetterName: "\u043A"
+    letterPrefab: {fileID: 6278380122392833987, guid: c4b6f4e482431644faf25c92e837a287, type: 3}
+  - LetterName: "\u043B"
+    letterPrefab: {fileID: 6278380122392833987, guid: 06facc5f6b832ae40b44c4ee98736d38, type: 3}
+  - LetterName: "\u043C"
+    letterPrefab: {fileID: 6278380122392833987, guid: c0f360ef3153a4a41ae25d5f1be7eb68, type: 3}
+  - LetterName: "\u043D"
+    letterPrefab: {fileID: 6278380122392833987, guid: 42d4acf569d7b074ca22db597b71264e, type: 3}
+  - LetterName: "\u043E"
+    letterPrefab: {fileID: 6278380122392833987, guid: b4894e3692f88214794ecb7e7e848743, type: 3}
+  - LetterName: "\u043F"
+    letterPrefab: {fileID: 6278380122392833987, guid: ce8bee1cc40b6c2418d0ed3954a4b05e, type: 3}
+  - LetterName: "\u0440"
+    letterPrefab: {fileID: 6278380122392833987, guid: 24492b1dd91ee4e4c978807ad721ee5d, type: 3}
+  - LetterName: "\u0441"
+    letterPrefab: {fileID: 6278380122392833987, guid: 0cc860b2c61201c4da2a4a672000f492, type: 3}
+  - LetterName: "\u0442"
+    letterPrefab: {fileID: 6278380122392833987, guid: 45edeb1f9f3ccc5478eb6d8e015b37ae, type: 3}
+  - LetterName: "\u0443"
+    letterPrefab: {fileID: 6278380122392833987, guid: c9dc71a6d99825741ab1273e08274644, type: 3}
+  - LetterName: "\u0444"
+    letterPrefab: {fileID: 6278380122392833987, guid: 682173b84bce20242bce1d0cb215b3e4, type: 3}
+  - LetterName: "\u0445"
+    letterPrefab: {fileID: 6278380122392833987, guid: 548038d5a0ab0ea4d9d99069cd7a2252, type: 3}
+  - LetterName: "\u0446"
+    letterPrefab: {fileID: 6278380122392833987, guid: 7aafb17679294bd4699f443f7458cf2d, type: 3}
+  - LetterName: "\u0447"
+    letterPrefab: {fileID: 6278380122392833987, guid: a5c9e981c53b6b34eb0ebdba02f2fe1b, type: 3}
+  - LetterName: "\u0448"
+    letterPrefab: {fileID: 6278380122392833987, guid: c9c34c701e0938e48acf5c0bc2a332b6, type: 3}
+  - LetterName: "\u0449"
+    letterPrefab: {fileID: 6278380122392833987, guid: 4aa06b938c2f981468a1e70b94a7a94a, type: 3}
+  - LetterName: "\u044A"
+    letterPrefab: {fileID: 6278380122392833987, guid: cb77dc189a6d07c43a3db1ffe211096f, type: 3}
+  - LetterName: "\u044B"
+    letterPrefab: {fileID: 6278380122392833987, guid: 6dbcde9003c7dc9498f8983935066b17, type: 3}
+  - LetterName: "\u044C"
+    letterPrefab: {fileID: 6278380122392833987, guid: 215fd3b6ac2c841438943dda145f3c34, type: 3}
+  - LetterName: "\u044D"
+    letterPrefab: {fileID: 6278380122392833987, guid: 1c8a294780dbd20478b616d8765eab8f, type: 3}
+  - LetterName: "\u044E"
+    letterPrefab: {fileID: 6278380122392833987, guid: c224fb3f067fb644490e1b4c670445d0, type: 3}
+  - LetterName: "\u044F"
+    letterPrefab: {fileID: 6278380122392833987, guid: eddcf24136ddb774b9f6aaae595396cd, type: 3}
 --- !u!114 &756468284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3288,7 +3355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 116.3, y: -33.7}
+  m_AnchoredPosition: {x: 116.30005, y: -33.69995}
   m_SizeDelta: {x: 100.75879, y: 27.958694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1606611062

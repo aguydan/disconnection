@@ -10,7 +10,6 @@ public class GridGenerator : MonoBehaviour
     [SerializeField] GameObject _rightCell;
     [SerializeField] int _width, _height;
     [SerializeField] int _gap;
-    [SerializeField] int _wordWidth;
     
     Dictionary<Vector2, GameObject> _spawnPoints = new Dictionary<Vector2, GameObject>();
     Dictionary<int, GameObject> _rightCells = new Dictionary<int, GameObject>();
@@ -43,13 +42,15 @@ public class GridGenerator : MonoBehaviour
             
             spawnPoint.Value.transform.localPosition = new Vector2(x, y);
         }
+
+        //эти  лупа можно обьединить
     }
 
-    public void CreateRightGrid()
+    public void CreateRightGrid(int wordWidth)
     {
         Vector2 initialPos = new Vector2(-_gap, 0);
         
-        for (int x = 0; x < _wordWidth; x++)
+        for (int x = 0; x < wordWidth; x++)
         {
             GameObject cell = Instantiate(_rightCell);
             cell.transform.SetParent(_rightPage.transform);
@@ -60,7 +61,7 @@ public class GridGenerator : MonoBehaviour
 
         foreach (KeyValuePair<int, GameObject> cell in _rightCells)
         {
-            float x = cell.Value.transform.localPosition.x - (_gap * (_wordWidth - 1)) / 2;
+            float x = cell.Value.transform.localPosition.x - (_gap * (wordWidth - 1)) / 2;
             
             cell.Value.transform.localPosition = new Vector2(x, 0);
         }
@@ -95,11 +96,13 @@ public class GridGenerator : MonoBehaviour
 
     public void PopulateCellsWithLetters(string word)
     {
-        //for right cells
+        Letter letter = Instantiate(BookItem.Instance.Alphabet[word[0].ToString()]);
+        letter.transform.SetParent(_rightCells[0].transform);
+        letter.transform.position = _rightCells[0].transform.position;
         
-        foreach (Cell cell in _spawnedLeftCells)
-        {
+        // foreach (Cell cell in _spawnedLeftCells)
+        // {
             
-        }
+        // }
     }
 }

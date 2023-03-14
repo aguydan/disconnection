@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cell : MonoBehaviour
+public class Letter : MonoBehaviour
 {
-    public bool IsOccupied = false;
+    
 }
