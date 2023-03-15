@@ -114,4 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee8981a6db8f4b4580c3bd1c9c2acc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sr: {fileID: 8935364592584238058}
   IsOccupied: 0

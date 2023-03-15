@@ -13,7 +13,7 @@ public class GridGenerator : MonoBehaviour
     [SerializeField] char[] _alphabet;
     
     Dictionary<Vector2, GameObject> _spawnPoints = new Dictionary<Vector2, GameObject>();
-    Dictionary<int, Cell> _rightCells = new Dictionary<int, Cell>();
+    public Dictionary<int, Cell> _rightCells = new Dictionary<int, Cell>();
     List<Cell> _spawnedLeftCells = new List<Cell>();
 
     public void CreateLeftSpawnPoints()
@@ -53,6 +53,7 @@ public class GridGenerator : MonoBehaviour
             cell.transform.localPosition = initialPos += new Vector2(_gap, 0);
             float finalX = cell.transform.localPosition.x - (_gap * (wordWidth - 1)) / 2;
             cell.transform.localPosition = new Vector2(finalX, 0);
+            cell.IsRightCell = true;
 
             _rightCells.Add(x, cell);
         }
@@ -90,10 +91,18 @@ public class GridGenerator : MonoBehaviour
         Letter letter = Instantiate(BookItem.Instance.Alphabet[word[0]]);
         letter.transform.SetParent(_rightCells[0].transform);
         letter.transform.position = _rightCells[0].transform.position;
+
+        _rightCells[0].IsOccupied = true;
         
         for (int i = 1; i < word.Length; i++)
         {
-            int randomCellIndex = Random.Range(0, _spawnedLeftCells.Count);
+            int leftCellsCount = _spawnedLeftCells.Count;
+            int randomCellIndex = Random.Range(0, leftCellsCount);
+
+            while (_spawnedLeftCells[randomCellIndex].IsOccupied)
+            {
+                randomCellIndex = Random.Range(0, leftCellsCount);
+            }
             
             Letter letter1 = Instantiate(BookItem.Instance.Alphabet[word[i]]);
             letter1.transform.SetParent(_spawnedLeftCells[randomCellIndex].transform);
@@ -111,6 +120,8 @@ public class GridGenerator : MonoBehaviour
             Letter letter1 = Instantiate(BookItem.Instance.Alphabet[_alphabet[randomLetterIndex]]);
             letter1.transform.SetParent(cell.transform);
             letter1.transform.position = cell.transform.position;
+
+            cell.IsOccupied = true;
         }
     }
 }

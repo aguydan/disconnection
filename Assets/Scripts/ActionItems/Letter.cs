@@ -5,12 +5,13 @@ using UnityEngine.UI;
 public class Letter : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] Image _image;
-    [HideInInspector] public Transform ParentBeforeDrag;
+    [HideInInspector] public Transform ParentAfterDrag;
+
+    public char Name;
     
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("drag begin");
-        ParentBeforeDrag = transform.parent;
+        ParentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         _image.raycastTarget = false;
@@ -23,8 +24,9 @@ public class Letter : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("drag end");
-        transform.SetParent(ParentBeforeDrag);
+        transform.SetParent(ParentAfterDrag);
         _image.raycastTarget = true;
+        
+        if (ParentAfterDrag.GetComponent<Cell>().IsRightCell) BookItem.Instance.UpdateFace();
     }
 }

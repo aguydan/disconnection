@@ -1512,6 +1512,12 @@ MonoBehaviour:
     letterPrefab: {fileID: 6278380122392833987, guid: c224fb3f067fb644490e1b4c670445d0, type: 3}
   - LetterName: 1103
     letterPrefab: {fileID: 6278380122392833987, guid: eddcf24136ddb774b9f6aaae595396cd, type: 3}
+  _face: {fileID: 188015985}
+  _possibleFaces:
+  - {fileID: 690476150, guid: 9505fd1e9bf7d4c48bf8bd14c1fc88b7, type: 3}
+  - {fileID: -1698440423, guid: 9505fd1e9bf7d4c48bf8bd14c1fc88b7, type: 3}
+  - {fileID: -39124957, guid: 9505fd1e9bf7d4c48bf8bd14c1fc88b7, type: 3}
+  - {fileID: 1342816475, guid: 9505fd1e9bf7d4c48bf8bd14c1fc88b7, type: 3}
 --- !u!114 &756468284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1527,7 +1533,7 @@ MonoBehaviour:
   _leftPage: {fileID: 1535652485}
   _rightPage: {fileID: 2088146758}
   _spawnPoint: {fileID: 4477827842809640416, guid: 18fe274920fb2b542aedcfa1cfe4b2d3, type: 3}
-  _leftCell: {fileID: -5556440745759580086, guid: d1339f02cad9ff049afae764941f6a5c, type: 3}
+  _leftCell: {fileID: 6333341607458978965, guid: d1339f02cad9ff049afae764941f6a5c, type: 3}
   _rightCell: {fileID: -3291264853966014537, guid: d289dac9d4761b4478c010909da4edbe, type: 3}
   _width: 10
   _height: 14
