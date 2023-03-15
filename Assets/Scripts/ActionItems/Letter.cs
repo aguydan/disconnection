@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Letter : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Letter : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] Image _image;
     [HideInInspector] public Transform ParentAfterDrag;
@@ -41,5 +41,15 @@ public class Letter : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         
             if (ParentAfterDrag.GetComponent<Cell>().IsRightCell) BookItem.Instance.UpdateFace();
         }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        CursorManager.Instance.EnableCantGrabCursor();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        CursorManager.Instance.EnableCanGrabCursor();
     }
 }

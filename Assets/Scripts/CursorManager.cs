@@ -12,6 +12,8 @@ public class CursorManager : MonoBehaviour
     Vector2 mousePosition;
     float distanceToHero;
 
+    public bool StopAutomaticCursor = false;
+
     private void Awake()
     {
         Instance = this;
@@ -29,6 +31,10 @@ public class CursorManager : MonoBehaviour
         if (UIManager.instance.IsPopupActive)
         {
             EnableFingerCursor();
+        }
+        else if (StopAutomaticCursor)
+        {
+            return;
         }
         else
         {
@@ -52,17 +58,17 @@ public class CursorManager : MonoBehaviour
         }
     }
     
-    void EnableCantGrabCursor()
+    public void EnableCantGrabCursor()
     {
         Cursor.SetCursor(cursorTexture[0], grabHotspot, CursorMode.Auto);
     }
 
-    void EnableCanGrabCursor()
+    public void EnableCanGrabCursor()
     {
         Cursor.SetCursor(cursorTexture[1], grabHotspot, CursorMode.Auto);
     }
 
-    void EnableFingerCursor()
+    public void EnableFingerCursor()
     {
         Cursor.SetCursor(cursorTexture[2], fingerHotspot, CursorMode.Auto);
     }

@@ -33,5 +33,3 @@ public class Hero : MonoBehaviour
     //     Gizmos.DrawWireSphere(transform.position, 4f);
     // }
 }
-
-//what if i derive vr, book and musicdisk classes from "pickable" where all the picking logic will be stored

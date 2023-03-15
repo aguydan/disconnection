@@ -39,6 +39,7 @@ public class ActionItemManager : MonoBehaviour
     public void DeactivateBook()
     {
         BookItem.Instance.gameObject.SetActive(false);
+        CursorManager.Instance.StopAutomaticCursor = false;
 
         if (BookItem.Instance.IsBookCompleted)
         {
@@ -65,6 +66,8 @@ public class ActionItemManager : MonoBehaviour
             _bookCreated = true;
         }
         BookItem.Instance.gameObject.SetActive(true);
+        CursorManager.Instance.StopAutomaticCursor = true;
+        CursorManager.Instance.EnableCanGrabCursor();
     }
 
     public IEnumerator DeactivateBookAutomatically()
@@ -72,6 +75,8 @@ public class ActionItemManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         BookItem.Instance.gameObject.SetActive(false);
+        CursorManager.Instance.StopAutomaticCursor = false;
+
         ItemSpawner.Instance.CompleteChallenge();
 
         numberOfBooks--;
