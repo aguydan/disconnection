@@ -7,12 +7,13 @@ public class GridGenerator : MonoBehaviour
     [SerializeField] RectTransform _rightPage;
     [SerializeField] GameObject _spawnPoint;
     [SerializeField] Cell _leftCell;
-    [SerializeField] GameObject _rightCell;
+    [SerializeField] Cell _rightCell;
     [SerializeField] int _width, _height;
     [SerializeField] int _gap;
+    [SerializeField] char[] _alphabet;
     
     Dictionary<Vector2, GameObject> _spawnPoints = new Dictionary<Vector2, GameObject>();
-    Dictionary<int, GameObject> _rightCells = new Dictionary<int, GameObject>();
+    Dictionary<int, Cell> _rightCells = new Dictionary<int, Cell>();
     List<Cell> _spawnedLeftCells = new List<Cell>();
 
     public void CreateLeftSpawnPoints()
@@ -26,7 +27,11 @@ public class GridGenerator : MonoBehaviour
             {
                 GameObject spawnPoint = Instantiate(_spawnPoint);
                 spawnPoint.transform.SetParent(_leftPage.transform);
+                
                 spawnPoint.transform.localPosition = temporaryUp += new Vector2(0, _gap);
+                float finalX = spawnPoint.transform.localPosition.x - (_gap * (_width - 1)) / 2;
+                float finalY = spawnPoint.transform.localPosition.y - (_gap * (_height - 1)) / 2;
+                spawnPoint.transform.localPosition = new Vector2(finalX, finalY);
 
                 _spawnPoints.Add(new Vector2(x, y), spawnPoint);
             }
@@ -34,16 +39,6 @@ public class GridGenerator : MonoBehaviour
             initialPos += new Vector2(_gap, 0);
             temporaryUp = initialPos;
         }
-
-        foreach (KeyValuePair<Vector2, GameObject> spawnPoint in _spawnPoints)
-        {
-            float x = spawnPoint.Value.transform.localPosition.x - (_gap * (_width - 1)) / 2;
-            float y = spawnPoint.Value.transform.localPosition.y - (_gap * (_height - 1)) / 2;
-            
-            spawnPoint.Value.transform.localPosition = new Vector2(x, y);
-        }
-
-        //эти  лупа можно обьединить
     }
 
     public void CreateRightGrid(int wordWidth)
@@ -52,18 +47,14 @@ public class GridGenerator : MonoBehaviour
         
         for (int x = 0; x < wordWidth; x++)
         {
-            GameObject cell = Instantiate(_rightCell);
+            Cell cell = Instantiate(_rightCell);
             cell.transform.SetParent(_rightPage.transform);
+
             cell.transform.localPosition = initialPos += new Vector2(_gap, 0);
+            float finalX = cell.transform.localPosition.x - (_gap * (wordWidth - 1)) / 2;
+            cell.transform.localPosition = new Vector2(finalX, 0);
 
             _rightCells.Add(x, cell);
-        }
-
-        foreach (KeyValuePair<int, GameObject> cell in _rightCells)
-        {
-            float x = cell.Value.transform.localPosition.x - (_gap * (wordWidth - 1)) / 2;
-            
-            cell.Value.transform.localPosition = new Vector2(x, 0);
         }
     }
 
@@ -96,13 +87,30 @@ public class GridGenerator : MonoBehaviour
 
     public void PopulateCellsWithLetters(string word)
     {
-        Letter letter = Instantiate(BookItem.Instance.Alphabet[word[0].ToString()]);
+        Letter letter = Instantiate(BookItem.Instance.Alphabet[word[0]]);
         letter.transform.SetParent(_rightCells[0].transform);
         letter.transform.position = _rightCells[0].transform.position;
         
-        // foreach (Cell cell in _spawnedLeftCells)
-        // {
+        for (int i = 1; i < word.Length; i++)
+        {
+            int randomCellIndex = Random.Range(0, _spawnedLeftCells.Count);
             
-        // }
+            Letter letter1 = Instantiate(BookItem.Instance.Alphabet[word[i]]);
+            letter1.transform.SetParent(_spawnedLeftCells[randomCellIndex].transform);
+            letter1.transform.position = _spawnedLeftCells[randomCellIndex].transform.position;
+
+            _spawnedLeftCells[randomCellIndex].IsOccupied = true;
+        }
+
+        foreach (Cell cell in _spawnedLeftCells)
+        {
+            if (cell.IsOccupied) continue;
+
+            int randomLetterIndex = Random.Range(0, 33);
+            
+            Letter letter1 = Instantiate(BookItem.Instance.Alphabet[_alphabet[randomLetterIndex]]);
+            letter1.transform.SetParent(cell.transform);
+            letter1.transform.position = cell.transform.position;
+        }
     }
 }

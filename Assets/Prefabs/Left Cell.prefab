@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8935364592584238058, guid: d289dac9d4761b4478c010909da4edbe, type: 3}
+      propertyPath: m_Color.b
+      value: 0.75133497
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935364592584238058, guid: d289dac9d4761b4478c010909da4edbe, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7689569
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935364592584238058, guid: d289dac9d4761b4478c010909da4edbe, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935364592584238058, guid: d289dac9d4761b4478c010909da4edbe, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8935364592584238059, guid: d289dac9d4761b4478c010909da4edbe, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -114,3 +130,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee8981a6db8f4b4580c3bd1c9c2acc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsOccupied: 0

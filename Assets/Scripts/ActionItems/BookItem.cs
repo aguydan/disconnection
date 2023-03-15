@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class LetterBlueprint
 {
-    public string LetterName;
+    public char LetterName;
     public Letter letterPrefab;
 }
 
@@ -16,9 +16,7 @@ public class BookItem : MonoBehaviour
     [SerializeField] LetterBlueprint[] _alphabetBlueprint;
 
     public static BookItem Instance;
-    public Dictionary<string, Letter> Alphabet = new Dictionary<string, Letter>();
-
-    //может сделать его char чтобы постоянно не тустрингить
+    public Dictionary<char, Letter> Alphabet = new Dictionary<char, Letter>();
 
     private void Awake()
     {
@@ -36,9 +34,9 @@ public class BookItem : MonoBehaviour
 
     void PopulateAlphabet()
     {
-        for (int i = 0; i < _alphabetBlueprint.Length; i++)
+        foreach (LetterBlueprint blueprint in _alphabetBlueprint)
         {
-            Alphabet.Add(_alphabetBlueprint[i].LetterName, _alphabetBlueprint[i].letterPrefab);
+            Alphabet.Add(blueprint.LetterName, blueprint.letterPrefab);
         }
     }
 }
