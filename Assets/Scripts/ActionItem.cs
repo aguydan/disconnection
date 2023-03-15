@@ -20,8 +20,10 @@ public class ActionItem : MonoBehaviour, IPointerDownHandler
         }
         else
         {
-            Debug.Log("you equipped " + _actionItemType);
             ActionItemManager.instance.EnableActionItemButton(_actionItemType);
+            ActionItemManager.instance.numberOfBooks++; //not all the items are books
+
+            Debug.Log(ActionItemManager.instance.numberOfBooks);
 
             Destroy(gameObject);
         }

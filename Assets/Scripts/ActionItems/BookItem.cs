@@ -21,6 +21,8 @@ public class BookItem : MonoBehaviour
 
     public static BookItem Instance;
     public Dictionary<char, Letter> Alphabet = new Dictionary<char, Letter>();
+    public bool IsBookCompleted = false;
+    string _currentWord;
 
     private void Awake()
     {
@@ -30,10 +32,32 @@ public class BookItem : MonoBehaviour
     private void Start()
     {
         PopulateAlphabet();
-       _gridGenerator.CreateRightGrid("пластинка".Length);
-       _gridGenerator.CreateLeftSpawnPoints();
-       _gridGenerator.CreateLeftGrid();
-       _gridGenerator.PopulateCellsWithLetters("пластинка");
+        _gridGenerator.CreateLeftSpawnPoints();
+        gameObject.SetActive(false);
+    }
+
+    void searchForWord(int currentTry)
+    {
+        string winningItemName = ItemSpawner.Instance.winningItem.look.sprite.name;
+        
+        foreach (WordGroup group in _wordsObject.WordGroups)
+        {
+            if (group.Key == winningItemName)
+            {
+                _currentWord = group.Words[currentTry];
+                break;
+            }
+        }
+    }
+
+    public void CreateAndPopulateGrids(int currentTry)
+    {
+        _gridGenerator.ClearGrids();
+        searchForWord(currentTry);
+        _gridGenerator.CreateLeftGrid();
+        _gridGenerator.CreateRightGrid(_currentWord.Length);
+        _gridGenerator.PopulateCellsWithLetters(_currentWord);
+        _face.sprite = _possibleFaces[0];
     }
 
     void PopulateAlphabet()
@@ -47,7 +71,7 @@ public class BookItem : MonoBehaviour
     public void UpdateFace()
     {
         string computedWord = ComputeCurrentWord();
-        float percentage = CompareWords("пластинка", computedWord);
+        float percentage = CompareWords(_currentWord, computedWord);
 
         Debug.Log(percentage);
 
@@ -66,6 +90,8 @@ public class BookItem : MonoBehaviour
         else if (percentage == 100)
         {
             _face.sprite = _possibleFaces[3];
+            IsBookCompleted = true;
+            StartCoroutine(ActionItemManager.instance.DeactivateBookAutomatically());
         }
     }
 

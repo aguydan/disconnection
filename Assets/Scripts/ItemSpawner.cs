@@ -13,12 +13,19 @@ public class ItemSpawner : MonoBehaviour
     [ColorUsage(true, true)]
     [SerializeField] Color[] hintColors;
 
+
+    public static ItemSpawner Instance;
     List<Item> spawnedItems = new List<Item>();
     int winningItemIndex;
-    [SerializeField] Item winningItem;
+    public Item winningItem;
     float maxDistance = 5;
     int canUpdateHintsTimes = 2;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+    
     void Start()
     {
         winningItemIndex = Random.Range(0, ScoreManager.instance.MaxItemAmount);

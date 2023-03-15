@@ -11,22 +11,35 @@ public class Letter : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     
     public void OnBeginDrag(PointerEventData eventData)
     {
-        ParentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
-        transform.SetAsLastSibling();
-        _image.raycastTarget = false;
+        if (!BookItem.Instance.IsBookCompleted)
+        {
+            ParentAfterDrag = transform.parent;
+            transform.SetParent(transform.root);
+            transform.SetAsLastSibling();
+            _image.raycastTarget = false;
+        }
+        else
+        {
+            ParentAfterDrag = transform.parent;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        if (!BookItem.Instance.IsBookCompleted)
+        {
+            transform.position = Input.mousePosition;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(ParentAfterDrag);
-        _image.raycastTarget = true;
+        if (!BookItem.Instance.IsBookCompleted)
+        {
+            transform.SetParent(ParentAfterDrag);
+            _image.raycastTarget = true;
         
-        if (ParentAfterDrag.GetComponent<Cell>().IsRightCell) BookItem.Instance.UpdateFace();
+            if (ParentAfterDrag.GetComponent<Cell>().IsRightCell) BookItem.Instance.UpdateFace();
+        }
     }
 }

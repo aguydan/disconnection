@@ -15,6 +15,7 @@ public class GridGenerator : MonoBehaviour
     Dictionary<Vector2, GameObject> _spawnPoints = new Dictionary<Vector2, GameObject>();
     public Dictionary<int, Cell> _rightCells = new Dictionary<int, Cell>();
     List<Cell> _spawnedLeftCells = new List<Cell>();
+    List<Letter> _spawnedLetters = new List<Letter>();
 
     public void CreateLeftSpawnPoints()
     {
@@ -93,6 +94,7 @@ public class GridGenerator : MonoBehaviour
         letter.transform.position = _rightCells[0].transform.position;
 
         _rightCells[0].IsOccupied = true;
+        _spawnedLetters.Add(letter);
         
         for (int i = 1; i < word.Length; i++)
         {
@@ -109,6 +111,7 @@ public class GridGenerator : MonoBehaviour
             letter1.transform.position = _spawnedLeftCells[randomCellIndex].transform.position;
 
             _spawnedLeftCells[randomCellIndex].IsOccupied = true;
+            _spawnedLetters.Add(letter1);
         }
 
         foreach (Cell cell in _spawnedLeftCells)
@@ -122,6 +125,28 @@ public class GridGenerator : MonoBehaviour
             letter1.transform.position = cell.transform.position;
 
             cell.IsOccupied = true;
+            _spawnedLetters.Add(letter1);
         }
+    }
+
+    public void ClearGrids()
+    {
+        foreach (KeyValuePair<int, Cell> cell in _rightCells)
+        {
+            Destroy(cell.Value.gameObject);
+        }
+        _rightCells.Clear();
+
+        foreach (Cell cell in _spawnedLeftCells)
+        {
+            Destroy(cell.gameObject);
+        }
+        _spawnedLeftCells.Clear();
+
+        foreach (Letter letter in _spawnedLetters)
+        {
+            Destroy(letter.gameObject);
+        }
+        _spawnedLetters.Clear();
     }
 }
