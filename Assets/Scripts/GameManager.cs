@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Hero hero;
     [SerializeField] GameOverScreen gameOverScreen;
     [SerializeField] GameObject doorPrefab;
+
+    [SerializeField] Button _VRButton;
+    [SerializeField] Button _musicPlayerButton;
+    [SerializeField] Button _bookButton;
 
     public static GameManager instance;
     public Vector2 heroPosition;
@@ -31,5 +36,9 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(doorPrefab, Scoring.doorCoordinates, Quaternion.identity);
         IsLevelCompleted = true;
+
+        _VRButton.interactable = false;
+        _musicPlayerButton.interactable = false;
+        _bookButton.interactable = false;
     }
 }

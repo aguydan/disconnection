@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UpperFingerButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
+public class UpperFingerButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -13,6 +13,11 @@ public class UpperFingerButton : MonoBehaviour, IPointerEnterHandler, IPointerDo
     }
 
     public void OnPointerDown(PointerEventData eventData)
+    {
+        CursorManager.Instance.StopAutomaticCursor = false;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
     {
         CursorManager.Instance.StopAutomaticCursor = false;
     }

@@ -34,7 +34,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             if (hasPositivePoints && distanceToHero < 4)
             {
                 ScoreManager.instance.IncreaseScore();
-                if (ActionItemManager.instance._itemCreated)
+                if (ActionItemManager.instance.IsActionItemCreated)
                 {
                     WhatActionItemToDeactivate(ActionItemManager.instance._whoDid);
                 }

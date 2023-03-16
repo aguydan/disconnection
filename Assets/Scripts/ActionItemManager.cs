@@ -1,39 +1,40 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ActionItemManager : MonoBehaviour
 {
-    [SerializeField] Image _VRButton;
-    [SerializeField] Image _bookButton;
-    [SerializeField] Image _musicPlayerButton;
-    [SerializeField] PlayMusicPlayer _musicPlayer;
-    [SerializeField] Image _deactivatePlayerButton;
+    [SerializeField] ItemPanelButton _VRButton;
+    [SerializeField] ItemPanelButton _bookButton;
+    [SerializeField] ItemPanelButton _musicPlayerButton;
+    [SerializeField] AIMPManager _AIMPManager;
+    [SerializeField] UpperFingerButton _deactivateAIMPButton;
+    [SerializeField] Sprite[] _disabledButtonSprites;
+    [SerializeField] Sprite[] _enabledButtonSprites;
     
     public static ActionItemManager instance;
-    public bool _itemCreated = false;
+
     public string _whoDid;
     public bool AlreadyClosed = false;
-    public int numberOfBooks = 0, numberOfPlayers = 0, numberOfVRs = 0, CurrentSong = -1;
-    int _tries = 0;
+    public bool IsActionItemCreated = false;
+    
+    //FOR VRS
+    public int numberOfVRs = 0;
 
+    //FOR MUSIC PLAYER
+    public int numberOfPlayers = 0;
+    public int MusicPlayerItemTries = 2;
     public bool IsPlayerCompleted = false;
     public bool HasMusicPlayerStarted = false;
-    public int MusicPlayerItemTries = 2;
-    
-    [SerializeField] Sprite originalBook;
-    [SerializeField] Sprite originalPlayer;
-    [SerializeField] Sprite originalVR;
+
+    //FOR BOOK
+    private int _tries = 0;
+    public int numberOfBooks = 0;
+    private bool _isBookPopulated = false; 
+    public bool IsBookVisible = false;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start() {
-        Sprite originalBook = _bookButton.sprite;
-        Sprite originalPlayer = _musicPlayerButton.sprite;
-        Sprite originalVR = _VRButton.sprite;
     }
 
     public void EnableActionItemButton(ActionItem.ActionItemType type)
@@ -41,89 +42,76 @@ public class ActionItemManager : MonoBehaviour
         switch (type)
         {
             case ActionItem.ActionItemType.VR:
+            {
                 _VRButton.gameObject.SetActive(true);
                 numberOfVRs++;
-                _itemCreated = true;
+                IsActionItemCreated = true;
+            }
             break;
             case ActionItem.ActionItemType.Book:
+            {
                 _bookButton.gameObject.SetActive(true);
                 numberOfBooks++;
+            }
             break;
             case ActionItem.ActionItemType.MusicPlayer:
+            {
                 _musicPlayerButton.gameObject.SetActive(true);
                 numberOfPlayers++;
-                _itemCreated = true;
+                IsActionItemCreated = true;
+            }
             break;
         }
     }
 
     public void WhoCreatedItem(string whoDid, bool status)
     {
-        Sprite disabled = ItemSpawner.Instance.winningItem.look.sprite;
         _whoDid = whoDid;
         
-        if (status)
+        Sprite[] currentButtonSprites = status ? _enabledButtonSprites : _disabledButtonSprites;
+        
+        if (whoDid == "book")
         {
-            switch (whoDid)
-            {
-                case "book":
-                    _VRButton.GetComponent<Button>().interactable = status;
-                    _VRButton.sprite = originalVR;
-                    _musicPlayerButton.GetComponent<Button>().interactable = status;
-                    _musicPlayerButton.sprite = originalPlayer;
-                break;
-                case "musicPlayer":
-                    _VRButton.GetComponent<Button>().interactable = status;
-                    _VRButton.sprite = originalVR;
-                    _musicPlayerButton.GetComponent<Button>().interactable = status;
-                    _musicPlayerButton.sprite = originalPlayer;
-                    _bookButton.GetComponent<Button>().interactable = status;
-                    _bookButton.sprite = originalBook;
-                break;
-                case "VR":
-                    _bookButton.GetComponent<Button>().interactable = status;
-                    _bookButton.sprite = originalVR;
-                    _VRButton.GetComponent<Button>().interactable = status;
-                    _VRButton.sprite = originalVR;
-                    _musicPlayerButton.GetComponent<Button>().interactable = status;
-                    _musicPlayerButton.sprite = originalPlayer;
-                break;
-            }
+            _VRButton.Button.interactable = status;
+            _VRButton.Image.sprite = currentButtonSprites[0];
+
+            _musicPlayerButton.Button.interactable = status;
+            _musicPlayerButton.Image.sprite = currentButtonSprites[2];
         }
         else
         {
-            switch (whoDid)
-            {
-                case "book":
-                    _VRButton.GetComponent<Button>().interactable = status;
-                    _VRButton.sprite = disabled;
-                    _musicPlayerButton.GetComponent<Button>().interactable = status;
-                    _musicPlayerButton.sprite = disabled;
-                break;
-                case "musicPlayer":
-                    _VRButton.GetComponent<Button>().interactable = status;
-                    _VRButton.sprite = disabled;
-                    _musicPlayerButton.GetComponent<Button>().interactable = status;
-                    _musicPlayerButton.sprite = disabled;
-                    _bookButton.GetComponent<Button>().interactable = status;
-                    _bookButton.sprite = disabled;
-                break;
-                case "VR":
-                    _bookButton.GetComponent<Button>().interactable = status;
-                    _bookButton.sprite = disabled;
-                    _VRButton.GetComponent<Button>().interactable = status;
-                    _VRButton.sprite = disabled;
-                    _musicPlayerButton.GetComponent<Button>().interactable = status;
-                    _musicPlayerButton.sprite = disabled;
-                break;
-            }
+            _VRButton.Button.interactable = status;
+            _VRButton.Image.sprite = currentButtonSprites[0];
+
+            _bookButton.Button.interactable = status;
+            _bookButton.Image.sprite = currentButtonSprites[1];
+
+            _musicPlayerButton.Button.interactable = status;
+            _musicPlayerButton.Image.sprite = currentButtonSprites[2];
         }
     }
 
     //BOOOK
+    public void ActivateBook()
+    {
+        IsBookVisible = true;
+        AlreadyClosed = false;
+        
+        if (!_isBookPopulated && numberOfBooks > 0)
+        {
+            BookItem.Instance.CreateAndPopulateGrids(_tries);
+            _isBookPopulated = true;
+            WhoCreatedItem("book", false);
+        }
+        BookItem.Instance.gameObject.SetActive(true);
+        CursorManager.Instance.StopAutomaticCursor = true;
+        CursorManager.Instance.EnableCanGrabCursor();
+    }
 
     public void DeactivateBook()
     {
+        IsBookVisible = false;
+        
         BookItem.Instance.gameObject.SetActive(false);
         CursorManager.Instance.StopAutomaticCursor = false;
 
@@ -133,7 +121,7 @@ public class ActionItemManager : MonoBehaviour
 
             numberOfBooks--;
             _tries++;
-            _itemCreated = false;
+            _isBookPopulated = false;
             WhoCreatedItem("book", true);
         }
         if (numberOfBooks == 0) _bookButton.gameObject.SetActive(false);
@@ -143,25 +131,12 @@ public class ActionItemManager : MonoBehaviour
         AlreadyClosed = true;
     }
 
-    public void ActivateBook()
-    {
-        AlreadyClosed = false;
-        
-        if (!_itemCreated && numberOfBooks > 0)
-        {
-            BookItem.Instance.CreateAndPopulateGrids(_tries);
-            _itemCreated = true;
-            WhoCreatedItem("book", false);
-        }
-        BookItem.Instance.gameObject.SetActive(true);
-        CursorManager.Instance.StopAutomaticCursor = true;
-        CursorManager.Instance.EnableCanGrabCursor();
-    }
-
     public IEnumerator DeactivateBookAutomatically()
     {
         yield return new WaitForSeconds(1);
 
+        IsBookVisible = false;
+        
         BookItem.Instance.gameObject.SetActive(false);
         CursorManager.Instance.StopAutomaticCursor = false;
 
@@ -169,7 +144,7 @@ public class ActionItemManager : MonoBehaviour
 
         numberOfBooks--;
         _tries++;
-        _itemCreated = false;
+        _isBookPopulated = false;
         WhoCreatedItem("book", true);
 
         if (numberOfBooks == 0) _bookButton.gameObject.SetActive(false);
@@ -178,7 +153,6 @@ public class ActionItemManager : MonoBehaviour
     }
 
     //MUSIC
-
     public void ActivateMusicPlayer()
     {
         if (!HasMusicPlayerStarted)
@@ -187,46 +161,28 @@ public class ActionItemManager : MonoBehaviour
             MusicPlayerItemTries = 2;
         }
         
-        AlreadyClosed = false;
-        
         WhoCreatedItem("musicPlayer", false);
-        _musicPlayer.gameObject.SetActive(true);
-        _deactivatePlayerButton.gameObject.SetActive(true);
+        _AIMPManager.PlayVolumeControlSong();
+        _deactivateAIMPButton.gameObject.SetActive(true);
     }
 
     public void DeactivateMusicPlayer()
     {
-        _musicPlayer.gameObject.SetActive(false);
-        _deactivatePlayerButton.gameObject.SetActive(false);
+        _AIMPManager.StopVolumeControlSong();
+        _deactivateAIMPButton.gameObject.SetActive(false);
 
         if (IsPlayerCompleted)
         {
             ItemSpawner.Instance.CompleteChallenge();
             numberOfPlayers--;
-            _itemCreated = false;
+            IsActionItemCreated = false;
             HasMusicPlayerStarted = false;
+            _AIMPManager.NextSongIndex();
         }
         WhoCreatedItem("musicPlayer", true);
 
-        Debug.Log(numberOfPlayers);
-
         if (numberOfPlayers == 0) _musicPlayerButton.gameObject.SetActive(false);
 
-        AlreadyClosed = true;
+        IsPlayerCompleted = false;
     }
-
-    // public IEnumerator DeactivateMusicPlayerAutomatically()
-    // {
-    //     yield return new WaitForSeconds(1);
-
-    //     _musicPlayer.gameObject.SetActive(false);
-    //     _deactivatePlayerButton.gameObject.SetActive(false);
-
-    //     ItemSpawner.Instance.CompleteChallenge();
-    //     numberOfPlayers--;
-    //     _itemCreated = false;
-    //     WhoCreatedItem("musicPlayer", true);
-
-    //     if (numberOfPlayers == 0) _musicPlayerButton.gameObject.SetActive(false);
-    // }
 }
