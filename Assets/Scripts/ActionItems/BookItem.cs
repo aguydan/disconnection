@@ -13,6 +13,8 @@ public class LetterBlueprint
 
 public class BookItem : MonoBehaviour
 {
+    //КНИГА НЕ РАБОТАЕТ ПОТОМУ ЧТО НЕ ВКЛЮЧЕНА В РЕДАКТОРЕ!!!
+    
     [SerializeField] GridGenerator _gridGenerator;
     [SerializeField] WordsObject _wordsObject;
     [SerializeField] LetterBlueprint[] _alphabetBlueprint;

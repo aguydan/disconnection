@@ -21,9 +21,6 @@ public class ActionItem : MonoBehaviour, IPointerDownHandler
         else
         {
             ActionItemManager.instance.EnableActionItemButton(_actionItemType);
-            ActionItemManager.instance.numberOfBooks++; //not all the items are books
-
-            Debug.Log(ActionItemManager.instance.numberOfBooks);
 
             Destroy(gameObject);
         }

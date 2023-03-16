@@ -34,6 +34,10 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             if (hasPositivePoints && distanceToHero < 4)
             {
                 ScoreManager.instance.IncreaseScore();
+                if (ActionItemManager.instance._itemCreated)
+                {
+                    WhatActionItemToDeactivate(ActionItemManager.instance._whoDid);
+                }
                 UIManager.instance.CallItemPopupPositive(look.sprite.name);
                 GameManager.instance.SpawnDoorToNextLevel();
 
@@ -42,10 +46,36 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             else if (distanceToHero < 4)
             {
                 ScoreManager.instance.DecreaseScore();
+                
+                if (ActionItemManager.instance.HasMusicPlayerStarted)
+                {
+                    ActionItemManager.instance.MusicPlayerItemTries--;
+
+                    if (ActionItemManager.instance.MusicPlayerItemTries == 0)
+                    {
+                        ActionItemManager.instance.IsPlayerCompleted = true;
+                        ActionItemManager.instance.DeactivateMusicPlayer();
+                    }
+                }
+
                 UIManager.instance.CallItemPopupNegative(look.sprite.name);
 
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void WhatActionItemToDeactivate(string name)
+    {
+            switch (name)
+            {
+                case "musicPlayer":
+                    ActionItemManager.instance.IsPlayerCompleted = true;
+                    ActionItemManager.instance.DeactivateMusicPlayer();
+                break;
+                case "VR":
+                    Debug.Log("vr deactivated");
+                break;
+            }
     }
 }
