@@ -7,4 +7,5 @@ public class ItemPanelButton : MonoBehaviour
 {
     public Button Button;
     public Image Image;
+    public Image X2;
 }

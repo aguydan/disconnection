@@ -18,17 +18,17 @@ public class ActionItemManager : MonoBehaviour
     public bool IsActionItemCreated = false;
     
     //FOR VRS
-    public int numberOfVRs = 0;
+    int numberOfVRs = 0;
 
     //FOR MUSIC PLAYER
-    public int numberOfPlayers = 0;
+    int numberOfPlayers = 0;
     public int MusicPlayerItemTries = 2;
     public bool IsPlayerCompleted = false;
     public bool HasMusicPlayerStarted = false;
 
     //FOR BOOK
     private int _tries = 0;
-    public int numberOfBooks = 0;
+    int numberOfBooks = 0;
     private bool _isBookPopulated = false; 
     public bool IsBookVisible = false;
 
@@ -45,23 +45,35 @@ public class ActionItemManager : MonoBehaviour
             {
                 _VRButton.gameObject.SetActive(true);
                 numberOfVRs++;
-                IsActionItemCreated = true;
+                UpdateAmountOfActionItems();
             }
             break;
             case ActionItem.ActionItemType.Book:
             {
                 _bookButton.gameObject.SetActive(true);
                 numberOfBooks++;
+                UpdateAmountOfActionItems();
             }
             break;
             case ActionItem.ActionItemType.MusicPlayer:
             {
                 _musicPlayerButton.gameObject.SetActive(true);
                 numberOfPlayers++;
-                IsActionItemCreated = true;
+                UpdateAmountOfActionItems();
             }
             break;
         }
+    }
+
+    void UpdateAmountOfActionItems()
+    {
+        if (numberOfVRs == 2) _VRButton.X2.gameObject.SetActive(true);
+        if (numberOfPlayers == 2) _musicPlayerButton.X2.gameObject.SetActive(true);
+        if (numberOfBooks == 2) _bookButton.X2.gameObject.SetActive(true);
+
+        if (numberOfVRs < 2) _VRButton.X2.gameObject.SetActive(false);
+        if (numberOfPlayers < 2) _musicPlayerButton.X2.gameObject.SetActive(false);
+        if (numberOfBooks < 2) _bookButton.X2.gameObject.SetActive(false);
     }
 
     public void WhoCreatedItem(string whoDid, bool status)
@@ -120,6 +132,7 @@ public class ActionItemManager : MonoBehaviour
             ItemSpawner.Instance.CompleteChallenge();
 
             numberOfBooks--;
+            UpdateAmountOfActionItems();
             _tries++;
             _isBookPopulated = false;
             WhoCreatedItem("book", true);
@@ -143,6 +156,7 @@ public class ActionItemManager : MonoBehaviour
         ItemSpawner.Instance.CompleteChallenge();
 
         numberOfBooks--;
+        UpdateAmountOfActionItems();
         _tries++;
         _isBookPopulated = false;
         WhoCreatedItem("book", true);
@@ -155,6 +169,8 @@ public class ActionItemManager : MonoBehaviour
     //MUSIC
     public void ActivateMusicPlayer()
     {
+        IsActionItemCreated = true;
+        
         if (!HasMusicPlayerStarted)
         {
             HasMusicPlayerStarted = true;
@@ -175,6 +191,7 @@ public class ActionItemManager : MonoBehaviour
         {
             ItemSpawner.Instance.CompleteChallenge();
             numberOfPlayers--;
+            UpdateAmountOfActionItems();
             IsActionItemCreated = false;
             HasMusicPlayerStarted = false;
             _AIMPManager.NextSongIndex();
