@@ -7,6 +7,7 @@ public class ActionItemManager : MonoBehaviour
     [SerializeField] ItemPanelButton _bookButton;
     [SerializeField] ItemPanelButton _musicPlayerButton;
     [SerializeField] AIMPManager _AIMPManager;
+    [SerializeField] VRManager _VRManager;
     [SerializeField] UpperFingerButton _deactivateAIMPButton;
     [SerializeField] Sprite[] _disabledButtonSprites;
     [SerializeField] Sprite[] _enabledButtonSprites;
@@ -16,9 +17,6 @@ public class ActionItemManager : MonoBehaviour
     public string _whoDid;
     public bool AlreadyClosed = false;
     public bool IsActionItemCreated = false;
-    
-    //FOR VRS
-    int numberOfVRs = 0;
 
     //FOR MUSIC PLAYER
     int numberOfPlayers = 0;
@@ -37,41 +35,39 @@ public class ActionItemManager : MonoBehaviour
         instance = this;
     }
 
-    public void EnableActionItemButton(ActionItem.ActionItemType type)
+    public void PickUpActionItem(ActionItem.ActionItemType type)
     {
         switch (type)
         {
             case ActionItem.ActionItemType.VR:
             {
                 _VRButton.gameObject.SetActive(true);
-                numberOfVRs++;
-                UpdateAmountOfActionItems();
+                _VRManager.AmountOfVRs++;
             }
             break;
             case ActionItem.ActionItemType.Book:
             {
                 _bookButton.gameObject.SetActive(true);
                 numberOfBooks++;
-                UpdateAmountOfActionItems();
             }
             break;
             case ActionItem.ActionItemType.MusicPlayer:
             {
                 _musicPlayerButton.gameObject.SetActive(true);
                 numberOfPlayers++;
-                UpdateAmountOfActionItems();
             }
             break;
         }
+        UpdateAmountOfActionItems();
     }
 
     void UpdateAmountOfActionItems()
     {
-        if (numberOfVRs == 2) _VRButton.X2.gameObject.SetActive(true);
+        if (_VRManager.AmountOfVRs == 2) _VRButton.X2.gameObject.SetActive(true);
         if (numberOfPlayers == 2) _musicPlayerButton.X2.gameObject.SetActive(true);
         if (numberOfBooks == 2) _bookButton.X2.gameObject.SetActive(true);
 
-        if (numberOfVRs < 2) _VRButton.X2.gameObject.SetActive(false);
+        if (_VRManager.AmountOfVRs < 2) _VRButton.X2.gameObject.SetActive(false);
         if (numberOfPlayers < 2) _musicPlayerButton.X2.gameObject.SetActive(false);
         if (numberOfBooks < 2) _bookButton.X2.gameObject.SetActive(false);
     }
@@ -82,24 +78,16 @@ public class ActionItemManager : MonoBehaviour
         
         Sprite[] currentButtonSprites = status ? _enabledButtonSprites : _disabledButtonSprites;
         
-        if (whoDid == "book")
-        {
-            _VRButton.Button.interactable = status;
-            _VRButton.Image.sprite = currentButtonSprites[0];
+        _VRButton.Button.interactable = status;
+        _VRButton.Image.sprite = currentButtonSprites[0];
 
-            _musicPlayerButton.Button.interactable = status;
-            _musicPlayerButton.Image.sprite = currentButtonSprites[2];
-        }
-        else
-        {
-            _VRButton.Button.interactable = status;
-            _VRButton.Image.sprite = currentButtonSprites[0];
+        _musicPlayerButton.Button.interactable = status;
+        _musicPlayerButton.Image.sprite = currentButtonSprites[2];
 
+        if (whoDid != "book")
+        {
             _bookButton.Button.interactable = status;
             _bookButton.Image.sprite = currentButtonSprites[1];
-
-            _musicPlayerButton.Button.interactable = status;
-            _musicPlayerButton.Image.sprite = currentButtonSprites[2];
         }
     }
 

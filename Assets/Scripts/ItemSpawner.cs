@@ -16,6 +16,7 @@ public class ItemSpawner : MonoBehaviour
 
     public static ItemSpawner Instance;
     List<Item> spawnedItems = new List<Item>();
+    public List<Item> ColoredItems = new List<Item>();
     int winningItemIndex;
     public Item winningItem;
     float maxDistance = 5;
@@ -34,6 +35,8 @@ public class ItemSpawner : MonoBehaviour
         {
             SpawnRandomItem(new Vector2(Random.Range(-7f, 7f), Random.Range(-3.5f, 2f)));
         }
+
+        ColoredItems = spawnedItems;
     }
 
     void SpawnRandomItem(Vector2 position)
@@ -66,8 +69,10 @@ public class ItemSpawner : MonoBehaviour
         if (canUpdateHintsTimes == 0)
         {
             RestoreStandartMaterials(currentItems);
+            ColoredItems.Clear();
 
             winningItem.look.material = outline;
+            ColoredItems.Add(winningItem);
         }
         else
         {
@@ -81,6 +86,7 @@ public class ItemSpawner : MonoBehaviour
     void UpdateHints(Item winningItem, List<Item> currentItems, float maxDistance)
     {
         RestoreStandartMaterials(currentItems);
+        ColoredItems.Clear();
         for (int i = 0; i < currentItems.Count; i++)
         {
             float distance = Vector2.Distance(winningItem.transform.position, currentItems[i].transform.position);
@@ -88,6 +94,7 @@ public class ItemSpawner : MonoBehaviour
             if (distance <= maxDistance)
             {
                 currentItems[i].look.material = outline;
+                ColoredItems.Add(currentItems[i]);
             }
         }
     }

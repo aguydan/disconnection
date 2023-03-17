@@ -33,6 +33,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         {
             if (hasPositivePoints && distanceToHero < 4)
             {
+                // Scoring.WinningItems.Add(gameObject.GetComponent<Item>());
+                
                 ScoreManager.instance.IncreaseScore();
                 if (ActionItemManager.instance.IsActionItemCreated)
                 {

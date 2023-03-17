@@ -20,7 +20,7 @@ public class ActionItem : MonoBehaviour, IPointerDownHandler
         }
         else
         {
-            ActionItemManager.instance.EnableActionItemButton(_actionItemType);
+            ActionItemManager.instance.PickUpActionItem(_actionItemType);
 
             Destroy(gameObject);
         }

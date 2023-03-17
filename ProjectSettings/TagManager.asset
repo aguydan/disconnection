@@ -47,3 +47,6 @@ TagManager:
   - name: Foreground
     uniqueID: 2983181111
     locked: 0
+  - name: VR
+    uniqueID: 2171848789
+    locked: 0
