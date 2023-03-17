@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7636392719487221976}
   - component: {fileID: 7636392719487221983}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Door Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7636392719641962740}
   - component: {fileID: 7636392719641962746}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Door Inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7636392720900486917}
   - component: {fileID: 7636392720900486923}
   - component: {fileID: 2385748767057459439}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Door Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7636392721002287762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 7636392721147118640}
   - component: {fileID: 7636392721147118642}
   - component: {fileID: 7636392721147118643}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Door Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

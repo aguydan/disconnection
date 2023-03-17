@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Hero hero;
     [SerializeField] GameOverScreen gameOverScreen;
     [SerializeField] GameObject doorPrefab;
+    [SerializeField] FurnitureObject _furnitureSets;
 
     [SerializeField] Button _VRButton;
     [SerializeField] Button _musicPlayerButton;
@@ -34,7 +35,9 @@ public class GameManager : MonoBehaviour
 
     public void SpawnDoorToNextLevel()
     {
-        Instantiate(doorPrefab, Scoring.doorCoordinates, Quaternion.identity);
+        int index = FurnitureSpawner.Instance.CurrentFurnitureSetIndex;
+        
+        Instantiate(doorPrefab, _furnitureSets.FurnitureSets[index].DoorSpawnPosition, Quaternion.identity);
         IsLevelCompleted = true;
 
         _VRButton.interactable = false;

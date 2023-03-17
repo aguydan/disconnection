@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Furniture Sets
   m_EditorClassIdentifier: 
   FurnitureSets:
-  - Furniture: []
-  - Furniture: []
-  - Furniture: []
-  - Furniture: []
-  - Furniture: []
+  - Room: {fileID: 3435635361305357941, guid: 05cfea2f4e9b723408cb2e6e0d054463, type: 3}
+    Furniture:
+    - {fileID: 1635785696970624095, guid: 094a9ce4fd921eb47997fd3d7bf4c6e9, type: 3}
+    - {fileID: 1269615157466614841, guid: 16af12df48369ee41b488f6d8e9e1f7d, type: 3}
+    - {fileID: 3783407225070750651, guid: 76fe7b8d4b11eca4bab89c71a7fac64f, type: 3}
+    DoorSpawnPosition: {x: 0.68, y: 5.39}
+  - Room: {fileID: 3435635361305357941, guid: 05cfea2f4e9b723408cb2e6e0d054463, type: 3}
+    Furniture:
+    - {fileID: 1441214091265791475, guid: 78a97e1e09b31274b8d73fa9639119cb, type: 3}
+    - {fileID: 8137479753555814712, guid: 7fc6bdd4d533fcb4897a3ada6abbc3c3, type: 3}
+    DoorSpawnPosition: {x: -5, y: 5.39}

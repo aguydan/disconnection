@@ -30,7 +30,6 @@ public class VRItem : MonoBehaviour
                     randomIndex = Random.Range(0, items.Count);
                 }
 
-                items[randomIndex].look.color = Color.blue;
                 _wrongItems.Add(items[randomIndex]);
             }
         }
@@ -53,5 +52,17 @@ public class VRItem : MonoBehaviour
             Destroy(cross);
         }
         _spawnedCrosses.Clear();
+    }
+
+    public void UpdateWrongItems()
+    {
+        List<Item> wrongItems = new List<Item>();
+
+        foreach (Item item in _wrongItems)
+        {
+            if (item) wrongItems.Add(item);
+        }
+
+        _wrongItems = wrongItems;
     }
 }

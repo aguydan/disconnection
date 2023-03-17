@@ -76,7 +76,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
                     ActionItemManager.instance.DeactivateMusicPlayer();
                 break;
                 case "VR":
-                    Debug.Log("vr deactivated");
+                    ActionItemManager.instance.IsVRCompleted = true;
+                    ActionItemManager.instance.AIMDeactivateVR();
                 break;
             }
     }

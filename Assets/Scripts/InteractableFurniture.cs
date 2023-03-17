@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class InteractableFurniture : MonoBehaviour
+public class InteractableFurniture : MonoBehaviour, IPointerDownHandler
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public BoxCollider2D BoxCollider;
+    
+    public bool HasHint = false;
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        
+        if (HasHint)
+        {
+            Debug.Log("is winning");
+        }
+        else 
+        {
+            Debug.Log("clicked");
+        }
     }
 }

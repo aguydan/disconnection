@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ActionItemManager : MonoBehaviour
@@ -17,7 +18,11 @@ public class ActionItemManager : MonoBehaviour
     public string _whoDid;
     public bool AlreadyClosed = false;
     public bool IsActionItemCreated = false;
+    public bool IsActionItemCurrentlyVisible = false; //не касается книги
 
+    //FOR VR
+    public bool IsVRCompleted = false;
+    
     //FOR MUSIC PLAYER
     int numberOfPlayers = 0;
     public int MusicPlayerItemTries = 2;
@@ -39,11 +44,7 @@ public class ActionItemManager : MonoBehaviour
     {
         switch (type)
         {
-            case ActionItem.ActionItemType.VR:
-            {
-                _VRButton.gameObject.SetActive(true);
-                _VRManager.AmountOfVRs++;
-            }
+            case ActionItem.ActionItemType.VR: _VRManager.PickUpVR();
             break;
             case ActionItem.ActionItemType.Book:
             {
@@ -72,28 +73,51 @@ public class ActionItemManager : MonoBehaviour
         if (numberOfBooks < 2) _bookButton.X2.gameObject.SetActive(false);
     }
 
-    public void WhoCreatedItem(string whoDid, bool status)
+    void PanelButtonDisabler(string lastAddedItem)
     {
-        _whoDid = whoDid;
+        _whoDid = lastAddedItem;
         
-        Sprite[] currentButtonSprites = status ? _enabledButtonSprites : _disabledButtonSprites;
-        
-        _VRButton.Button.interactable = status;
-        _VRButton.Image.sprite = currentButtonSprites[0];
-
-        _musicPlayerButton.Button.interactable = status;
-        _musicPlayerButton.Image.sprite = currentButtonSprites[2];
-
-        if (whoDid != "book")
+        Dictionary<string, ItemPanelButton> buttons = new Dictionary<string, ItemPanelButton>()
         {
-            _bookButton.Button.interactable = status;
-            _bookButton.Image.sprite = currentButtonSprites[1];
+            { "VR", _VRButton },
+            { "musicPlayer", _musicPlayerButton },
+            { "book", _bookButton }
+        };
+        Dictionary<string, int> spriteIndexes = new Dictionary<string, int>()
+        {
+            { "VR", 0 },
+            { "musicPlayer", 1 },
+            { "book", 2 }
+        };
+
+        if (IsActionItemCreated)
+        {
+            foreach (KeyValuePair<string, ItemPanelButton> button in buttons)
+            {
+                button.Value.Button.interactable = false;
+                button.Value.Image.sprite = _disabledButtonSprites[spriteIndexes[button.Key]];
+            }
+
+            if (!IsActionItemCurrentlyVisible)
+            {
+                buttons[lastAddedItem].Button.interactable = true;
+                buttons[lastAddedItem].Image.sprite = _enabledButtonSprites[spriteIndexes[lastAddedItem]];
+            }
+        }
+        else
+        {
+            foreach (KeyValuePair<string, ItemPanelButton> button in buttons)
+            {
+                button.Value.Button.interactable = true;
+                button.Value.Image.sprite = _enabledButtonSprites[spriteIndexes[button.Key]];
+            }
         }
     }
 
     //BOOOK
     public void ActivateBook()
     {
+        IsActionItemCreated = true;
         IsBookVisible = true;
         AlreadyClosed = false;
         
@@ -101,8 +125,10 @@ public class ActionItemManager : MonoBehaviour
         {
             BookItem.Instance.CreateAndPopulateGrids(_tries);
             _isBookPopulated = true;
-            WhoCreatedItem("book", false);
         }
+        IsActionItemCurrentlyVisible = true;
+        PanelButtonDisabler("book");
+
         BookItem.Instance.gameObject.SetActive(true);
         CursorManager.Instance.StopAutomaticCursor = true;
         CursorManager.Instance.EnableCanGrabCursor();
@@ -123,12 +149,14 @@ public class ActionItemManager : MonoBehaviour
             UpdateAmountOfActionItems();
             _tries++;
             _isBookPopulated = false;
-            WhoCreatedItem("book", true);
+            IsActionItemCreated = false;
         }
+        IsActionItemCurrentlyVisible = false;
+        PanelButtonDisabler("book");
+
         if (numberOfBooks == 0) _bookButton.gameObject.SetActive(false);
 
         BookItem.Instance.IsBookCompleted = false;
-
         AlreadyClosed = true;
     }
 
@@ -147,7 +175,9 @@ public class ActionItemManager : MonoBehaviour
         UpdateAmountOfActionItems();
         _tries++;
         _isBookPopulated = false;
-        WhoCreatedItem("book", true);
+        IsActionItemCreated = false;
+        IsActionItemCurrentlyVisible = false;
+        PanelButtonDisabler("book");
 
         if (numberOfBooks == 0) _bookButton.gameObject.SetActive(false);
 
@@ -165,7 +195,8 @@ public class ActionItemManager : MonoBehaviour
             MusicPlayerItemTries = 2;
         }
         
-        WhoCreatedItem("musicPlayer", false);
+        IsActionItemCurrentlyVisible = true;
+        PanelButtonDisabler("musicPlayer");
         _AIMPManager.PlayVolumeControlSong();
         _deactivateAIMPButton.gameObject.SetActive(true);
     }
@@ -184,10 +215,34 @@ public class ActionItemManager : MonoBehaviour
             HasMusicPlayerStarted = false;
             _AIMPManager.NextSongIndex();
         }
-        WhoCreatedItem("musicPlayer", true);
+        IsActionItemCurrentlyVisible = false;
+        PanelButtonDisabler("musicPlayer"); // this function alllows for using other items while current is still active
 
         if (numberOfPlayers == 0) _musicPlayerButton.gameObject.SetActive(false);
 
         IsPlayerCompleted = false;
+    }
+
+    //VR
+    public void AIMActivateVR()
+    {
+        IsActionItemCreated = true;
+        
+        _VRManager.ActivateVR();
+        PanelButtonDisabler("VR");
+    }
+
+    public void AIMDeactivateVR()
+    {
+        if (IsVRCompleted)
+        {
+            ItemSpawner.Instance.CompleteChallenge();
+            _VRManager.AmountOfVRs--;
+            UpdateAmountOfActionItems();
+            IsActionItemCreated = false;
+        }
+
+        _VRManager.DeactivateVR();
+        PanelButtonDisabler("VR");
     }
 }
