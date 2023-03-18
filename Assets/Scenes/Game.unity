@@ -3745,6 +3745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _AIMPSource: {fileID: 912052813}
   _AIMPSongs:
+  - {fileID: 8300000, guid: 502c91906a894d244a74c8fa16f9de2b, type: 3}
   - {fileID: 8300000, guid: e3478458c0f92de418516f8a85acee17, type: 3}
   - {fileID: 8300000, guid: 84b65c184d390c242b4f0adbae125715, type: 3}
   _volumeCalculator: {fileID: 1339123378}
@@ -4449,7 +4450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa8c94efac4c8a41a8aaf7761ba661e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDistance: 8
+  _maxDistance: 5
   VolumeScaler: 0
 --- !u!1 &1351679583
 GameObject:

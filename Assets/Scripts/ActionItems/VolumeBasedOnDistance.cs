@@ -21,6 +21,6 @@ public class VolumeBasedOnDistance : MonoBehaviour
     {
         float distanceToWinningItem = Vector2.Distance(_winningItemPosition, GameManager.instance.heroPosition);
         
-        return 1f - Mathf.Clamp((distanceToWinningItem / _maxDistance), 0.2f, 1f);
+        return 1f - Mathf.Clamp((distanceToWinningItem / _maxDistance), 0.1f, 1f);
     }
 }
