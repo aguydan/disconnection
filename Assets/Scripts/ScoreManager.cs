@@ -63,4 +63,6 @@ public class ScoreManager : MonoBehaviour
     {
         //IMPLEMENT!!!
     }
+
+    //also we need scriptable object for 
 }

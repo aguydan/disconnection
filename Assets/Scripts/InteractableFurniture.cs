@@ -3,21 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InteractableFurniture : MonoBehaviour, IPointerDownHandler
+public class InteractableFurniture : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public BoxCollider2D BoxCollider;
+    [SerializeField] SpriteRenderer _renderer;
+    [SerializeField] Animator _animator;
     
+    public Collider2D Collider;
     public bool HasHint = false;
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (HasHint)
         {
-            Debug.Log("is winning");
+            UIManager.instance.CallActionItemPopup();
         }
-        else 
+
+        int randomIndex = Random.Range(0, FurnitureSpawner.Instance.InteractableFurniturePrefabs.Length);
+
+        while (_renderer.sprite == FurnitureSpawner.Instance.InteractableFurniturePrefabs[randomIndex]._renderer.sprite)
         {
-            Debug.Log("clicked");
+            randomIndex = Random.Range(0, FurnitureSpawner.Instance.InteractableFurniturePrefabs.Length);
         }
+
+        _renderer.sprite = FurnitureSpawner.Instance.InteractableFurniturePrefabs[randomIndex]._renderer.sprite;
+        _animator.Play("InteractableFurnitureClick");
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        CursorManager.Instance.StopAutomaticCursor = true;
+        
+        CursorManager.Instance.EnableFingerCursor();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        CursorManager.Instance.StopAutomaticCursor = false;
     }
 }

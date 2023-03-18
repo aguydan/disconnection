@@ -16,6 +16,7 @@ public class VRManager : MonoBehaviour
     public void ActivateVR()
     {
         _VR.gameObject.SetActive(true);
+        _VR.UpdateInteractableColliders(true);
         _upperVRButton.gameObject.SetActive(true);
 
         if (!_hasVRStarted)
@@ -35,6 +36,7 @@ public class VRManager : MonoBehaviour
         _VR.ClearCrosses();
         
         _VR.gameObject.SetActive(false);
+        _VR.UpdateInteractableColliders(false);
         _upperVRButton.gameObject.SetActive(false);
 
         if (AmountOfVRs == 0) _VRButton.gameObject.SetActive(false);

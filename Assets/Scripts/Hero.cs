@@ -26,10 +26,4 @@ public class Hero : MonoBehaviour
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
         heroPosition = transform.position;
     }
-
-    // private void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.green;
-    //     Gizmos.DrawWireSphere(transform.position, 4f);
-    // }
 }

@@ -6,15 +6,16 @@ public class FurnitureSpawner : MonoBehaviour
 {
     [SerializeField] private FurnitureObject _furnitureSets;
     [SerializeField] private GameObject _furnitureParent;
-    [SerializeField] InteractableFurniture[] _interactableFurniturePrefabs;
+    public InteractableFurniture[] InteractableFurniturePrefabs;
     [SerializeField] private GameObject _interactableFurnitureParent;
 
     public static FurnitureSpawner Instance;
 
     public int CurrentFurnitureSetIndex;
-    GameObject[] _currentFurniture;
-    List<InteractableFurniture> _spawnedInteractables = new List<InteractableFurniture>();
-    public InteractableFurniture WinningFurniture;
+    Furniture[] _currentFurniture;
+    public List<InteractableFurniture> SpawnedInteractables = new List<InteractableFurniture>();
+    public List<Furniture> SpawnedFurniture = new List<Furniture>();
+    public InteractableFurniture WinningFurniture; // public ли?
 
     void Awake()
     {
@@ -36,10 +37,12 @@ public class FurnitureSpawner : MonoBehaviour
         GameObject room = _furnitureSets.FurnitureSets[CurrentFurnitureSetIndex].Room;
         Instantiate(room, room.transform.position, Quaternion.identity);
         
-        foreach (GameObject prefab in _currentFurniture)
+        foreach (Furniture prefab in _currentFurniture)
         {
-            GameObject furniture = Instantiate(prefab, prefab.transform.position, Quaternion.identity);
+            Furniture furniture = Instantiate(prefab, prefab.transform.position, Quaternion.identity);
             furniture.transform.SetParent(_furnitureParent.transform);
+
+            SpawnedFurniture.Add(furniture);
         }
     }
 
@@ -47,21 +50,21 @@ public class FurnitureSpawner : MonoBehaviour
     {
         int winningFurnitureIndex = Random.Range(0, _currentFurniture.Length);
         
-        foreach (GameObject prefab in _currentFurniture)
+        foreach (Furniture prefab in _currentFurniture)
         {
-            int randomIndex = Random.Range(0, _interactableFurniturePrefabs.Length);
+            int randomIndex = Random.Range(0, InteractableFurniturePrefabs.Length);
             
-            InteractableFurniture furniture = Instantiate(_interactableFurniturePrefabs[randomIndex], prefab.transform.position, Quaternion.identity);
+            InteractableFurniture furniture = Instantiate(InteractableFurniturePrefabs[randomIndex], prefab.transform.position, Quaternion.identity);
             furniture.transform.SetParent(_interactableFurnitureParent.transform);
-            furniture.BoxCollider.enabled = false;
+            furniture.Collider.enabled = false;
 
-            if (winningFurnitureIndex == _spawnedInteractables.Count)
+            if (winningFurnitureIndex == SpawnedInteractables.Count)
             {
                 furniture.HasHint = true;
                 WinningFurniture = furniture;
             }
 
-            _spawnedInteractables.Add(furniture);
+            SpawnedInteractables.Add(furniture);
         }
     }
 }

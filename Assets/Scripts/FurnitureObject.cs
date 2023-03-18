@@ -6,7 +6,7 @@ using UnityEngine;
 public class FurnitureSet
 {
     public GameObject Room;
-    public GameObject[] Furniture;
+    public Furniture[] Furniture;
     public Vector2 DoorSpawnPosition;
 }
 

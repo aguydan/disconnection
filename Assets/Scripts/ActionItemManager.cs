@@ -16,9 +16,9 @@ public class ActionItemManager : MonoBehaviour
     public static ActionItemManager instance;
 
     public string _whoDid;
-    public bool AlreadyClosed = false;
+    public bool AlreadyClosed = false; //нужен ли если есть stop coroutine?
     public bool IsActionItemCreated = false;
-    public bool IsActionItemCurrentlyVisible = false; //не касается книги
+    public bool IsActionItemCurrentlyVisible = false;
 
     //FOR VR
     public bool IsVRCompleted = false;

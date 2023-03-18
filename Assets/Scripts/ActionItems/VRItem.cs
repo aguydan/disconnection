@@ -65,4 +65,13 @@ public class VRItem : MonoBehaviour
 
         _wrongItems = wrongItems;
     }
+
+    public void UpdateInteractableColliders(bool isEnabled)
+    {
+        List<Furniture> furniture = FurnitureSpawner.Instance.SpawnedFurniture;
+        List<InteractableFurniture> interactables = FurnitureSpawner.Instance.SpawnedInteractables;
+
+        foreach (Furniture item in furniture) item.Collider.enabled = !isEnabled;
+        foreach (InteractableFurniture item in interactables) item.Collider.enabled = isEnabled;
+    }
 }
