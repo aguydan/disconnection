@@ -216,7 +216,7 @@ public class ActionItemManager : MonoBehaviour
             _AIMPManager.NextSongIndex();
         }
         IsActionItemCurrentlyVisible = false;
-        PanelButtonDisabler("musicPlayer"); // this function alllows for using other items while current is still active
+        PanelButtonDisabler("musicPlayer");
 
         if (numberOfPlayers == 0) _musicPlayerButton.gameObject.SetActive(false);
 
@@ -236,7 +236,6 @@ public class ActionItemManager : MonoBehaviour
     {
         if (IsVRCompleted)
         {
-            ItemSpawner.Instance.CompleteChallenge();
             _VRManager.AmountOfVRs--;
             UpdateAmountOfActionItems();
             IsActionItemCreated = false;

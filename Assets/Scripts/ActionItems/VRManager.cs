@@ -11,6 +11,7 @@ public class VRManager : MonoBehaviour
 
     public int AmountOfVRs = 0;
     bool _hasVRStarted = false;
+    int _wrongItemsAmount;
     Coroutine _lastCoroutine;
 
     public void ActivateVR()
@@ -21,19 +22,21 @@ public class VRManager : MonoBehaviour
 
         if (!_hasVRStarted)
         {
-            _VR.IdentifyWrongItems();
+            _wrongItemsAmount = _VR.CalculateStartingWrongItemsAmount();
+            _VR.IdentifyWrongItems(_wrongItemsAmount);
             _hasVRStarted = true;
         }
 
         _VR.UpdateWrongItems();
-        _lastCoroutine = StartCoroutine(_VR.SpawnCrosses());
+        _lastCoroutine = StartCoroutine(_VR.TurnItemsToHintItems());
         ActionItemManager.instance.IsActionItemCurrentlyVisible = true;
     }
 
     public void DeactivateVR()
     {
         if (_lastCoroutine != null) StopCoroutine(_lastCoroutine);
-        _VR.ClearCrosses();
+        _VR.UpdateWrongItems();
+        _VR.TurnItemsBack();
         
         _VR.gameObject.SetActive(false);
         _VR.UpdateInteractableColliders(false);

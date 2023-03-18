@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 {
@@ -11,10 +12,19 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     public bool hasPositivePoints = false;
     float distanceToHero;
+    public Sprite OriginalSprite;
+
+    private void Start()
+    {
+        OriginalSprite = look.sprite;
+    }
 
     private void Update()
     {
-        distanceToHero = Vector2.Distance(transform.position, GameManager.instance.heroPosition);
+        if (!(SceneManager.GetActiveScene().name == "Finale"))
+        {
+            distanceToHero = Vector2.Distance(transform.position, GameManager.instance.heroPosition);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -33,7 +43,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         {
             if (hasPositivePoints && distanceToHero < 4)
             {
-                // Scoring.WinningItems.Add(gameObject.GetComponent<Item>());
+                Scoring.WinningItemSprites.Add(look.sprite);
                 
                 ScoreManager.instance.IncreaseScore();
                 if (ActionItemManager.instance.IsActionItemCreated)
@@ -52,7 +62,6 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
                 if (ActionItemManager.instance.HasMusicPlayerStarted)
                 {
                     ActionItemManager.instance.MusicPlayerItemTries--;
-
                     if (ActionItemManager.instance.MusicPlayerItemTries == 0)
                     {
                         ActionItemManager.instance.IsPlayerCompleted = true;
@@ -60,7 +69,14 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
                     }
                 }
 
-                UIManager.instance.CallItemPopupNegative(look.sprite.name);
+                if (ActionItemManager.instance.IsActionItemCurrentlyVisible)
+                {
+                    UIManager.instance.CallItemPopupNegative(OriginalSprite.name);
+                }
+                else
+                {
+                    UIManager.instance.CallItemPopupNegative(look.sprite.name);
+                }
 
                 Destroy(gameObject);
             }

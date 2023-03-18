@@ -10,7 +10,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI updateScorePrefab;
 
     public static ScoreManager instance;
-    public int MaxItemAmount { get; private set; } = 50;
     
     private void Awake()
     {
@@ -28,6 +27,7 @@ public class ScoreManager : MonoBehaviour
         Scoring.EscapismScore += 20;
         UpdateScoreText();
         CreateScoreUpdateNotification("+ 20");
+        UpdateMaxItemAmount();
     }
 
     public void DecreaseScore()
@@ -42,6 +42,7 @@ public class ScoreManager : MonoBehaviour
         {
             UpdateScoreText();
             CreateScoreUpdateNotification("- 5");
+            UpdateMaxItemAmount();
         }
     }
     
@@ -61,8 +62,19 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateMaxItemAmount()
     {
-        //IMPLEMENT!!!
+        if (Scoring.EscapismScore > 59 && Scoring.EscapismScore <= 79)
+        {
+            Scoring.MaxItemAmount = 40;
+        }
+        else if (Scoring.EscapismScore > 79 && Scoring.EscapismScore <= 89)
+        {
+            Scoring.MaxItemAmount = 30;
+        }
+        else if (Scoring.EscapismScore > 89)
+        {
+            Scoring.MaxItemAmount = 18;
+        }
     }
 
-    //also we need scriptable object for 
+    //also we need scriptable object for deteriorating sprites
 }

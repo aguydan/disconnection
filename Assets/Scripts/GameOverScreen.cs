@@ -13,6 +13,7 @@ public class GameOverScreen : MonoBehaviour
     public void RestartGame()
     {
         Scoring.EscapismScore = 20;
+        Scoring.MaxItemAmount = 50;
         SceneManager.LoadScene("Game");
     }
 

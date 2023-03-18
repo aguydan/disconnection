@@ -4,54 +4,64 @@ using UnityEngine;
 
 public class VRItem : MonoBehaviour
 {
-    [SerializeField] GameObject _cross;
+    [SerializeField] Sprite[] _hintItems;
 
     List<Item> _wrongItems = new List<Item>();
-    List<GameObject> _spawnedCrosses = new List<GameObject>();
+    List<GameObject> _spawnedHintItems = new List<GameObject>();
     
-    public void IdentifyWrongItems()
+    public int CalculateStartingWrongItemsAmount()
+    {
+        int wrongItemsAmount = Mathf.FloorToInt((float)ItemSpawner.Instance.ColoredItems.Count / 2f);
+
+        return wrongItemsAmount;
+    }
+
+    public void IdentifyWrongItems(int wrongItemsAmount)
     {
         List<Item> items = ItemSpawner.Instance.ColoredItems;
 
-        if (items.Count <= 4)
+        for (int i = 0; i < wrongItemsAmount; i++)
         {
-            Debug.Log("not enough colored items");
-        }
-        else
-        {
-            _wrongItems = new List<Item>();
+            int randomIndex = Random.Range(0, items.Count);
 
-            for (int i = 0; i < 3; i++)
+            while (_wrongItems.Contains(items[randomIndex]) || items[randomIndex].hasPositivePoints)
             {
-                int randomIndex = Random.Range(0, items.Count);
-
-                while (_wrongItems.Contains(items[randomIndex]) || items[randomIndex].hasPositivePoints)
-                {
-                    randomIndex = Random.Range(0, items.Count);
-                }
-
-                _wrongItems.Add(items[randomIndex]);
+                randomIndex = Random.Range(0, items.Count);
             }
+
+            _wrongItems.Add(items[randomIndex]);
         }
     }
 
-    public IEnumerator SpawnCrosses()
+    public IEnumerator TurnItemsToHintItems()
+    {
+        int third = Mathf.FloorToInt((float)_wrongItems.Count / 3f);
+        int twoThirds = third * 2;
+        
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < third; i++) AssignHintItemSprite(i);
+
+        yield return new WaitForSeconds(1);
+        for (int i = third; i < twoThirds; i++) AssignHintItemSprite(i);
+
+        yield return new WaitForSeconds(1);
+        for (int i = twoThirds; i < _wrongItems.Count; i++) AssignHintItemSprite(i);
+    }
+
+    void AssignHintItemSprite(int i)
+    {
+        int randomIndex = Random.Range(0, _hintItems.Length);
+
+        _wrongItems[i].look.sprite = _hintItems[randomIndex];
+    }
+
+
+    public void TurnItemsBack()
     {
         foreach (Item item in _wrongItems)
         {
-            yield return new WaitForSeconds(1);
-            GameObject cross = Instantiate(_cross, item.transform.position, Quaternion.identity);
-            _spawnedCrosses.Add(cross);
+            item.look.sprite = item.OriginalSprite;
         }
-    }
-
-    public void ClearCrosses()
-    {
-        foreach (GameObject cross in _spawnedCrosses)
-        {
-            Destroy(cross);
-        }
-        _spawnedCrosses.Clear();
     }
 
     public void UpdateWrongItems()

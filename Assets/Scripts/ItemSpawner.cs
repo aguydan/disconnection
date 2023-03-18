@@ -29,9 +29,9 @@ public class ItemSpawner : MonoBehaviour
     
     void Start()
     {
-        winningItemIndex = Random.Range(0, ScoreManager.instance.MaxItemAmount);
+        winningItemIndex = Random.Range(0, Scoring.MaxItemAmount);
 
-        for (int i = 0; i < ScoreManager.instance.MaxItemAmount; i++)
+        for (int i = 0; i < Scoring.MaxItemAmount; i++)
         {
             SpawnRandomItem(new Vector2(Random.Range(-7f, 7f), Random.Range(-3.5f, 2f)));
         }
@@ -41,11 +41,19 @@ public class ItemSpawner : MonoBehaviour
 
     void SpawnRandomItem(Vector2 position)
     {
+        int tries = 0;
+            
+        while (Physics2D.OverlapCircle(position, 1) && tries < 20)
+        {
+            position = new Vector2(Random.Range(-7f, 7f), Random.Range(-3.5f, 2f));
+            tries++;
+        }
+        
         ItemSprite sprite = spriteGenerator.GetRandomSprite();
         itemPrefab.look.sprite = sprite.Sprite;
         itemPrefab.capsuleCollider.size = new Vector2(sprite.Sprite.bounds.size.x, sprite.Sprite.bounds.size.y);
 
-        Item item = Instantiate(itemPrefab, position, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
+        Item item = Instantiate(itemPrefab, position, Quaternion.Euler(0, 0, Random.Range(0, 100)));
 
         if (winningItemIndex == spawnedItems.Count)
         {

@@ -6,5 +6,6 @@ public class Scoring : MonoBehaviour
 {
     public static int EscapismScore = 20;
     public static int AIMPSongIndex = 0;
-    public static List<Item> WinningItems = new List<Item>();
+    public static List<Sprite> WinningItemSprites = new List<Sprite>();
+    public static int MaxItemAmount = 50;
 }
