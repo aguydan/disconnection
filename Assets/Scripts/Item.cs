@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
+public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public SpriteRenderer look;
     public CapsuleCollider2D capsuleCollider;
@@ -30,6 +30,11 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (distanceToHero < 4) animator.Play("ItemHover");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        animator.Play("New State");
     }
 
     public void OnPointerDown(PointerEventData eventData)

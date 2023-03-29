@@ -8,4 +8,5 @@ public class Scoring : MonoBehaviour
     public static int AIMPSongIndex = 0;
     public static List<Sprite> WinningItemSprites = new List<Sprite>();
     public static int MaxItemAmount = 50;
+    public static int FurnSetIndex = -1;
 }

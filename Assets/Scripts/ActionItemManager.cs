@@ -12,6 +12,8 @@ public class ActionItemManager : MonoBehaviour
     [SerializeField] UpperFingerButton _deactivateAIMPButton;
     [SerializeField] Sprite[] _disabledButtonSprites;
     [SerializeField] Sprite[] _enabledButtonSprites;
+    [SerializeField] Animator _bookProperAnimator;
+    [SerializeField] GameObject _bookBackground;
     
     public static ActionItemManager instance;
 
@@ -158,6 +160,9 @@ public class ActionItemManager : MonoBehaviour
 
         BookItem.Instance.IsBookCompleted = false;
         AlreadyClosed = true;
+
+        PlayBookCloseAnimation();
+
     }
 
     public IEnumerator DeactivateBookAutomatically()
@@ -182,6 +187,8 @@ public class ActionItemManager : MonoBehaviour
         if (numberOfBooks == 0) _bookButton.gameObject.SetActive(false);
 
         BookItem.Instance.IsBookCompleted = false;
+
+        PlayBookCloseAnimation();
     }
 
     //MUSIC
@@ -243,5 +250,10 @@ public class ActionItemManager : MonoBehaviour
 
         _VRManager.DeactivateVR();
         PanelButtonDisabler("VR");
+    }
+
+    void PlayBookCloseAnimation()
+    {
+        _bookProperAnimator.Play("BookClose");
     }
 }

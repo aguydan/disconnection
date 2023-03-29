@@ -9,6 +9,7 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] Material standart;
     [SerializeField] Material outline;
     [SerializeField] RandomSpriteGenerator spriteGenerator;
+    [SerializeField] FurnitureObject _furnitureSets;
 
     [ColorUsage(true, true)]
     [SerializeField] Color[] hintColors;
@@ -21,6 +22,8 @@ public class ItemSpawner : MonoBehaviour
     public Item winningItem;
     float maxDistance = 5;
     int canUpdateHintsTimes = 2;
+    Vector2 _spawnPoint1;
+    Vector2 _spawnPoint2;
 
     private void Awake()
     {
@@ -29,11 +32,13 @@ public class ItemSpawner : MonoBehaviour
     
     void Start()
     {
+        _spawnPoint1 = _furnitureSets.FurnitureSets[FurnitureSpawner.Instance.CurrentFurnitureSetIndex].ItemSpawnPoint1;
+        _spawnPoint2 = _furnitureSets.FurnitureSets[FurnitureSpawner.Instance.CurrentFurnitureSetIndex].ItemSpawnPoint2;
         winningItemIndex = Random.Range(0, Scoring.MaxItemAmount);
 
         for (int i = 0; i < Scoring.MaxItemAmount; i++)
         {
-            SpawnRandomItem(new Vector2(Random.Range(-7f, 7f), Random.Range(-3.5f, 2f)));
+            SpawnRandomItem(new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint2.x), Random.Range(_spawnPoint1.y, _spawnPoint2.y)));
         }
 
         ColoredItems = spawnedItems;
@@ -45,15 +50,15 @@ public class ItemSpawner : MonoBehaviour
             
         while (Physics2D.OverlapCircle(position, 1) && tries < 20)
         {
-            position = new Vector2(Random.Range(-7f, 7f), Random.Range(-3.5f, 2f));
+            position = new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint2.x), Random.Range(_spawnPoint1.y, _spawnPoint2.y));
             tries++;
         }
         
         ItemSprite sprite = spriteGenerator.GetRandomSprite();
         itemPrefab.look.sprite = sprite.Sprite;
-        itemPrefab.capsuleCollider.size = new Vector2(sprite.Sprite.bounds.size.x, sprite.Sprite.bounds.size.y);
 
         Item item = Instantiate(itemPrefab, position, Quaternion.Euler(0, 0, Random.Range(0, 100)));
+        item.gameObject.AddComponent<PolygonCollider2D>();
 
         if (winningItemIndex == spawnedItems.Count)
         {

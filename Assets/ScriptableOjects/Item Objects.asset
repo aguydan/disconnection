@@ -13,10 +13,124 @@ MonoBehaviour:
   m_Name: Item Objects
   m_EditorClassIdentifier: 
   PositiveItemObjects:
+  - ItemKey: catfeeder
+    ItemSprite: {fileID: -1974185374, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: comb
+    ItemSprite: {fileID: 2078766239, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
   - ItemKey: disc
-    ItemSprite: {fileID: 899715855, guid: 929112540c281df47a37a8087f5a5cc1, type: 3}
+    ItemSprite: {fileID: -184946898, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: folder
+    ItemSprite: {fileID: 1710082845, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: guitar
+    ItemSprite: {fileID: -280486373, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: lego
+    ItemSprite: {fileID: 643354969, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: letter
+    ItemSprite: {fileID: -431274987, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: money
+    ItemSprite: {fileID: -710479716, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: note
+    ItemSprite: {fileID: 305800399, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: photo
+    ItemSprite: {fileID: -512978056, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: pizza
+    ItemSprite: {fileID: -243055732, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: sport
+    ItemSprite: {fileID: 1393710888, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: toy
+    ItemSprite: {fileID: 634112615, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: atlas
+    ItemSprite: {fileID: 1276355142, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: backpack
+    ItemSprite: {fileID: 962120674, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: bottle
+    ItemSprite: {fileID: -383106487, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: brush
+    ItemSprite: {fileID: -1000006056, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: cap
+    ItemSprite: {fileID: 1156348554, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: clothes
+    ItemSprite: {fileID: 1801797825, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: cups
+    ItemSprite: {fileID: -1992568052, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
     ItemText: this is disc
   NegativeItemObjects:
+  - ItemKey: catfeeder
+    ItemSprite: {fileID: -1974185374, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: comb
+    ItemSprite: {fileID: 2078766239, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
   - ItemKey: disc
-    ItemSprite: {fileID: 899715855, guid: 929112540c281df47a37a8087f5a5cc1, type: 3}
-    ItemText: this is bad disc
+    ItemSprite: {fileID: -184946898, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: folder
+    ItemSprite: {fileID: 1710082845, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: guitar
+    ItemSprite: {fileID: -280486373, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: lego
+    ItemSprite: {fileID: 643354969, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: letter
+    ItemSprite: {fileID: -431274987, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: money
+    ItemSprite: {fileID: -710479716, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: note
+    ItemSprite: {fileID: 305800399, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: photo
+    ItemSprite: {fileID: -512978056, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: pizza
+    ItemSprite: {fileID: -243055732, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: sport
+    ItemSprite: {fileID: 1393710888, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: toy
+    ItemSprite: {fileID: 634112615, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: atlas
+    ItemSprite: {fileID: 1276355142, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: backpack
+    ItemSprite: {fileID: 962120674, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: bottle
+    ItemSprite: {fileID: -383106487, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: brush
+    ItemSprite: {fileID: -1000006056, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: cap
+    ItemSprite: {fileID: 1156348554, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: clothes
+    ItemSprite: {fileID: 1801797825, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc
+  - ItemKey: cups
+    ItemSprite: {fileID: -1992568052, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemText: this is disc

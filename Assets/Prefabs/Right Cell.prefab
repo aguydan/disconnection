@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8490566, g: 0.8270851, b: 0.7729619, a: 1}
+  m_Color: {r: 0.3773585, g: 0.36507654, b: 0.33641866, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee8981a6db8f4b4580c3bd1c9c2acc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sr: {fileID: 8935364592584238058}
   IsOccupied: 0
+  IsRightCell: 0

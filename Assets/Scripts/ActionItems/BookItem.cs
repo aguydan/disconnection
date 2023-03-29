@@ -20,6 +20,7 @@ public class BookItem : MonoBehaviour
     [SerializeField] LetterBlueprint[] _alphabetBlueprint;
     [SerializeField] Image _face;
     [SerializeField] Sprite[] _possibleFaces;
+    [SerializeField] Image _itemSilhouette;
 
     public static BookItem Instance;
     public Dictionary<char, Letter> Alphabet = new Dictionary<char, Letter>();
@@ -60,6 +61,10 @@ public class BookItem : MonoBehaviour
         _gridGenerator.CreateRightGrid(_currentWord.Length);
         _gridGenerator.PopulateCellsWithLetters(_currentWord);
         _face.sprite = _possibleFaces[0];
+
+
+        _itemSilhouette.sprite = ItemSpawner.Instance.winningItem.look.sprite;
+        _itemSilhouette.SetNativeSize();
     }
 
     void PopulateAlphabet()

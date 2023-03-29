@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1854740608879047718}
   - component: {fileID: 7847591332553439448}
-  - component: {fileID: 8246636167099699802}
   - component: {fileID: 7092146166012315631}
   - component: {fileID: -9133850224187097727}
   m_Layer: 0
@@ -76,33 +75,17 @@ SpriteRenderer:
   m_SortingLayerID: -1311786185
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 899715855, guid: 929112540c281df47a37a8087f5a5cc1, type: 3}
+  m_Sprite: {fileID: 1710082845, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.88, y: 0.73}
+  m_Size: {x: 2.2000957, y: 3.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &8246636167099699802
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6965197418218291384}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.88, y: 0.73}
-  m_Direction: 0
 --- !u!95 &7092146166012315631
 Animator:
   serializedVersion: 5
@@ -136,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   look: {fileID: 7847591332553439448}
-  capsuleCollider: {fileID: 8246636167099699802}
+  capsuleCollider: {fileID: 0}
   animator: {fileID: 7092146166012315631}
   hasPositivePoints: 0
+  OriginalSprite: {fileID: 0}

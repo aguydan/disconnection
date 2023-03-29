@@ -5,7 +5,17 @@ using UnityEngine.UI;
 
 public class ItemPanelButton : MonoBehaviour
 {
+    [SerializeField] GameObject _bookBackground;
+    [SerializeField] GameObject _bookProper;
+    
     public Button Button;
     public Image Image;
     public Image X2;
+
+    public void ActivateBookProper()
+    {
+        _bookBackground.SetActive(true);
+        _bookProper.SetActive(true);
+        
+    }
 }

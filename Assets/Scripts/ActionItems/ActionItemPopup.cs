@@ -7,7 +7,6 @@ public class ActionItemPopup : MonoBehaviour
 {
     [SerializeField] Image _actionItemImage;
     [SerializeField] TextMeshProUGUI _youGotItemText;
-    [SerializeField] Image _hint;
     [SerializeField] Sprite[] _actionItemSprites;
 
     public void WhichActionItemToSpawn()
@@ -40,14 +39,12 @@ public class ActionItemPopup : MonoBehaviour
     void AddMusicPlayer()
     {
         _actionItemImage.sprite = _actionItemSprites[0];
-        _hint.gameObject.SetActive(false);
         ActionItemManager.instance.PickUpActionItem(ActionItem.ActionItemType.MusicPlayer);
     }
 
     void AddBook()
     {
         _actionItemImage.sprite = _actionItemSprites[1];
-        _hint.gameObject.SetActive(true);
         ActionItemManager.instance.PickUpActionItem(ActionItem.ActionItemType.Book);
     }
     

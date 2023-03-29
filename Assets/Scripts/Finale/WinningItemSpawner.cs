@@ -5,7 +5,6 @@ using UnityEngine;
 public class WinningItemSpawner : MonoBehaviour
 {
     [SerializeField] Item _itemPrefab;
-    // [SerializeField] Sprite[] _testingSprites;
     
     void Start()
     {
@@ -14,19 +13,17 @@ public class WinningItemSpawner : MonoBehaviour
 
     void SpawnWinnnigItems()
     {
+        float fraction = 360 / Scoring.WinningItemSprites.Count;
+        float currentFraction = fraction;
+        
         foreach (Sprite sprite in Scoring.WinningItemSprites)
         {
-            Vector2 positionAroundCenter = Random.insideUnitCircle.normalized * 2.5f;
-            int tries = 0;
+            Vector2 spawnPosition = new Vector2(Mathf.Cos(currentFraction), Mathf.Sin(currentFraction));
             
-            while (Physics2D.OverlapCircle(positionAroundCenter, 1) && tries < 20)
-            {
-                positionAroundCenter = Random.insideUnitCircle.normalized * 2.5f;
-                tries++;
-            }
-            
-            Item item = Instantiate(_itemPrefab, positionAroundCenter, Quaternion.Euler(0, 0, Random.Range(0, 40)));
+            Item item = Instantiate(_itemPrefab, spawnPosition * 4, Quaternion.Euler(0, 0, Random.Range(0, 40)));
             item.look.sprite = sprite;
+
+            currentFraction += (fraction + fraction / Scoring.WinningItemSprites.Count);
         }
     }
 }

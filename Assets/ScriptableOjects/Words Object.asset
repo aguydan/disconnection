@@ -17,3 +17,79 @@ MonoBehaviour:
     Words:
     - "\u043A\u0440\u0443\u0433"
     - "\u043F\u043B\u0430\u0441\u0442\u0438\u043D\u043A\u0430"
+  - Key: atlas
+    Words:
+    - "\u0437\u0435\u043C\u043B\u044F"
+    - "\u043A\u043E\u043D\u0442\u0438\u043D\u0435\u043D\u0442"
+  - Key: backpack
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: bottle
+    Words:
+    - "\u0432\u043E\u0434\u0430"
+    - "\u0432\u0432"
+  - Key: brush
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: cap
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: catfeeder
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: clothes
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: comb
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: cups
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: folder
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: guitar
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: lego
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: letter
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: money
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: note
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: photo
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: pizza
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: sport
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"
+  - Key: toy
+    Words:
+    - "\u0432\u0432\u0432"
+    - "\u0432\u0432"

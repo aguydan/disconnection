@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Hero hero;
     [SerializeField] GameOverScreen gameOverScreen;
-    [SerializeField] GameObject doorPrefab;
+    [SerializeField] Door doorPrefab;
     [SerializeField] FurnitureObject _furnitureSets;
 
     [SerializeField] Button _VRButton;
@@ -17,10 +17,18 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Vector2 heroPosition;
     public bool IsLevelCompleted { get; private set; } = false;
+    private Door _door;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        int index = FurnitureSpawner.Instance.CurrentFurnitureSetIndex;
+        
+        _door = Instantiate(doorPrefab, _furnitureSets.FurnitureSets[index].DoorSpawnPosition, Quaternion.identity);
     }
 
     private void Update()
@@ -35,9 +43,9 @@ public class GameManager : MonoBehaviour
 
     public void SpawnDoorToNextLevel()
     {
-        int index = FurnitureSpawner.Instance.CurrentFurnitureSetIndex;
-        
-        Instantiate(doorPrefab, _furnitureSets.FurnitureSets[index].DoorSpawnPosition, Quaternion.identity);
+        _door.DoorProper.SetActive(true);
+        _door.Wall.SetActive(false);
+
         IsLevelCompleted = true;
 
         _VRButton.interactable = false;

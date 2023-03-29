@@ -7,9 +7,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 596516384652612482, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 596516384652612482, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 596516384652612482, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 596516384652612482, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 766602069063495473, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_Size.x
+      value: 1.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 766602069063495473, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_Size.y
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 766602069063495473, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -570580122, guid: e51ed3825e3af9241954c6652fddf819, type: 3}
     - target: {fileID: 812329348678277292, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_Name
-      value: InteractableFurniture
+      value: InteractableFurniture Variant
       objectReference: {fileID: 0}
     - target: {fileID: 812329348678277293, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_RootOrder

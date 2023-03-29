@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7133583950381936240, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8772727
+      objectReference: {fileID: 0}
+    - target: {fileID: -7133583950381936240, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6954546
+      objectReference: {fileID: 0}
     - target: {fileID: 3093117428809481580, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3093117428809481582, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
       propertyPath: m_Name
-      value: ActionItem
+      value: VR
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}

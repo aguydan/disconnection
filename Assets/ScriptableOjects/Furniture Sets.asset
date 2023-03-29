@@ -13,14 +13,103 @@ MonoBehaviour:
   m_Name: Furniture Sets
   m_EditorClassIdentifier: 
   FurnitureSets:
-  - Room: {fileID: 3435635361305357941, guid: 05cfea2f4e9b723408cb2e6e0d054463, type: 3}
+  - Room: {fileID: 2225742705109447228, guid: 380026e86c5a2f6429eb8496d14e2037, type: 3}
     Furniture:
-    - {fileID: 8845852540830584183, guid: 16af12df48369ee41b488f6d8e9e1f7d, type: 3}
-    - {fileID: 9074513737164459281, guid: 094a9ce4fd921eb47997fd3d7bf4c6e9, type: 3}
-    - {fileID: 6907678046014360309, guid: 76fe7b8d4b11eca4bab89c71a7fac64f, type: 3}
-    DoorSpawnPosition: {x: 0.68, y: 5.39}
-  - Room: {fileID: 3435635361305357941, guid: 05cfea2f4e9b723408cb2e6e0d054463, type: 3}
+    - {fileID: 1522153117564203382, guid: 9263bac6fdee773459e5d8c2bbba58cc, type: 3}
+    - {fileID: 6088031773881786370, guid: cb53ee8bf4086e7408b1c60f50abefb8, type: 3}
+    - {fileID: 4710718480535933702, guid: d2ee902043f6dd6478f37d0acedade34, type: 3}
+    - {fileID: 2684100038162805169, guid: 4f651a22d7439164abed5f658caadb89, type: 3}
+    - {fileID: 7383041663083972548, guid: 1fcd2e5a8f677334aa4a7b1af2c1ac93, type: 3}
+    - {fileID: 69148015318101128, guid: 5859ed7cf1235aa4c8395a4d521c64e2, type: 3}
+    - {fileID: 6293127636659226801, guid: 01772b9fbc660ee47bd0a8986028bc80, type: 3}
+    - {fileID: 5818895666196200246, guid: 9a5f19ba628ea9a4d9bc32b1a1ed1efe, type: 3}
+    - {fileID: 2687468426132909580, guid: f914f22173f86724cb93f6b9ba0d40b4, type: 3}
+    - {fileID: 3066747615982624818, guid: dfdb476ab7593d446a46bfba889ade68, type: 3}
+    - {fileID: 5719775419164750186, guid: ac2bb62b496298a4e9bcffcfdd9e4edb, type: 3}
+    FurnitureShadows:
+    - {fileID: 7257665628051808464, guid: 9ffd411fef70e4d4380dd92b0c0dd42f, type: 3}
+    - {fileID: 3543594689794735406, guid: aea746ecddb50a84c9fd00d22fcac3b8, type: 3}
+    DoorSpawnPosition: {x: 6.74, y: 5.98}
+    NorthWalls:
+    - {fileID: 4475037402958235848, guid: ec3993e16edb4df44adfe943d08bdaa1, type: 3}
+    - {fileID: 2198608950986854562, guid: 9bfa9039f13770f4fa1bb471653d9c9e, type: 3}
+    ItemSpawnPoint1: {x: -9.8, y: 2.79}
+    ItemSpawnPoint2: {x: 5.8, y: -3.2}
+  - Room: {fileID: 1092104707787446566, guid: d91f611d10475314e86b2fa1e100017e, type: 3}
     Furniture:
-    - {fileID: 1995797215543486582, guid: 7fc6bdd4d533fcb4897a3ada6abbc3c3, type: 3}
-    - {fileID: 9177320995703297213, guid: 78a97e1e09b31274b8d73fa9639119cb, type: 3}
-    DoorSpawnPosition: {x: -5, y: 5.39}
+    - {fileID: 4742226924701552214, guid: a9b0835df29531347b56978c726a2e52, type: 3}
+    - {fileID: 6112131338870657082, guid: d0c4356a3a3f0c14a8faafd739f9f416, type: 3}
+    - {fileID: 3916515955708018816, guid: a1d2eb16177cf7f4db6154e5ecdc641c, type: 3}
+    - {fileID: 8117487568655821223, guid: ff55af018c3c2b244bc135fc4d57faae, type: 3}
+    - {fileID: 1394529870057897635, guid: 639fed2af647c45459e5f410c0b96771, type: 3}
+    - {fileID: 6435561424549760944, guid: b6799e3e1f0ab7344b00ddbf189e0159, type: 3}
+    - {fileID: 697189821655386336, guid: 5403b088ebe40c542acc74cdc0c0ede5, type: 3}
+    - {fileID: 3871737548834803586, guid: 2c8d2137a1fe7e9409307bbc11e7065d, type: 3}
+    FurnitureShadows:
+    - {fileID: 3124625855953968531, guid: 06cc470fd420b2e4eb5b3e491d473a1b, type: 3}
+    - {fileID: 499727708201333804, guid: 6b66ecda9dcd81c4a824c54f90522d5a, type: 3}
+    DoorSpawnPosition: {x: -7.77, y: 5.76}
+    NorthWalls:
+    - {fileID: 3166473251579280158, guid: 496843489a3c47544bf42484e3f6729c, type: 3}
+    - {fileID: 3125906595880638416, guid: 156b6e969c7b9c0409f1c724fdc97a6c, type: 3}
+    ItemSpawnPoint1: {x: -9.21, y: 2.34}
+    ItemSpawnPoint2: {x: 6.93, y: -3.75}
+  - Room: {fileID: 3290665473506536286, guid: 05ecb391aee22544c966d2a1b4736c45, type: 3}
+    Furniture:
+    - {fileID: 6044239098117635351, guid: 37853b5dcabeb8a429cc9e996fbd1866, type: 3}
+    - {fileID: 651528828561652545, guid: 57be5d789b9fdbb4eaaabca74f114208, type: 3}
+    - {fileID: 658493710201755633, guid: 0c04240bba58db0438e36ca949436b2a, type: 3}
+    - {fileID: 3549467106672948481, guid: 2b48ff991581ea84386293247a13c0b9, type: 3}
+    - {fileID: 8548887125155175608, guid: 618bd4c8b7dd437408da1d5ddee2bf88, type: 3}
+    - {fileID: 8697599200644554716, guid: 8bd10aae44ad2ca46a8f6add1aca53e7, type: 3}
+    - {fileID: 4938499385455792788, guid: fd0505da1b34b5b48b8d5b0c6275413d, type: 3}
+    - {fileID: 2979551118660211604, guid: d6a915e0082804d45b14a2ee9f55bb57, type: 3}
+    FurnitureShadows:
+    - {fileID: 7468779343817612477, guid: 592bac0df00a7994cb9cf5f7375157df, type: 3}
+    - {fileID: 3280909325570989755, guid: 56c28e16626e2fe4cbcef47c291c15e2, type: 3}
+    DoorSpawnPosition: {x: 6.57, y: 5.85}
+    NorthWalls:
+    - {fileID: 8462260510545947877, guid: cca4cc925b77d7945833b1d96fccf2e3, type: 3}
+    - {fileID: 5028443582904630344, guid: 1c87ef5e30cea2749ae704781aa86e35, type: 3}
+    ItemSpawnPoint1: {x: -8.62, y: 2.47}
+    ItemSpawnPoint2: {x: 6.8, y: -3.53}
+  - Room: {fileID: 4566493566205828604, guid: 7df202095adebb04891d052feaad034f, type: 3}
+    Furniture:
+    - {fileID: 6724734850660622040, guid: fffa4c4b0ce46e448a8d6e20d7a946a5, type: 3}
+    - {fileID: 7270744044655975550, guid: f34860692dffa364ab857d500783ecbe, type: 3}
+    - {fileID: 3400972317186362709, guid: a89128b168288d544a90e26fbe42bfa5, type: 3}
+    - {fileID: 386412968283144634, guid: 24c66915f3f71a8408d737794945266b, type: 3}
+    - {fileID: 67545130952755007, guid: d06fa1b9d18551b4eb3135378109c64a, type: 3}
+    - {fileID: 7954062306340912972, guid: f6757177198eb904fbbe7f1a3e1d832f, type: 3}
+    - {fileID: 7474631113205509599, guid: 3ecda0bd42d7477429af7f37e16d176b, type: 3}
+    - {fileID: 9101083626682719512, guid: 75173b927dab6fe439a2bdab943cc289, type: 3}
+    - {fileID: 6950845737780726510, guid: 271ec6b7ce42ce54d9f55d847d2f8315, type: 3}
+    - {fileID: 4885507429932047980, guid: 1aa519bd3d45fd740bae725bc40ef8dd, type: 3}
+    - {fileID: 7261447075770452819, guid: 2e66ac5d46b436e4da00eeb9e2c952d6, type: 3}
+    FurnitureShadows:
+    - {fileID: 8196560880675127917, guid: 6ab158caf935970408f21a8432d9aeed, type: 3}
+    - {fileID: 8491639357632556215, guid: 4d34fb0a685961843b6ce612c7c7e802, type: 3}
+    DoorSpawnPosition: {x: 3.97, y: 5.94}
+    NorthWalls:
+    - {fileID: 6727916699173338256, guid: 9bec31443b1985e4f9b8f87922bf46ff, type: 3}
+    - {fileID: 3253507930165581238, guid: 7b4823560b0ae654687ad66ed981b06b, type: 3}
+    ItemSpawnPoint1: {x: -7.49, y: 1.74}
+    ItemSpawnPoint2: {x: 7.97, y: -4.44}
+  - Room: {fileID: 8096538257698825587, guid: 5a6afdc1a7a2ba641ad2bde666bb9909, type: 3}
+    Furniture:
+    - {fileID: 3262950910061530072, guid: 8c2e1e2ccb6b907488212888004a58c5, type: 3}
+    - {fileID: 5618805911468868729, guid: 63f0d021df3a3714e874e9b022fb2eb8, type: 3}
+    - {fileID: 252467301049658894, guid: 50944f0a3a97c244e885fc8e032307b0, type: 3}
+    - {fileID: 8904693109061450097, guid: 144962bc572a40940aa295ea89836a5c, type: 3}
+    - {fileID: 7579801365190368556, guid: 822fbbbed4a92c547a61cf1e85e5ae1a, type: 3}
+    - {fileID: 881049609352770574, guid: 5f2adfa097f4b4642b27416b6d41ab0b, type: 3}
+    - {fileID: 5186622808921339463, guid: 07bcd7b4d12e0254390edb8e4dc47486, type: 3}
+    FurnitureShadows:
+    - {fileID: 1427249977696594361, guid: b1a4ed0c9b960cd48972bd60a3ba6896, type: 3}
+    - {fileID: 6320660292323320730, guid: 294ea3e1fd7218047a99d6eb34943dc9, type: 3}
+    DoorSpawnPosition: {x: -5.05, y: 5.9}
+    NorthWalls:
+    - {fileID: 6587090207965942663, guid: fda6984bbf3643a4ea0b618da77fd76b, type: 3}
+    - {fileID: 8535262437406264533, guid: f1f90eccd0cc653449dd551467e268a2, type: 3}
+    ItemSpawnPoint1: {x: -6.59, y: 2.86}
+    ItemSpawnPoint2: {x: 7.11, y: -2.73}
