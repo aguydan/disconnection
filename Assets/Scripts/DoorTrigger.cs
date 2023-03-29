@@ -10,11 +10,11 @@ public class DoorTrigger : MonoBehaviour
         // КОЛЛАЙДЕР КОЛЛАЙДИТСЯ СО СТЕНАМИ НА СЛОЕ ИГРОК!!! ОСТОРОЖНО!!!
         if (Scoring.EscapismScore >= 100)
         {
-            SceneManager.LoadScene("Finale");
+            StartCoroutine(GameManager.instance.ContinueToNextScene("Finale"));
         }
         else
         {
-            SceneManager.LoadScene("Game");
+            StartCoroutine(GameManager.instance.ContinueToNextScene("Game"));
         }
     }
 }

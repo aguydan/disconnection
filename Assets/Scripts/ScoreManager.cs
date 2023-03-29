@@ -36,7 +36,7 @@ public class ScoreManager : MonoBehaviour
 
         if (Scoring.EscapismScore <= 0)
         {
-            GameManager.instance.GameOver();
+            StartCoroutine(GameManager.instance.GameOver());
         }
         else
         {

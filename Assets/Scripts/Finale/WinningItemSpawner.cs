@@ -13,17 +13,15 @@ public class WinningItemSpawner : MonoBehaviour
 
     void SpawnWinnnigItems()
     {
-        float fraction = 360 / Scoring.WinningItemSprites.Count;
-        float currentFraction = fraction;
-        
-        foreach (Sprite sprite in Scoring.WinningItemSprites)
-        {
-            Vector2 spawnPosition = new Vector2(Mathf.Cos(currentFraction), Mathf.Sin(currentFraction));
-            
-            Item item = Instantiate(_itemPrefab, spawnPosition * 4, Quaternion.Euler(0, 0, Random.Range(0, 40)));
-            item.look.sprite = sprite;
+        float itemCount = Scoring.WinningItemSprites.Count;
 
-            currentFraction += (fraction + fraction / Scoring.WinningItemSprites.Count);
+        for (int i = 0; i < itemCount; i++)
+        {
+            float angle = i * Mathf.PI * 2 / itemCount;
+            Vector2 spawnPosition = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+
+            Item item = Instantiate(_itemPrefab, spawnPosition * 4, Quaternion.Euler(0, 0, Random.Range(0, 40)));
+            item.look.sprite = Scoring.WinningItemSprites[i];
         }
     }
 }

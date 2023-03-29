@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ActionItem : MonoBehaviour, IPointerDownHandler
+public class ActionItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] Animator _animator;
+    
     public enum ActionItemType {
         VR,
         Book,
@@ -20,9 +22,20 @@ public class ActionItem : MonoBehaviour, IPointerDownHandler
         }
         else
         {
+            SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[4]);
             ActionItemManager.instance.PickUpActionItem(_actionItemType);
 
             Destroy(gameObject);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _animator.Play("ItemHover");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _animator.Play("New State");
     }
 }

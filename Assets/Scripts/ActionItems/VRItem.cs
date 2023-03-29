@@ -40,12 +40,15 @@ public class VRItem : MonoBehaviour
         
         yield return new WaitForSeconds(1);
         for (int i = 0; i < third; i++) AssignHintItemSprite(i);
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[6], 2);
 
         yield return new WaitForSeconds(1);
         for (int i = third; i < twoThirds; i++) AssignHintItemSprite(i);
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[6], 2);
 
         yield return new WaitForSeconds(1);
         for (int i = twoThirds; i < _wrongItems.Count; i++) AssignHintItemSprite(i);
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[6], 2);
     }
 
     void AssignHintItemSprite(int i)
@@ -53,6 +56,7 @@ public class VRItem : MonoBehaviour
         int randomIndex = Random.Range(0, _hintItems.Length);
 
         _wrongItems[i].look.sprite = _hintItems[randomIndex];
+        _wrongItems[i].look.sortingOrder = 52;
     }
 
 
@@ -83,5 +87,13 @@ public class VRItem : MonoBehaviour
 
         foreach (Furniture item in furniture) item.Collider.enabled = !isEnabled;
         foreach (InteractableFurniture item in interactables) item.Collider.enabled = isEnabled;
+    }
+
+    public void DecreaseWrongItemsSortingOrder()
+    {
+        foreach (Item item in _wrongItems)
+        {
+            item.look.sortingOrder = 0;
+        }
     }
 }

@@ -16,6 +16,7 @@ public class VRManager : MonoBehaviour
 
     public void ActivateVR()
     {
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[5]);
         _VR.gameObject.SetActive(true);
         _VR.UpdateInteractableColliders(true);
         _upperVRButton.gameObject.SetActive(true);
@@ -35,10 +36,11 @@ public class VRManager : MonoBehaviour
     public void DeactivateVR()
     {
         if (_lastCoroutine != null) StopCoroutine(_lastCoroutine);
+        SoundManager.Instance.StopEffects();
         _VR.UpdateWrongItems();
+        _VR.DecreaseWrongItemsSortingOrder();
         _VR.TurnItemsBack();
         
-        _VR.gameObject.SetActive(false);
         _VR.UpdateInteractableColliders(false);
         _upperVRButton.gameObject.SetActive(false);
 

@@ -65,6 +65,8 @@ public class BookItem : MonoBehaviour
 
         _itemSilhouette.sprite = ItemSpawner.Instance.winningItem.look.sprite;
         _itemSilhouette.SetNativeSize();
+        _itemSilhouette.preserveAspect = true;
+        _itemSilhouette.rectTransform.sizeDelta = new Vector2(_itemSilhouette.rectTransform.sizeDelta.x, 130);
     }
 
     void PopulateAlphabet()
@@ -96,6 +98,7 @@ public class BookItem : MonoBehaviour
         }
         else if (percentage == 100)
         {
+            SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[9]);
             _face.sprite = _possibleFaces[3];
             IsBookCompleted = true;
             StartCoroutine(ActionItemManager.instance.DeactivateBookAutomatically());

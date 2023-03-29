@@ -16,6 +16,11 @@ public class InteractableFurniture : MonoBehaviour, IPointerDownHandler, IPointe
         if (HasHint)
         {
             UIManager.instance.CallActionItemPopup();
+            SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[9]);
+        }
+        else
+        {
+            SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[7]);
         }
 
         int randomIndex = Random.Range(0, FurnitureSpawner.Instance.InteractableFurniturePrefabs.Length);

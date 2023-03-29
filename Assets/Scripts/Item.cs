@@ -29,7 +29,11 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (distanceToHero < 4) animator.Play("ItemHover");
+        if (distanceToHero < 4)
+        {
+            animator.Play("ItemHover");
+            SoundManager.Instance.PlayEffect(SoundManager.Instance.Effects[1], 0.25f);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -46,6 +50,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         }
         else
         {
+            SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[2]);
+            
             if (hasPositivePoints && distanceToHero < 4)
             {
                 Scoring.WinningItemSprites.Add(look.sprite);
@@ -69,6 +75,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
                     ActionItemManager.instance.MusicPlayerItemTries--;
                     if (ActionItemManager.instance.MusicPlayerItemTries == 0)
                     {
+                        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[9]);
                         ActionItemManager.instance.IsPlayerCompleted = true;
                         ActionItemManager.instance.DeactivateMusicPlayer();
                     }

@@ -39,7 +39,7 @@ public class ActionItemSpawner : MonoBehaviour
 
             if (chance == 1)
             {
-                Instantiate(_bookPefab, new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint1.y), Random.Range(_spawnPoint2.x, _spawnPoint2.y)), Quaternion.Euler(0, 0, Random.Range(0f, 40f)));
+                Instantiate(_bookPefab, new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint2.x), Random.Range(_spawnPoint1.y, _spawnPoint2.y)), Quaternion.Euler(0, 0, Random.Range(0f, 40f)));
                 AmountOfActionItems["book"]++;
             }
 
@@ -47,14 +47,14 @@ public class ActionItemSpawner : MonoBehaviour
 
             if (chance == 1)
             {
-                Instantiate(_musicPlayerPefab, new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint1.y), Random.Range(_spawnPoint2.x, _spawnPoint2.y)), Quaternion.Euler(0, 0, Random.Range(0f, 40f)));
+                Instantiate(_musicPlayerPefab, new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint2.x), Random.Range(_spawnPoint1.y, _spawnPoint2.y)), Quaternion.Euler(0, 0, Random.Range(0f, 40f)));
                 AmountOfActionItems["musicPlayer"]++;
             }
         }
 
         if ((AmountOfActionItems["book"] == 0 && AmountOfActionItems["musicPlayer"] == 0) || ((AmountOfActionItems["book"] == 1 || AmountOfActionItems["musicPlayer"] == 1)))
         {
-            Instantiate(_VRPefab, new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint1.y), Random.Range(_spawnPoint2.x, _spawnPoint2.y)), Quaternion.Euler(0, 0, Random.Range(0f, 40f)));
+            Instantiate(_VRPefab, new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint2.x), Random.Range(_spawnPoint1.y, _spawnPoint2.y)), Quaternion.Euler(0, 0, Random.Range(0f, 40f)));
             AmountOfActionItems["VR"]++;
         }
         else if (AmountOfActionItems["book"] == 2 && AmountOfActionItems["musicPlayer"] == 2)
@@ -67,7 +67,7 @@ public class ActionItemSpawner : MonoBehaviour
 
             if (chance == 1)
             {
-                Instantiate(_VRPefab, new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint1.y), Random.Range(_spawnPoint2.x, _spawnPoint2.y)), Quaternion.Euler(0, 0, Random.Range(0f, 40f)));
+                Instantiate(_VRPefab, new Vector2(Random.Range(_spawnPoint1.x, _spawnPoint2.x), Random.Range(_spawnPoint1.y, _spawnPoint2.y)), Quaternion.Euler(0, 0, Random.Range(0f, 40f)));
                 AmountOfActionItems["VR"]++;
             }
         }

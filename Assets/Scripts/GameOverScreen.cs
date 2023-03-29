@@ -12,14 +12,17 @@ public class GameOverScreen : MonoBehaviour
 
     public void RestartGame()
     {
+        Scoring.FurnSetIndex = -1;
         Scoring.EscapismScore = 20;
         Scoring.MaxItemAmount = 50;
-        SceneManager.LoadScene("Game");
+        StartCoroutine(GameManager.instance.ContinueToNextScene("Game"));
+       
     }
 
     public void ExitToMenu()
     {
+        Scoring.FurnSetIndex = -1;
         Scoring.EscapismScore = 20;
-        SceneManager.LoadScene("Menu");
+        StartCoroutine(GameManager.instance.ContinueToNextScene("Menu"));
     }
 }

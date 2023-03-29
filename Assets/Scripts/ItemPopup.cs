@@ -27,7 +27,11 @@ public class ItemPopup : MonoBehaviour
         }
 
         _itemImage.sprite = _currentItemObject.ItemSprite;
+
         _itemImage.SetNativeSize();
+        _itemImage.preserveAspect = true;
+        _itemImage.rectTransform.sizeDelta = new Vector2(_itemImage.rectTransform.sizeDelta.x, 120);
+        
         _itemText.text = _currentItemObject.ItemText;
     }
 
@@ -45,7 +49,11 @@ public class ItemPopup : MonoBehaviour
         }
 
         _itemImage.sprite = _currentItemObject.ItemSprite;
+
         _itemImage.SetNativeSize();
+        _itemImage.preserveAspect = true;
+        _itemImage.rectTransform.sizeDelta = new Vector2(_itemImage.rectTransform.sizeDelta.x, 120);
+
         _itemText.text = _currentItemObject.ItemText;
     }
 

@@ -14,6 +14,12 @@ public class ActionItemManager : MonoBehaviour
     [SerializeField] Sprite[] _enabledButtonSprites;
     [SerializeField] Animator _bookProperAnimator;
     [SerializeField] GameObject _bookBackground;
+
+    [SerializeField] GameObject _MYR;
+    [SerializeField] GameObject _VRMask;
+    [SerializeField] Animator _VRBackground;
+    [SerializeField] Animator _VR;
+    [SerializeField] GameObject _VRGuard;
     
     public static ActionItemManager instance;
 
@@ -233,6 +239,7 @@ public class ActionItemManager : MonoBehaviour
     //VR
     public void AIMActivateVR()
     {
+        _VRGuard.SetActive(true);
         IsActionItemCreated = true;
         
         _VRManager.ActivateVR();
@@ -250,10 +257,24 @@ public class ActionItemManager : MonoBehaviour
 
         _VRManager.DeactivateVR();
         PanelButtonDisabler("VR");
+
+        PlayVRCloseAnimation();
+    }
+
+    void PlayVRCloseAnimation()
+    {
+        _VRGuard.SetActive(true);
+        _MYR.SetActive(false);
+        _VRMask.SetActive(false);
+        _VRBackground.gameObject.SetActive(true);
+
+        _VRBackground.Play("VRBackgroundOff");
+        _VR.Play("VROff");
     }
 
     void PlayBookCloseAnimation()
     {
         _bookProperAnimator.Play("BookClose");
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[10]);
     }
 }

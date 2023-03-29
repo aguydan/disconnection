@@ -14,6 +14,7 @@ public class ItemPanelButton : MonoBehaviour
 
     public void ActivateBookProper()
     {
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[10]);
         _bookBackground.SetActive(true);
         _bookProper.SetActive(true);
         

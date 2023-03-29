@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button _VRButton;
     [SerializeField] Button _musicPlayerButton;
     [SerializeField] Button _bookButton;
+
+    [SerializeField] GameObject _gameOverBlack;
 
     public static GameManager instance;
     public Vector2 heroPosition;
@@ -36,9 +39,14 @@ public class GameManager : MonoBehaviour
         heroPosition = hero.heroPosition;
     }
 
-    public void GameOver()
+    public IEnumerator GameOver()
     {
+        _gameOverBlack.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+        
         gameOverScreen.EnableScreen();
+        _gameOverBlack.SetActive(false);
     }
 
     public void SpawnDoorToNextLevel()
@@ -47,9 +55,19 @@ public class GameManager : MonoBehaviour
         _door.Wall.SetActive(false);
 
         IsLevelCompleted = true;
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[8]);
 
         _VRButton.interactable = false;
         _musicPlayerButton.interactable = false;
         _bookButton.interactable = false;
+    }
+
+    public IEnumerator ContinueToNextScene(string sceneName)
+    {
+        Transition.Instance.CloseTransition();
+        
+        yield return new WaitForSeconds(1);
+        
+        SceneManager.LoadScene(sceneName);
     }
 }
