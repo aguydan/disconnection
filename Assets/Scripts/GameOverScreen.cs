@@ -15,6 +15,7 @@ public class GameOverScreen : MonoBehaviour
         Scoring.FurnSetIndex = -1;
         Scoring.EscapismScore = 20;
         Scoring.MaxItemAmount = 50;
+        SoundManager.Instance.StopMusic();
         StartCoroutine(GameManager.instance.ContinueToNextScene("Game"));
        
     }
@@ -23,6 +24,7 @@ public class GameOverScreen : MonoBehaviour
     {
         Scoring.FurnSetIndex = -1;
         Scoring.EscapismScore = 20;
+        SoundManager.Instance.StopMusic();
         StartCoroutine(GameManager.instance.ContinueToNextScene("Menu"));
     }
 }

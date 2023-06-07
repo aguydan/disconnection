@@ -18,6 +18,8 @@ public class FinaleGameManager : MonoBehaviour
 
     public IEnumerator GameFinale()
     {
+        SoundManager.Instance.PlayMusic(SoundManager.Instance.Music[1], 0.2f);
+        
         yield return new WaitForSeconds(1.5f);
         _finaleScreen.gameObject.SetActive(true);
 

@@ -29,6 +29,8 @@ public class MainMenu : MonoBehaviour
 
         _beginScreen.gameObject.SetActive(true);
         Transition.Instance.OpenTransition();
+
+        SoundManager.Instance.PlayMusic(SoundManager.Instance.Music[0]);
         yield return new WaitForSeconds(1);
 
         for (int i = 0; i < _messages.Length; i++)
@@ -37,26 +39,30 @@ public class MainMenu : MonoBehaviour
             
             if (i == 5)
             {
+                SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[9]);
                 _beginScreenItems.SetActive(true);
             }
 
             yield return TypeText(_messages[i]);
-
             _beginScreenItems.SetActive(false);
         }
 
+        SoundManager.Instance.StopMusic();
         yield return MenuGameManager.Instance.ContinueToNextScene("Game");
     }
 
     IEnumerator TypeText(string message)
     {
         char[] characterArray = message.ToCharArray();
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[11]);
 
         foreach (char letter in characterArray)
         {
             _textOutput.text += letter;
             yield return new WaitForSeconds(.08f);
         }
+
+        SoundManager.Instance.StopEffects();
 
         yield return new WaitForSeconds(1f);
     }

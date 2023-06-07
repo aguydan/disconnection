@@ -41,10 +41,12 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
+        SoundManager.Instance.StopEffects();
         _gameOverBlack.SetActive(true);
 
         yield return new WaitForSeconds(1);
         
+        SoundManager.Instance.PlayMusic(SoundManager.Instance.Music[2]);
         gameOverScreen.EnableScreen();
         _gameOverBlack.SetActive(false);
     }

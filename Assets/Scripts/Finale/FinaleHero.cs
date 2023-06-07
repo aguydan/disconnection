@@ -11,6 +11,7 @@ public class FinaleHero : MonoBehaviour
     Rigidbody2D rb;
     Vector2 movement;
     private string _currentDirection = "left";
+    bool _isPlaying = false;
 
     void Start()
     {
@@ -32,12 +33,16 @@ public class FinaleHero : MonoBehaviour
             Animator.Play("CharUp");
 
             _currentDirection = "up";
+
+            _isPlaying = true;
         }
         else if (movement.y < 0)
         {
             Animator.Play("CharDown");
 
             _currentDirection = "down";
+
+            _isPlaying = true;
         }
         
         if (movement.x < 0 && movement.y == 0) 
@@ -46,6 +51,8 @@ public class FinaleHero : MonoBehaviour
             Animator.Play("CharSide");
 
             _currentDirection = "left";
+
+            _isPlaying = true;
         }
         else if (movement.x > 0 && movement.y == 0)
         {
@@ -53,10 +60,14 @@ public class FinaleHero : MonoBehaviour
             Animator.Play("CharSide");
 
             _currentDirection = "right";
+
+            _isPlaying = true;
         }
 
         if (movement.x == 0 && movement.y == 0)
         {
+            _isPlaying = false;
+
             switch (_currentDirection)
             {
                 default: Animator.Play("CharSideIdle");
@@ -66,6 +77,15 @@ public class FinaleHero : MonoBehaviour
                 case "down": Animator.Play("CharDownIdle");
                 break;
             }
+        }
+
+        if (_isPlaying)
+        {
+            SoundManager.Instance.PlayFootsteps(SoundManager.Instance.Effects[0]);
+        }
+        else
+        {
+            SoundManager.Instance.StopFootsteps();
         }
     }
 

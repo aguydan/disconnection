@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] AudioSource _musicSource, _effectsSource, _footstepsSource;
     public AudioClip[] Effects;
+    public AudioClip[] Music;
     
     private void Awake()
     {
@@ -38,6 +39,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayMusic(AudioClip clip, float volume = 1)
+    {
+        if (!_musicSource.isPlaying)
+        {
+            _musicSource.PlayOneShot(clip, volume);
+        }
+    }
+
     public void PlayEffectUnopposed(AudioClip clip, float volume = 1)
     {
         _effectsSource.PlayOneShot(clip, volume);
@@ -51,5 +60,10 @@ public class SoundManager : MonoBehaviour
     public void StopFootsteps()
     {
         _footstepsSource.Stop();
+    }
+
+    public void StopMusic()
+    {
+        _musicSource.Stop();
     }
 }

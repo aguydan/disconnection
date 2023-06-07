@@ -4719,8 +4719,9 @@ MonoBehaviour:
   _AIMPSource: {fileID: 912052813}
   _AIMPSongs:
   - {fileID: 8300000, guid: 502c91906a894d244a74c8fa16f9de2b, type: 3}
-  - {fileID: 8300000, guid: e3478458c0f92de418516f8a85acee17, type: 3}
-  - {fileID: 8300000, guid: 84b65c184d390c242b4f0adbae125715, type: 3}
+  - {fileID: 8300000, guid: 3a7632b7a212ad842860e47a51ac8f6e, type: 3}
+  - {fileID: 8300000, guid: 14a56549fb60be849a711da03727452d, type: 3}
+  - {fileID: 8300000, guid: 5d6df3fb02effad44a29f7a33d130392, type: 3}
   _volumeCalculator: {fileID: 1339123378}
 --- !u!114 &1217953305
 MonoBehaviour:
@@ -5026,7 +5027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1241944692
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6093,6 +6094,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8b8e1f3ba9782d845ac06bb22d1c1478, type: 3}
   - {fileID: 8300000, guid: e0e584dc64168de42993e1f1bbae6cdc, type: 3}
   - {fileID: 8300000, guid: d815a842bd8ece74f8cd4bd485ab2fbd, type: 3}
+  - {fileID: 8300000, guid: 6ac04ebb4a4aaf449900f2fa5b62d53c, type: 3}
+  Music:
+  - {fileID: 8300000, guid: 7149f789a9935be4a8cf95c4450db78c, type: 3}
+  - {fileID: 8300000, guid: ecdb7b461beb7f645bd062da2e4150b5, type: 3}
+  - {fileID: 8300000, guid: a12bc26a62658d848b8a90627f9c5e84, type: 3}
 --- !u!4 &1405793914
 Transform:
   m_ObjectHideFlags: 0
