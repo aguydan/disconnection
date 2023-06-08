@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public SpriteRenderer look;
+    public ItemSprite.ItemCategory Category;
     public CapsuleCollider2D capsuleCollider;
     [SerializeField] Animator animator;
 
@@ -55,6 +56,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             if (hasPositivePoints && distanceToHero < 4)
             {
                 Scoring.WinningItemSprites.Add(look.sprite);
+                NotepadManager.Instance.UpdateNotepad(gameObject.GetComponent<Item>());
                 
                 ScoreManager.instance.IncreaseScore();
                 if (ActionItemManager.instance.IsActionItemCreated)
@@ -68,6 +70,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             }
             else if (distanceToHero < 4)
             {
+                NotepadManager.Instance.UpdateNotepad(gameObject.GetComponent<Item>());
+                
                 ScoreManager.instance.DecreaseScore();
                 
                 if (ActionItemManager.instance.HasMusicPlayerStarted)

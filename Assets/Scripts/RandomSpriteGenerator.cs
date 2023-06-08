@@ -5,15 +5,23 @@ using UnityEngine;
 [System.Serializable]
 public class ItemSprite
 {
+    public enum ItemCategory 
+    {
+        Instrument,
+        Toy
+    }
+    
     public string Name;
     public Sprite Sprite;
+    public Sprite GrayscaleSprite;
+    public ItemCategory Category;
     [Range(0f, 100f)] public float Chance = 100f;
     [HideInInspector] public double _weight;
 }
 
 public class RandomSpriteGenerator : MonoBehaviour
 {
-    [SerializeField] ItemSprite[] itemSprites;
+    public ItemSprite[] itemSprites;
     double accumulatedWeights;
     System.Random rand = new System.Random();
     

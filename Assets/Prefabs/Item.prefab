@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   look: {fileID: 7847591332553439448}
+  Category: 0
   capsuleCollider: {fileID: 0}
   animator: {fileID: 7092146166012315631}
   hasPositivePoints: 0

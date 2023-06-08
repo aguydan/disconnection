@@ -14,8 +14,10 @@ public class ItemSpawner : MonoBehaviour
     [ColorUsage(true, true)]
     [SerializeField] Color[] hintColors;
 
-
     public static ItemSpawner Instance;
+    
+    public ItemSprite[] ItemSprites;
+
     List<Item> spawnedItems = new List<Item>();
     public List<Item> ColoredItems = new List<Item>();
     int winningItemIndex;
@@ -28,6 +30,7 @@ public class ItemSpawner : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        ItemSprites = spriteGenerator.itemSprites;
     }
     
     void Start()
