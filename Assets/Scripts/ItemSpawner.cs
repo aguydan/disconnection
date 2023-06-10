@@ -62,6 +62,8 @@ public class ItemSpawner : MonoBehaviour
 
         Item item = Instantiate(itemPrefab, position, Quaternion.Euler(0, 0, Random.Range(0, 100)));
         item.gameObject.AddComponent<PolygonCollider2D>();
+        //даём категорию
+        item.Category = sprite.Category;
 
         if (winningItemIndex == spawnedItems.Count)
         {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 
 public class NotepadManager : MonoBehaviour
@@ -18,19 +19,20 @@ public class NotepadManager : MonoBehaviour
     [SerializeField] private EntryGridCell _entryGridCellPrefab;
 
     [SerializeField] private GameObject _background;
+    [SerializeField] private Animator _cutsceneScreen;
+
+    public bool IsNotepadVisible = false;
     
-    ///этот должен быть в soring?
     private Dictionary<ItemSprite.ItemCategory, NotepadEntry> _spawnedEntries = new Dictionary<ItemSprite.ItemCategory, NotepadEntry>();
     private Dictionary<ItemSprite.ItemCategory, string> _categDisplayNames = new Dictionary<ItemSprite.ItemCategory, string>{
         {ItemSprite.ItemCategory.Instrument, "Инструменты"},
         {ItemSprite.ItemCategory.Toy, "Игрушки"},
+        {ItemSprite.ItemCategory.Book, "Книги"},
     };
     
     private void Awake()
     {
         Instance = this;
-
-        //dont destroy on load!!!!
     }
 
     private void Start()
@@ -41,49 +43,92 @@ public class NotepadManager : MonoBehaviour
 
     private void SpawnNotepadEntries()
     {
-        string[] names = Enum.GetNames(typeof(ItemSprite.ItemCategory));
-
         //спаун энтри
-        foreach (string name in names)
+        foreach (KeyValuePair<ItemSprite.ItemCategory, Scoring.CategoryInfo> pair in Scoring.NotepadCategories)
         {
-            ItemSprite.ItemCategory category = (ItemSprite.ItemCategory)Enum.Parse(typeof(ItemSprite.ItemCategory), name);
-            
             EntryTop entryTop = Instantiate(_entryTopPrefab);
             entryTop.transform.SetParent(_entryLayout.transform, false);
-            entryTop.SetLabel(_categDisplayNames[category]);
+            entryTop.SetLabel(_categDisplayNames[pair.Key]);
+            entryTop.Category = pair.Key;
             
             NotepadEntry entry = Instantiate(_entryPrefab);
             entry.transform.SetParent(_entryLayout.transform, false);
 
-            _spawnedEntries.Add(category, entry);
-        }
+            entry.EntryTop = entryTop;
+            if (pair.Value.IsCompleted && !pair.Value.IsCompletionRewardUsed)
+            {
+                entry.EntryTop.ChangeButtonInteractivity(true);
+            }
+            else
+            {
+                entry.EntryTop.ChangeButtonInteractivity(false);
+            }
 
-        //спаун предметов в энтри
-        foreach (ItemSprite item in ItemSpawner.Instance.ItemSprites)
-        {
-            NotepadEntry entry = _spawnedEntries[item.Category];
-
-            EntryGridCell cell = Instantiate(_entryGridCellPrefab);
-            cell.transform.SetParent(entry.transform, false);
+            foreach (Scoring.EntryItem item in pair.Value.CategItems)
+            {
+                EntryGridCell cell = Instantiate(_entryGridCellPrefab);
+                cell.transform.SetParent(entry.transform, false);
             
-            cell.CellImage.sprite = item.GrayscaleSprite;
-            cell.CellImage.SetNativeSize();
-            cell.CellImage.preserveAspect = true;
-            cell.CellImage.rectTransform.sizeDelta = new Vector2(cell.CellImage.rectTransform.sizeDelta.x, 12);
+                cell.CellImage.sprite = item.IsGathered ? item.Sprite : item.GrayscaleSprite;
+                cell.CellImage.SetNativeSize();
+                cell.CellImage.preserveAspect = true;
+                cell.CellImage.rectTransform.sizeDelta = new Vector2(cell.CellImage.rectTransform.sizeDelta.x, 12);
 
-            entry.EntryItems.Add(new NotepadEntry.EntryItem {
-                Name = item.Sprite.name,
-                Sprite = item.Sprite,
-                GrayscaleSprite = item.GrayscaleSprite,
-                Cell = cell
-            });
+                entry.Cells.Add(cell);
+            }
+
+            _spawnedEntries.Add(pair.Key, entry);
         }
     }
 
     public void UpdateNotepad(Item item)
     {
-        NotepadEntry currentEntry = _spawnedEntries[item.Category];
-        currentEntry.UpdateEntry(item);
+        //обновляет спрайт на цветной если предмет попадает в блокнот, а также записывает изменения в скоринге
+        //если категория завершена, возвращаемся из функции
+        Scoring.CategoryInfo info = Scoring.NotepadCategories[item.Category];
+        if (info.IsCompleted) return;
+        
+        List<Scoring.EntryItem> itemList = info.CategItems;
+        
+        //если предмет уже был подобран, выбираемся из функции
+        if (itemList.Any(entryItem => entryItem.Name == item.OriginalSprite.name && entryItem.IsGathered)) return;
+        
+        Sprite updatedSprite;
+        NotepadEntry entry = _spawnedEntries[item.Category];
+
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            if (itemList[i].Name == item.OriginalSprite.name)
+            {
+                var v = itemList[i];
+                v.IsGathered = true;
+                updatedSprite = v.Sprite;
+                itemList[i] = v;
+
+                foreach (EntryGridCell cell in entry.Cells)
+                {
+                    if (cell.CellImage.sprite.name == item.OriginalSprite.name)
+                    {
+                        cell.CellImage.sprite = updatedSprite;
+                        break;
+                    }
+                }
+
+                break;
+            }
+        }
+
+        info.CategItems = itemList;
+
+        //проверка, завершена ли категория
+        if (itemList.All(entryItem => entryItem.IsGathered))
+        {
+            info.IsCompleted = true;
+            //всё что касается завершения
+            entry.EntryTop.ChangeButtonInteractivity(true);
+        }
+
+        Scoring.NotepadCategories[item.Category] = info;
     }
 
     public void ActivateNotepad()
@@ -96,6 +141,22 @@ public class NotepadManager : MonoBehaviour
     {
         _notepad.SetActive(false);
         _background.SetActive(false);
+        IsNotepadVisible = false;
+        CursorManager.Instance.StopAutomaticCursor = false;
+    }
+
+    public void PlayMoodCutscene(ItemSprite.ItemCategory cat)
+    {
+        Scoring.CategoryInfo info = Scoring.NotepadCategories[cat];
+        info.IsCompletionRewardUsed = true;
+        Scoring.NotepadCategories[cat] = info;
+        
+        ScoreManager.instance.IncreaseMood();
+        DeactivateNotepad();
+        _cutsceneScreen.gameObject.SetActive(true);
+        //играть катсцену с анимацией (наверно просто преобразуем категорию в стринг названия анимации
+        StartCoroutine(TestCoroutine());
+
     }
 
     private IEnumerator RefreshLayout()
@@ -105,5 +166,11 @@ public class NotepadManager : MonoBehaviour
         yield return new WaitForSeconds(0.001f);
         _entryLayout.GetComponent<VerticalLayoutGroup>().enabled = true;
         _notepad.SetActive(false);
+    }
+
+    private IEnumerator TestCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        _cutsceneScreen.gameObject.SetActive(false);
     }
 }

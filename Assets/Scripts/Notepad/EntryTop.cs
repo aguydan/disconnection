@@ -9,10 +9,22 @@ public class EntryTop : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _label;
     
     [SerializeField] private Sprite[] _moodButtonSprites;
-    [SerializeField] private Image _moodButton;
+    [SerializeField] private Button _moodButton;
+
+    public ItemSprite.ItemCategory Category;
 
     public void SetLabel(string label)
     {
         _label.text = label;
+    }
+
+    public void ChangeButtonInteractivity(bool isInteractable)
+    {
+        _moodButton.interactable = isInteractable;
+    }
+
+    public void PlayMoodCutsceneWithCategory() {
+        NotepadManager.Instance.PlayMoodCutscene(Category);
+        _moodButton.interactable = false;
     }
 }

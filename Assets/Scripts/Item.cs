@@ -52,11 +52,11 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         else
         {
             SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[2]);
+            NotepadManager.Instance.UpdateNotepad(gameObject.GetComponent<Item>());
             
             if (hasPositivePoints && distanceToHero < 4)
             {
                 Scoring.WinningItemSprites.Add(look.sprite);
-                NotepadManager.Instance.UpdateNotepad(gameObject.GetComponent<Item>());
                 
                 ScoreManager.instance.IncreaseScore();
                 if (ActionItemManager.instance.IsActionItemCreated)
@@ -70,8 +70,6 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             }
             else if (distanceToHero < 4)
             {
-                NotepadManager.Instance.UpdateNotepad(gameObject.GetComponent<Item>());
-                
                 ScoreManager.instance.DecreaseScore();
                 
                 if (ActionItemManager.instance.HasMusicPlayerStarted)

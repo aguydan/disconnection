@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
     {
         Scoring.EscapismScore += 20;
         UpdateScoreText();
-        CreateScoreUpdateNotification("+ 20");
+        CreateScoreUpdateNotification("+");
         UpdateMaxItemAmount();
     }
 
@@ -41,9 +41,20 @@ public class ScoreManager : MonoBehaviour
         else
         {
             UpdateScoreText();
-            CreateScoreUpdateNotification("- 5");
+            CreateScoreUpdateNotification("-");
             UpdateMaxItemAmount();
         }
+    }
+
+    public void IncreaseMood()
+    {
+        Scoring.MoodScore += 15;
+        Debug.Log(Scoring.MoodScore);
+    }
+
+    public void DecreaseMood()
+    {
+        Scoring.MoodScore -= 10;
     }
     
     void UpdateScoreText()
@@ -54,7 +65,7 @@ public class ScoreManager : MonoBehaviour
     void CreateScoreUpdateNotification(string points)
     {
         updateScorePrefab.text = points;
-        TextMeshProUGUI tempText = Instantiate(updateScorePrefab, new Vector2(), Quaternion.identity);
+        TextMeshProUGUI tempText = Instantiate(updateScorePrefab, updateScorePrefab.transform.position, Quaternion.identity);
         tempText.transform.SetParent(canvas.transform, false);
         
         Destroy(tempText.gameObject, 2f);
@@ -75,6 +86,4 @@ public class ScoreManager : MonoBehaviour
             Scoring.MaxItemAmount = 18;
         }
     }
-
-    //also we need scriptable object for deteriorating sprites
 }

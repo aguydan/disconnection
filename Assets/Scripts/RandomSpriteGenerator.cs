@@ -8,7 +8,8 @@ public class ItemSprite
     public enum ItemCategory 
     {
         Instrument,
-        Toy
+        Toy,
+        Book
     }
     
     public string Name;

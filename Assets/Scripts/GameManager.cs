@@ -72,4 +72,16 @@ public class GameManager : MonoBehaviour
         
         SceneManager.LoadScene(sceneName);
     }
+
+    public void ResetStartingStats()
+    {
+        Scoring.FurnSetIndex = -1;
+        Scoring.EscapismScore = 20;
+        Scoring.MoodScore = 25;
+        Scoring.MaxItemAmount = 50;
+
+        Scoring.WinningItemSprites = new List<Sprite>();
+        Scoring.NotepadCategories = new Dictionary<ItemSprite.ItemCategory, Scoring.CategoryInfo>();
+        NotepadInitializer.Instance.InitializeNotepadCategories();
+    }
 }

@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 21.75315, y: -4.9242}
+  m_AnchoredPosition: {x: 30.2, y: -4.9242}
   m_SizeDelta: {x: 43.5063, y: 9.8484}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6908340222255802151
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_text: "\u0430\u0430\u0432\u0430\u0432\u0432\u044B\u0432"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2f03c7d1f3da384684a451fcc3ac0fd, type: 2}
-  m_sharedMaterial: {fileID: -6489747808468795325, guid: f2f03c7d1f3da384684a451fcc3ac0fd, type: 2}
+  m_sharedMaterial: {fileID: -6668081124892409423, guid: f2f03c7d1f3da384684a451fcc3ac0fd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -190,7 +190,8 @@ MonoBehaviour:
   _moodButtonSprites:
   - {fileID: 0}
   - {fileID: 0}
-  _moodButton: {fileID: 6908340223695587662}
+  _moodButton: {fileID: 6908340223695587663}
+  Category: 0
 --- !u!1 &6908340223695587649
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50.1, y: 0}
+  m_AnchoredPosition: {x: -26, y: 1.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6908340223695587661
@@ -311,4 +312,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6908340223695587662}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6908340222395118479}
+        m_TargetAssemblyTypeName: EntryTop, Assembly-CSharp
+        m_MethodName: PlayMoodCutsceneWithCategory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

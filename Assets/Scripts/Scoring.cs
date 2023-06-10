@@ -13,4 +13,21 @@ public class Scoring : MonoBehaviour
     public static int FurnSetIndex = -1;
     
     public static int AIMPSongIndex = 0;
+
+    public struct EntryItem
+    {
+        public string Name;
+        public Sprite Sprite;
+        public Sprite GrayscaleSprite;
+        public bool IsGathered;
+    };
+    
+    public struct CategoryInfo
+    {
+        public bool IsCompleted;
+        public bool IsCompletionRewardUsed;
+        public List<EntryItem> CategItems;
+    };
+
+    public static Dictionary<ItemSprite.ItemCategory, CategoryInfo> NotepadCategories = new Dictionary<ItemSprite.ItemCategory, CategoryInfo>();
 }
