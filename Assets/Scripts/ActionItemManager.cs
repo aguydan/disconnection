@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ActionItemManager : MonoBehaviour
 {
     [SerializeField] ItemPanelButton _VRButton;
     [SerializeField] ItemPanelButton _bookButton;
     [SerializeField] ItemPanelButton _musicPlayerButton;
+    [SerializeField] ItemPanelButton _SMButton;
     [SerializeField] AIMPManager _AIMPManager;
     [SerializeField] VRManager _VRManager;
     [SerializeField] UpperFingerButton _deactivateAIMPButton;
@@ -30,6 +32,11 @@ public class ActionItemManager : MonoBehaviour
 
     //FOR VR
     public bool IsVRCompleted = false;
+
+    //FOR SOCIAL MEDIA
+    public bool IsSMCompleted = false;
+    public TextMeshProUGUI SMImpact;
+    public int SMTries = 3;
     
     //FOR MUSIC PLAYER
     int numberOfPlayers = 0;
@@ -53,6 +60,8 @@ public class ActionItemManager : MonoBehaviour
         switch (type)
         {
             case ActionItem.ActionItemType.VR: _VRManager.PickUpVR();
+            break;
+            case ActionItem.ActionItemType.SocialMedia: SocialMediaManager.Instance.PickUpSocialMedia();
             break;
             case ActionItem.ActionItemType.Book:
             {
@@ -89,13 +98,15 @@ public class ActionItemManager : MonoBehaviour
         {
             { "VR", _VRButton },
             { "musicPlayer", _musicPlayerButton },
-            { "book", _bookButton }
+            { "book", _bookButton },
+            { "SM", _SMButton }
         };
         Dictionary<string, int> spriteIndexes = new Dictionary<string, int>()
         {
             { "VR", 0 },
             { "musicPlayer", 1 },
-            { "book", 2 }
+            { "book", 2 },
+            { "SM", 3 }
         };
 
         if (IsActionItemCreated)
@@ -276,5 +287,25 @@ public class ActionItemManager : MonoBehaviour
     {
         _bookProperAnimator.Play("BookClose");
         SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[10]);
+    }
+
+    //SOCIAL MEDIA
+    public void SMMActivateSocialMedia()
+    {
+        IsActionItemCreated = true;
+
+        SocialMediaManager.Instance.ActivateSocialMedia();
+        PanelButtonDisabler("SM");
+    }
+
+    public void SMMDeactivateSocialMedia()
+    {
+        if (IsSMCompleted)
+        {
+            IsActionItemCreated = false;
+        }
+
+        SocialMediaManager.Instance.DeactivateSocialMedia();
+        PanelButtonDisabler("SM");
     }
 }

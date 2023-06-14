@@ -5,7 +5,35 @@ using UnityEngine;
 public class Scoring : MonoBehaviour
 {
     public static int EscapismScore = 20;
-    public static int MoodScore = 25;
+    public static int MoodScore = 7;
+
+    public static int GetCurrentMoodStage()
+    {
+        int stage = 3;
+        
+        if (MoodScore <= 0)
+        {
+            stage = 0;
+        }
+        else if (MoodScore > 0 && MoodScore <= 3)
+        {
+            stage = 1;
+        }
+        else if (MoodScore > 3 && MoodScore <= 6)
+        {
+            stage = 2;
+        }
+        else if (MoodScore > 9 && MoodScore <= 12)
+        {
+            stage = 4;
+        }
+        else if (MoodScore > 12)
+        {
+            stage = 5;
+        }
+
+        return stage;
+    }
 
     public static List<Sprite> WinningItemSprites = new List<Sprite>();
 

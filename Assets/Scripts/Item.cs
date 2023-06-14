@@ -58,7 +58,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             {
                 Scoring.WinningItemSprites.Add(look.sprite);
                 
-                ScoreManager.instance.IncreaseScore();
+                ScoreManager.instance.IncreaseEscapism();
                 if (ActionItemManager.instance.IsActionItemCreated)
                 {
                     WhatActionItemToDeactivate(ActionItemManager.instance._whoDid);
@@ -70,7 +70,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             }
             else if (distanceToHero < 4)
             {
-                ScoreManager.instance.DecreaseScore();
+                ScoreManager.instance.DecreaseEscapism();
                 
                 if (ActionItemManager.instance.HasMusicPlayerStarted)
                 {

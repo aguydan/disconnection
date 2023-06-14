@@ -10,7 +10,8 @@ public class ActionItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     public enum ActionItemType {
         VR,
         Book,
-        MusicPlayer
+        MusicPlayer,
+        SocialMedia
     }
     public ActionItemType _actionItemType;
 

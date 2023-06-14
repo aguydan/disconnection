@@ -151,7 +151,7 @@ public class NotepadManager : MonoBehaviour
         info.IsCompletionRewardUsed = true;
         Scoring.NotepadCategories[cat] = info;
         
-        ScoreManager.instance.IncreaseMood();
+        ScoreManager.instance.IncreaseMood(6);
         DeactivateNotepad();
         _cutsceneScreen.gameObject.SetActive(true);
         //играть катсцену с анимацией (наверно просто преобразуем категорию в стринг названия анимации

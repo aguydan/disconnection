@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         Scoring.FurnSetIndex = -1;
         Scoring.EscapismScore = 20;
-        Scoring.MoodScore = 25;
+        Scoring.MoodScore = 7;
         Scoring.MaxItemAmount = 50;
 
         Scoring.WinningItemSprites = new List<Sprite>();

@@ -14,7 +14,8 @@ public class ActionItemSpawner : MonoBehaviour
     {
         { "VR", 0 },
         { "musicPlayer", 0 },
-        { "book", 0 }
+        { "book", 0 },
+        { "SM", 0 }
     };
     Vector2 _spawnPoint1;
     Vector2 _spawnPoint2;
