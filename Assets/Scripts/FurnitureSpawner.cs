@@ -26,11 +26,22 @@ public class FurnitureSpawner : MonoBehaviour
 
         if (Scoring.FurnSetIndex == 5)
         {
-            
             Scoring.FurnSetIndex = 0;
         }
 
-        CurrentFurnitureSetIndex = Scoring.FurnSetIndex;
+        if (!Scoring.IsTelescopeIndexSet)
+        {
+            TelescopeManager.Instance.SetTelescopeRoomIndex();
+        }
+
+        if (Scoring.TelescopeRoomIndex == Scoring.FurnSetIndex)
+        {
+            CurrentFurnitureSetIndex = 5;
+        }
+        else
+        {
+            CurrentFurnitureSetIndex = Scoring.FurnSetIndex;
+        }
     }
     
     void Start()

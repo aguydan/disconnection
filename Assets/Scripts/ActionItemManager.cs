@@ -35,8 +35,6 @@ public class ActionItemManager : MonoBehaviour
 
     //FOR SOCIAL MEDIA
     public bool IsSMCompleted = false;
-    public TextMeshProUGUI SMImpact;
-    public int SMTries = 3;
     
     //FOR MUSIC PLAYER
     int numberOfPlayers = 0;

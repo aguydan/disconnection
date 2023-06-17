@@ -72,4 +72,18 @@ public class CursorManager : MonoBehaviour
     {
         Cursor.SetCursor(cursorTexture[2], fingerHotspot, CursorMode.Auto);
     }
+
+    public void ChangeCursorVisibility(bool isVisible)
+    {
+        if (!isVisible)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
 }

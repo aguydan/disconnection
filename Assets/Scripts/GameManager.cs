@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button _VRButton;
     [SerializeField] Button _musicPlayerButton;
     [SerializeField] Button _bookButton;
+    [SerializeField] Button _SMButton;
 
     [SerializeField] GameObject _gameOverBlack;
 
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
         _VRButton.interactable = false;
         _musicPlayerButton.interactable = false;
         _bookButton.interactable = false;
+        _SMButton.interactable = false;
     }
 
     public IEnumerator ContinueToNextScene(string sceneName)
@@ -79,6 +81,9 @@ public class GameManager : MonoBehaviour
         Scoring.EscapismScore = 20;
         Scoring.MoodScore = 7;
         Scoring.MaxItemAmount = 50;
+        Scoring.MaxSocialMediaItemsAmount = 2;
+        Scoring.AreSMLocationsChosen = false;
+        Scoring.IsTelescopeIndexSet = false;
 
         Scoring.WinningItemSprites = new List<Sprite>();
         Scoring.NotepadCategories = new Dictionary<ItemSprite.ItemCategory, Scoring.CategoryInfo>();

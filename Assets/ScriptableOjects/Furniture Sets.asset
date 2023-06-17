@@ -113,3 +113,10 @@ MonoBehaviour:
     - {fileID: 8535262437406264533, guid: f1f90eccd0cc653449dd551467e268a2, type: 3}
     ItemSpawnPoint1: {x: -6.59, y: 2.86}
     ItemSpawnPoint2: {x: 7.11, y: -2.73}
+  - Room: {fileID: 7953075289697782065, guid: 4c60708a46af0d647bc0ef701c7a8cd9, type: 3}
+    Furniture: []
+    FurnitureShadows: []
+    DoorSpawnPosition: {x: -5.05, y: 5.9}
+    NorthWalls: []
+    ItemSpawnPoint1: {x: 1, y: 1}
+    ItemSpawnPoint2: {x: 2, y: 2}

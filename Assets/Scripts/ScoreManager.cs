@@ -71,9 +71,17 @@ public class ScoreManager : MonoBehaviour
         CreateScoreUpdateNotification("+", ScoreType.Mood);
     }
 
-    public void DecreaseMood(int points)
+    public void DecreaseMood(int points, bool isZero = false)
     {
-        Scoring.MoodScore -= points;
+        if (isZero)
+        {
+            Scoring.MoodScore = 0;
+        }
+        else
+        {
+            Scoring.MoodScore -= points;
+        }
+        
         UpdateScoreDebugText(ScoreType.Mood);
         _moodAnimator.Play("Wiggle");
         CreateScoreUpdateNotification("-", ScoreType.Mood);

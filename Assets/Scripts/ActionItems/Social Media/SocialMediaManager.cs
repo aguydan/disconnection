@@ -10,20 +10,23 @@ public class SocialMediaManager : MonoBehaviour
     [SerializeField] private SocialMediaItem _SM;
     [SerializeField] private Button _SMButton;
     [SerializeField] private SocialMediaPost _postPrefab;
+    [SerializeField] private Comment _commentPrefab;
     [SerializeField] private int _amountOfNegativePosts = 4;
-    
+
     [SerializeField] private SMPosts _posts;
     [SerializeField] private GameObject _background;
+
+    private SocialMediaPost[] _finalPosts;
+    private List<Comment> _finalComments = new List<Comment>();
+    
+    public int Tries { get; set; } = 3;
+    public TextMeshProUGUI ImpactSigns;
 
     public enum PostType {
         Positive,
         Negative,
         Secret
     }
-
-    private Sprite _mainSprite;
-    private Sprite _secondarySprite;
-    private List<Sprite> _negativeSprites = new List<Sprite>();
 
     public static SocialMediaManager Instance;
 
@@ -38,6 +41,10 @@ public class SocialMediaManager : MonoBehaviour
     {
         _background.SetActive(true);
         _SM.gameObject.SetActive(true);
+
+        ActionItemManager.instance.IsBookVisible = true;
+        CursorManager.Instance.StopAutomaticCursor = true;
+
         ActionItemManager.instance.IsActionItemCurrentlyVisible = true;
     }
 
@@ -45,19 +52,55 @@ public class SocialMediaManager : MonoBehaviour
     {
         _background.SetActive(false);
         _SM.gameObject.SetActive(false);
+
+        ActionItemManager.instance.IsBookVisible = false;
+        CursorManager.Instance.StopAutomaticCursor = false;
+
         ActionItemManager.instance.IsActionItemCurrentlyVisible = false;
     }
 
-    public void DeactivateSocialMediaFromPost()
+    public void FinishSocialMedia()
     {
         //ЭТО БУДЕТ КОРУТИНА
 
-        //ПРОВЕРИТЬ ИМПАКТ ТЕКСТ И НА ЕГО ОСНОВАНИИ ДАТЬ ОЧКИ
+        CountOverallMoodImpact();
         
+        _SMButton.gameObject.SetActive(false);
         ActionItemManager.instance.IsSMCompleted = true;
-        CursorManager.Instance.StopAutomaticCursor = false;
 
         ActionItemManager.instance.SMMDeactivateSocialMedia();
+
+        void CountOverallMoodImpact()
+        {
+            switch (ImpactSigns.text)
+            {
+                case "---":
+                    ScoreManager.instance.DecreaseMood(0, true);
+                break;
+                case "+++":
+                    ScoreManager.instance.IncreaseMood(6);
+                break;
+                default:
+                    CountBasedOnSignsAmount();
+                break;
+            }
+
+            void CountBasedOnSignsAmount()
+            {
+                Dictionary<char, int> signsAmount = new Dictionary<char, int>{
+                    {'+', 0},
+                    {'-', 0},
+                };
+
+                foreach (char c in ImpactSigns.text)
+                {
+                    signsAmount[c]++;
+                }
+
+                if (signsAmount['-'] == 2) return;
+                if (signsAmount['+'] == 2) ScoreManager.instance.IncreaseMood(3);
+            }
+        }
     }
 
     public void PickUpSocialMedia()
@@ -68,61 +111,81 @@ public class SocialMediaManager : MonoBehaviour
     private void PopulateSocialMedia()
     {
         ItemSprite.ItemCategory winningCateg = ItemSpawner.Instance.winningItem.Category;
-        IEnumerable<NonNegativePost> positivePosts = _posts.PositivePosts;
         
-        //shuffle positive posts
+        PositivePost[] pp = _posts.PositivePosts;
+        Sprite[] np = _posts.NegativePosts;
+        SecretPost[] secretPosts = _posts.SecretPosts;
+
+        System.Random rng = new System.Random();
+        rng.Shuffle(pp);
+        rng.Shuffle(np);
+        rng.Shuffle(secretPosts);
         
-        //наверно надо объединить в одну функцию, которая будет создавать массив
-        //для дальнейшего создания постов
-        _mainSprite = positivePosts.Single(post => post.Category == winningCateg).Sprite;
-        _secondarySprite = positivePosts.Single(post => post.Category != winningCateg).Sprite;
+        IEnumerable<PositivePost> positivePosts = pp;
+        IEnumerable<Sprite> negativePosts = np;
+        
+        CreateArrayOfPosts();
 
-        // ChooseRandomNegativeSprites(_amountOfNegativePosts);
-
-        SocialMediaPost post = Instantiate(_postPrefab);
-        post.Image.sprite = _mainSprite;
-        post.Type = PostType.Positive;
-        post.transform.SetParent(_SM.Content);
-
-        SocialMediaPost post1 = Instantiate(_postPrefab);
-        post1.Image.sprite = _secondarySprite;
-        post1.Type = PostType.Positive;
-        post1.transform.SetParent(_SM.Content);
-
-        foreach (Sprite sprite in _negativeSprites)
+        void CreateArrayOfPosts()
         {
-            SocialMediaPost post2 = Instantiate(_postPrefab);
-            post2.Image.sprite = sprite;
-            post2.Type = PostType.Negative;
-            post2.transform.SetParent(_SM.Content);
+            Sprite posSprite1 = positivePosts.Single(post => post.Category == winningCateg).Sprite;
+            Sprite posSprite2 = positivePosts.First(post => post.Category != winningCateg).Sprite;
+            
+            Sprite secretSprite = secretPosts[0].Sprite;
+            CreateSecretPostComments(secretPosts[0]);
+
+            Sprite[] negSprites = negativePosts.Take(_amountOfNegativePosts).ToArray();
+            
+            _finalPosts = new SocialMediaPost[negSprites.Length + 3];
+
+            for (int i = 0; i < negSprites.Length + 3; i++)
+            {
+                SocialMediaPost post = Instantiate(_postPrefab);
+                
+                if (i < negSprites.Length) post.Init(PostType.Negative, negSprites[i], this);
+
+                if (i == negSprites.Length) post.Init(PostType.Positive, posSprite1, this, true);
+                if (i == negSprites.Length + 1) post.Init(PostType.Positive, posSprite2, this);
+                if (i == negSprites.Length + 2) post.Init(PostType.Secret, secretSprite, this);
+
+                _finalPosts[i] = post;
+            }
+            
+            rng.Shuffle(_finalPosts);
+            
+            foreach (SocialMediaPost post in _finalPosts)
+            {
+                post.transform.SetParent(_SM.Content);
+            }
+
+            foreach (Comment comment in _finalComments)
+            {
+                comment.transform.SetParent(_SM.Content);
+                comment.gameObject.SetActive(false);
+            }
+        }
+
+        void CreateSecretPostComments(SecretPost post)
+        {
+            foreach (CommentData data in post.Comments)
+            {
+                Comment comment = Instantiate(_commentPrefab);
+                comment.Init(data.Sprite, this, data.IsWinningComment);
+                _finalComments.Add(comment);
+            }
         }
     }
 
-//     private void ChooseRandomNegativeSprites(int amount)
-//     {
-//         List<int> uniqueIndexes = new List<int>();
-        
-//         for (int i = 0; i < amount; i++)
-//         {
-//             int guard = 0;
-        
-//             while (guard < 100)
-//             {
-//                 int rand = Random.Range(0, 4);
+    public void ChangeSecretPostState(bool isOpen)
+    {
+        foreach (SocialMediaPost post in _finalPosts)
+        {
+            if (post.Type != PostType.Secret) post.gameObject.SetActive(!isOpen);
+        }
 
-//                 if (!uniqueIndexes.Contains(rand))
-//                 {
-//                     uniqueIndexes.Add(rand);
-//                     break;
-//                 }
-                
-//                 guard++;
-//             }
-//         }
-
-//         foreach (int index in uniqueIndexes)
-//         {
-//             _negativeSprites.Add(_posts.NegativePosts[index].Sprite);
-//         }
-//     }
+        foreach (Comment comment in _finalComments)
+        {
+            comment.gameObject.SetActive(isOpen);
+        }
+    }
 }

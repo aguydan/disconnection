@@ -37,6 +37,14 @@ public class Scoring : MonoBehaviour
 
     public static List<Sprite> WinningItemSprites = new List<Sprite>();
 
+    public static int MaxSocialMediaItemsAmount = 2;
+    public static bool AreSMLocationsChosen = false;
+    public static int SMLocation1 = 0;
+    public static int SMLocation2 = 0;
+
+    public static int TelescopeRoomIndex = 0;
+    public static bool IsTelescopeIndexSet = false;
+
     public static int MaxItemAmount = 50;
     public static int FurnSetIndex = -1;
     

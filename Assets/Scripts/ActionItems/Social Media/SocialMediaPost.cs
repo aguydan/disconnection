@@ -1,47 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using AIM = ActionItemManager;
 using PostType = SocialMediaManager.PostType;
 
 public class SocialMediaPost : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public PostType Type { get; set; }
-    public Image Image;
+    public PostType Type { get; private set; }
+    private Sprite _sprite;
+    private bool _isPositiveWinnig = false;
 
-    public void EnablePostEffect()
+    private SocialMediaManager _manager;
+
+    public void Init(PostType type, Sprite sprite, SocialMediaManager manager, bool isPositiveWinning = false)
     {
-        //МОЖЕТ ОТДЕЛЬНЫЕ ПОСТЫ ДАЮТ РАЗНЫЕ ЭФФЕКТЫ ТИПА ЭСКАПИЗМА
+        Type = type;
+
+        GetComponent<Image>().sprite = sprite;
+        _sprite = sprite;
+
+        _isPositiveWinnig = isPositiveWinning;
+
+        _manager = manager;
+    }
+
+    public void OnPostClick()
+    {
         //МОЖЕТ НАДО СДЕЛАТЬ ПОПАП КОТОРЫЙ ПРОСТО ПРОДУБЛИРУЕТ ПОСТ И ПОКАЖЕТ ЭФФЕКТ
-        //УВЕЛИЧИВАТЬ МУД СКОР!!!!
         
         switch (Type)
         {
             case PostType.Positive:
-                AIM.instance.SMImpact.text += "+";
-                AIM.instance.SMTries--;
+                if (_isPositiveWinnig)
+                {
+                    ScoreManager.instance.IncreaseMood(1);
+                }
+                else
+                {
+                    ScoreManager.instance.IncreaseEscapism(); //точно 20????
+                }
+
+                _manager.ImpactSigns.text += "+";
+                _manager.Tries--;
             break;
             case PostType.Negative:
-                AIM.instance.SMImpact.text += "-";
-                AIM.instance.SMTries--;
+                _manager.ImpactSigns.text += "-";
+                _manager.Tries--;
             break;
-            case PostType.Secret: //СДЕЛАТЬ
+            case PostType.Secret:
+                _manager.ChangeSecretPostState(true);
             break;
         }
 
-        if (AIM.instance.SMTries == 0)
+        if (_manager.Tries == 0)
         {
-            //deactivate from post
+            _manager.FinishSocialMedia();
         }
+
+        GetComponent<Button>().interactable = false;
     }
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        CursorManager.Instance.StopAutomaticCursor = true;
-
         CursorManager.Instance.EnableFingerCursor();
     }
 

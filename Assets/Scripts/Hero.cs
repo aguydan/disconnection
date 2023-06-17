@@ -14,6 +14,8 @@ public class Hero : MonoBehaviour
     private string _currentDirection = "left";
     bool _isPlaying = false;
 
+    public bool StopReceivingInput { get; set; } = false;
+
     void Start() 
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +23,8 @@ public class Hero : MonoBehaviour
     
     void Update()
     {
+        if (StopReceivingInput) return;
+        
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 

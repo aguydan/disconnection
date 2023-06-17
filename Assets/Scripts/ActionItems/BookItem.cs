@@ -64,6 +64,12 @@ public class BookItem : MonoBehaviour
 
 
         _itemSilhouette.sprite = ItemSpawner.Instance.winningItem.look.sprite;
+        
+        if (Scoring.GetCurrentMoodStage() < 3)
+        {
+            _itemSilhouette.color = Color.black;
+        }
+
         _itemSilhouette.SetNativeSize();
         _itemSilhouette.preserveAspect = true;
         _itemSilhouette.rectTransform.sizeDelta = new Vector2(_itemSilhouette.rectTransform.sizeDelta.x, 130);
