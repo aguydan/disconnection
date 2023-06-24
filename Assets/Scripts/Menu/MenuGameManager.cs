@@ -7,7 +7,8 @@ public class MenuGameManager : MonoBehaviour
 {
     public static MenuGameManager Instance;
 
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
     }
     

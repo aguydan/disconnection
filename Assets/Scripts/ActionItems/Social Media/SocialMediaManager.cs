@@ -14,13 +14,13 @@ public class SocialMediaManager : MonoBehaviour
     [SerializeField] private int _amountOfNegativePosts = 4;
 
     [SerializeField] private SMPosts _posts;
-    [SerializeField] private GameObject _background;
 
     private SocialMediaPost[] _finalPosts;
     private List<Comment> _finalComments = new List<Comment>();
     
     public int Tries { get; set; } = 3;
     public TextMeshProUGUI ImpactSigns;
+    public SocialMediaAnimator Animator;
 
     public enum PostType {
         Positive,
@@ -37,9 +37,14 @@ public class SocialMediaManager : MonoBehaviour
         PopulateSocialMedia();
     }
 
+    public void ActivateSocialMediaProper()
+    {
+        Animator.gameObject.SetActive(true);
+        Animator.LaunchStartingAnimation();
+    }
+
     public void ActivateSocialMedia()
     {
-        _background.SetActive(true);
         _SM.gameObject.SetActive(true);
 
         ActionItemManager.instance.IsBookVisible = true;
@@ -50,7 +55,6 @@ public class SocialMediaManager : MonoBehaviour
 
     public void DeactivateSocialMedia()
     {
-        _background.SetActive(false);
         _SM.gameObject.SetActive(false);
 
         ActionItemManager.instance.IsBookVisible = false;
@@ -68,7 +72,7 @@ public class SocialMediaManager : MonoBehaviour
         _SMButton.gameObject.SetActive(false);
         ActionItemManager.instance.IsSMCompleted = true;
 
-        ActionItemManager.instance.SMMDeactivateSocialMedia();
+        Animator.LaunchExitAnimation();
 
         void CountOverallMoodImpact()
         {

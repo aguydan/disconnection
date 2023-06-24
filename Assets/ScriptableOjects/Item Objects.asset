@@ -51,7 +51,7 @@ MonoBehaviour:
       \u042D\u0442\u043E \u043D\u0435\u043F\u0440\u043E\u0444\u0435\u0441\u0441\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u0430\u044F
       \u043C\u0443\u0437\u044B\u043A\u0430, \u043D\u043E \u043E\u043D\u0430 \u0432\u0430\u0448\u0430."
   - ItemKey: lego
-    ItemSprite: {fileID: 643354969, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemSprite: {fileID: -1414421955, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
     ItemText: "\u0412\u044B \u043D\u0430\u0441\u0442\u0443\u043F\u0438\u043B\u0438
       \u043D\u0430 \u041B\u0435\u0433\u043E. \u042D\u0442\u043E \u0434\u0435\u0442\u0430\u043B\u044C
       \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u043E\u0432, \u043A\u043E\u0442\u043E\u0440\u044B\u0435
@@ -66,7 +66,7 @@ MonoBehaviour:
       \u0423 \u0432\u0430\u0441, \u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0435\u0442\u0441\u044F,
       \u043C\u043D\u043E\u0433\u043E \u0434\u0440\u0443\u0437\u0435\u0439. "
   - ItemKey: money
-    ItemSprite: {fileID: -710479716, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemSprite: {fileID: -716586265, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
     ItemText: "\u042D\u0442\u043E \u0434\u0435\u043D\u044C\u0433\u0438. \u0412\u044B
       \u0437\u0430\u0440\u0430\u0431\u0430\u0442\u044B\u0432\u0430\u0435\u0442\u0435
       \u043D\u0435\u043C\u043D\u043E\u0433\u043E, \u043D\u043E \u0432\u0440\u043E\u0434\u0435
@@ -75,7 +75,7 @@ MonoBehaviour:
       \u0436\u0435, \u0432\u044B \u0442\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u043E
       \u043D\u0430\u0448\u043B\u0438 \u043F\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435. "
   - ItemKey: note
-    ItemSprite: {fileID: 305800399, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemSprite: {fileID: -1572074187, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
     ItemText: "\u042D\u0442\u043E \u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0435.
       \u0425\u043E\u0440\u043E\u0448\u043E, \u0447\u0442\u043E \u0435\u0433\u043E
       \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u043D\u0438\u0435 \u043D\u0435 \u0438\u043C\u0435\u0435\u0442
@@ -142,7 +142,7 @@ MonoBehaviour:
       \u0447\u0442\u043E \u044D\u0442\u043E \u043F\u0440\u0438\u043D\u043E\u0441\u0438\u043B\u043E
       \u0440\u0430\u0441\u0441\u043B\u0430\u0431\u043B\u0435\u043D\u0438\u0435. "
   - ItemKey: cap
-    ItemSprite: {fileID: 1156348554, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemSprite: {fileID: 240335934, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
     ItemText: "\u042D\u0442\u043E \u043A\u0435\u043F\u043A\u0430. \u0412\u044B \u043A\u0443\u043F\u0438\u043B\u0438
       \u0435\u0451 \u0432 \u0422\u0443\u0440\u0446\u0438\u0438 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u043E
       \u043B\u0435\u0442 \u043D\u0430\u0437\u0430\u0434. \u041D\u0430\u0434\u0435\u0432\u0430\u044F
@@ -167,6 +167,42 @@ MonoBehaviour:
       \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0439 \u0432\u0441\u0442\u0440\u0435\u0447\u0438
       \u0441 \u0434\u0440\u0443\u0437\u044C\u044F\u043C\u0438. \u0411\u044B\u043B\u043E
       \u0432\u0435\u0441\u0435\u043B\u043E. \u0418 \u0432\u0430\u043C, \u0438 \u0438\u043C."
+  - ItemKey: ball
+    ItemSprite: {fileID: -2120787734, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: cheats
+    ItemSprite: {fileID: 901092645, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: clefs
+    ItemSprite: {fileID: -1556768817, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: drums
+    ItemSprite: {fileID: 325819396, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: easel
+    ItemSprite: {fileID: 1587235513, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: paint
+    ItemSprite: {fileID: -900235962, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: pig
+    ItemSprite: {fileID: -1645995398, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: redbull
+    ItemSprite: {fileID: 716038502, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: scissors
+    ItemSprite: {fileID: 647882324, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: trombone
+    ItemSprite: {fileID: 354276722, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: waffles
+    ItemSprite: {fileID: -2006117532, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: weights
+    ItemSprite: {fileID: 349160923, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
   NegativeItemObjects:
   - ItemKey: catfeeder
     ItemSprite: {fileID: -1974185374, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
@@ -202,7 +238,7 @@ MonoBehaviour:
       \u0443 \u0432\u0430\u0441 \u0441\u043E\u0432\u0441\u0435\u043C \u043D\u0435\u0442
       \u0442\u0430\u043B\u0430\u043D\u0442\u0430."
   - ItemKey: lego
-    ItemSprite: {fileID: 643354969, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemSprite: {fileID: -1414421955, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
     ItemText: "\u0412\u044B \u043D\u0430\u0441\u0442\u0443\u043F\u0438\u043B\u0438
       \u043D\u0430 \u041B\u0435\u0433\u043E. \u0412\u0430\u043C \u0431\u043E\u043B\u044C\u043D\u043E.
       \u041A\u0440\u043E\u043C\u0435 \u0442\u043E\u0433\u043E, \u044D\u0442\u0430
@@ -222,7 +258,7 @@ MonoBehaviour:
       \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u043E\u0431\u0438\u0434\u043D\u043E,
       \u0447\u0442\u043E \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u043F\u043E\u0434\u0430\u0440\u0438\u043B\u0438."
   - ItemKey: money
-    ItemSprite: {fileID: -710479716, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemSprite: {fileID: -716586265, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
     ItemText: "\u042D\u0442\u043E \u0434\u0435\u043D\u044C\u0433\u0438. \u041D\u0430\u0432\u043E\u0434\u044F\u0442
       \u0432\u0430\u0441 \u043D\u0430 \u043C\u044B\u0441\u043B\u0438 \u043E \u0442\u043E\u043C,
       \u0432 \u043A\u0430\u043A\u043E\u043C \u043C\u0435\u0441\u0442\u0435 \u043D\u0430
@@ -231,7 +267,7 @@ MonoBehaviour:
       \u0432 26 \u0438 \u043E \u0442\u043E\u043C, \u043D\u0430\u0441\u043A\u043E\u043B\u044C\u043A\u043E
       \u0432\u044B \u044D\u0442\u043E\u043C\u0443 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442\u0435. "
   - ItemKey: note
-    ItemSprite: {fileID: 305800399, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemSprite: {fileID: -1572074187, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
     ItemText: "\u042D\u0442\u043E \u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0435.
       \u0412\u0430\u043C \u043D\u0443\u0436\u043D\u043E \u0437\u0430\u043F\u043B\u0430\u0442\u0438\u0442\u044C
       \u043D\u0430\u043B\u043E\u0433\u0438."
@@ -297,7 +333,7 @@ MonoBehaviour:
       \u0440\u0430\u0431\u043E\u0442\u0430\u043C\u0438 \u0438\u0437 \u0445\u0443\u0434\u043E\u0436\u0435\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u0439
       \u0448\u043A\u043E\u043B\u044B."
   - ItemKey: cap
-    ItemSprite: {fileID: 1156348554, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+    ItemSprite: {fileID: 240335934, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
     ItemText: "\u042D\u0442\u043E \u043A\u0435\u043F\u043A\u0430. \u0416\u0430\u043B\u044C,
       \u0447\u0442\u043E \u0432\u044B \u043D\u0435 \u043D\u0430\u0448\u043B\u0438
       \u0435\u0451 \u043F\u0435\u0440\u0435\u0434 \u0442\u0435\u043C, \u043A\u0430\u043A
@@ -319,3 +355,40 @@ MonoBehaviour:
       \u043F\u043E\u043B\u043D\u044B\u0435. \u0412\u043E\u0437\u043C\u043E\u0436\u043D\u043E,
       \u0432\u044B \u0432\u044B\u0431\u0440\u0430\u043B\u0438 \u043D\u0435 \u043B\u0443\u0447\u0448\u0438\u0439
       \u043D\u0430\u043F\u0438\u0442\u043E\u043A."
+  - ItemKey: ball
+    ItemSprite: {fileID: -2120787734, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: cheats
+    ItemSprite: {fileID: 901092645, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: clefs
+    ItemSprite: {fileID: -1556768817, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: drums
+    ItemSprite: {fileID: 325819396, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: easel
+    ItemSprite: {fileID: 1587235513, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: paint
+    ItemSprite: {fileID: -900235962, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: pig
+    ItemSprite: {fileID: -1645995398, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: redbull
+    ItemSprite: {fileID: 716038502, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: scissors
+    ItemSprite: {fileID: 647882324, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: trombone
+    ItemSprite: {fileID: 354276722, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: waffles
+    ItemSprite: {fileID: -2006117532, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  - ItemKey: weights
+    ItemSprite: {fileID: 349160923, guid: bdaaea1721149d7458e4a47a0cc1674b, type: 3}
+    ItemText: 
+  ExtraNegativeItemObjects: []

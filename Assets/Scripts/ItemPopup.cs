@@ -6,6 +6,7 @@ public class ItemPopup : MonoBehaviour
 {
     [SerializeField] Image _itemImage;
     [SerializeField] Image _popupBody;
+    [SerializeField] GameObject _additionalEffect;
     [SerializeField] Sprite[] _possibleBodies;
     [SerializeField] TextMeshProUGUI _itemText;
     [SerializeField] ItemObjects itemObjects;
@@ -14,6 +15,7 @@ public class ItemPopup : MonoBehaviour
 
     public void UpdateItemPopupPositive(string key)
     {
+        _additionalEffect.SetActive(false);
         _popupBody.sprite = _possibleBodies[0];
         
         foreach (ItemObject itemObject in itemObjects.PositiveItemObjects)
@@ -21,7 +23,6 @@ public class ItemPopup : MonoBehaviour
             if (itemObject.ItemKey == key)
             {
                 _currentItemObject = itemObject;
-                Debug.Log(itemObject.ItemKey + " " + key);
                 break;
             }
         }
@@ -35,10 +36,38 @@ public class ItemPopup : MonoBehaviour
         _itemText.text = _currentItemObject.ItemText;
     }
 
-    public void UpdateItemPopupNegative(string key)
+    public void UpdateItemPopupNegative(string key, bool isAffectingMood)
     {
-        _popupBody.sprite = _possibleBodies[1];
+        if (isAffectingMood)
+        {
+            _popupBody.sprite = _possibleBodies[2];
+            _additionalEffect.SetActive(true);
+
+            // foreach (ItemObject itemObject in itemObjects.ExtraNegativeItemObjects)
+            // {
+            //     if (itemObject.ItemKey == key)
+            //     {
+            //         _currentItemObject = itemObject;
+            //         break;
+            //     }
+            // }
+        }
+        else
+        {
+            _popupBody.sprite = _possibleBodies[1];
+            _additionalEffect.SetActive(false);
+
+            // foreach (ItemObject itemObject in itemObjects.NegativeItemObjects)
+            // {
+            //     if (itemObject.ItemKey == key)
+            //     {
+            //         _currentItemObject = itemObject;
+            //         break;
+            //     }
+            // }
+        }
         
+        //replace this
         foreach (ItemObject itemObject in itemObjects.NegativeItemObjects)
         {
             if (itemObject.ItemKey == key)

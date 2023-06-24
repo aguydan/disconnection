@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinaleHero : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class FinaleHero : MonoBehaviour
     
     void Update()
     {
-        if (FinaleGameManager.Instance.StopPlayerInput)
+        if (FinaleGameManager.Instance.StopPlayerInput || SceneManager.GetActiveScene().name == "BadEnding")
         {
             return;
         }

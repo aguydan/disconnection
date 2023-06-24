@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 [System.Serializable]
 public class WinningConstellation
@@ -38,8 +39,9 @@ public class TelescopeDisplay : MonoBehaviour
             
             if (i == winningIndex)
             {
+                Item winningItem = ItemSpawner.Instance.winningItem;
                 //НА ОСНОВЕ ВИННИНГ СПРАЙТА!!!!
-                constell.sprite = _winningStars[0].Sprite;
+                constell.sprite = _winningStars.Single(constell => constell.ItemName == winningItem.look.sprite.name).Sprite;
             }
             else
             {

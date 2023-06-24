@@ -43,29 +43,11 @@ public class MainMenu : MonoBehaviour
                 _beginScreenItems.SetActive(true);
             }
 
-            yield return TypeText(_messages[i]);
+            yield return Utils.TypeText(_messages[i], _textOutput);
             _beginScreenItems.SetActive(false);
         }
 
         SoundManager.Instance.StopMusic();
         yield return MenuGameManager.Instance.ContinueToNextScene("Game");
     }
-
-    IEnumerator TypeText(string message)
-    {
-        char[] characterArray = message.ToCharArray();
-        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[11]);
-
-        foreach (char letter in characterArray)
-        {
-            _textOutput.text += letter;
-            yield return new WaitForSeconds(.08f);
-        }
-
-        SoundManager.Instance.StopEffects();
-
-        yield return new WaitForSeconds(1f);
-    }
-
-
 }

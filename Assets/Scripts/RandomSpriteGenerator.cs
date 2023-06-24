@@ -7,9 +7,13 @@ public class ItemSprite
 {
     public enum ItemCategory 
     {
-        Instrument,
-        Toy,
-        Book
+        Instruments,
+        Toys,
+        Sports,
+        Art,
+        Everyday,
+        Archives,
+        Food
     }
     
     public string Name;

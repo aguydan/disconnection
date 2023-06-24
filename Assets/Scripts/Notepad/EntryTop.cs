@@ -12,6 +12,7 @@ public class EntryTop : MonoBehaviour
     [SerializeField] private Button _moodButton;
 
     public ItemSprite.ItemCategory Category;
+    public GameObject Cross;
 
     public void SetLabel(string label)
     {

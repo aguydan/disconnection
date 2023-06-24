@@ -23,8 +23,18 @@ public class Hero : MonoBehaviour
     
     void Update()
     {
-        if (StopReceivingInput) return;
-        
+        if (StopReceivingInput)
+        {
+            return;
+        }
+        else
+        {
+            MovePlayer();
+        }
+    }
+
+    private void MovePlayer()
+    {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -91,6 +101,11 @@ public class Hero : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (StopReceivingInput)
+        {
+            return;
+        }
+        
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
         heroPosition = transform.position;
     }

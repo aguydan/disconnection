@@ -1593,6 +1593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7485350417528887075, guid: 34191537a8103df4a857743ff5ff1453, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 361693185213047001, guid: 34191537a8103df4a857743ff5ff1453, type: 3}
       propertyPath: m_Name
       value: Hero Variant

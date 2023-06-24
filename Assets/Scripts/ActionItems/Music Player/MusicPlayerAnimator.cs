@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MusicPlayerAnimator : MonoBehaviour
+{
+    [SerializeField] private Animator _MPProper;
+    [SerializeField] private RectTransform _soundwaves;
+    
+    [SerializeField] private GameObject _guard;
+
+    public void Update()
+    {
+        _soundwaves.localScale = new Vector3(1, AIMPManager.Instance.Volume * 1.5f, 1);
+    }
+    
+    public void LaunchStartingAnimation()
+    {
+        _guard.SetActive(true);
+    }
+
+    public void LaunchStartingTrigger()
+    {
+        ActionItemManager.instance.ActivateMusicPlayer();
+        _soundwaves.gameObject.SetActive(true);
+        _guard.SetActive(false);
+    }
+
+    public void LaunchExitAnimation()
+    {
+        ActionItemManager.instance.DeactivateMusicPlayer();
+        _MPProper.Play("exitMusicPlayer");
+        _soundwaves.gameObject.SetActive(false);
+        _guard.SetActive(true);
+    }
+
+    public void LaunchExitTrigger()
+    {
+        _guard.SetActive(false);
+        gameObject.SetActive(false);
+    }
+}

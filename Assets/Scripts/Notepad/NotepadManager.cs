@@ -19,15 +19,19 @@ public class NotepadManager : MonoBehaviour
     [SerializeField] private EntryGridCell _entryGridCellPrefab;
 
     [SerializeField] private GameObject _background;
-    [SerializeField] private Animator _cutsceneScreen;
+    [SerializeField] private Cutscene _cutscene;
 
     public bool IsNotepadVisible = false;
     
     private Dictionary<ItemSprite.ItemCategory, NotepadEntry> _spawnedEntries = new Dictionary<ItemSprite.ItemCategory, NotepadEntry>();
     private Dictionary<ItemSprite.ItemCategory, string> _categDisplayNames = new Dictionary<ItemSprite.ItemCategory, string>{
-        {ItemSprite.ItemCategory.Instrument, "Инструменты"},
-        {ItemSprite.ItemCategory.Toy, "Игрушки"},
-        {ItemSprite.ItemCategory.Book, "Книги"},
+        {ItemSprite.ItemCategory.Everyday, "Повседневные"},
+        {ItemSprite.ItemCategory.Instruments, "Инструменты"},
+        {ItemSprite.ItemCategory.Toys, "Игрушки"},
+        {ItemSprite.ItemCategory.Sports, "Спорт"},
+        {ItemSprite.ItemCategory.Art, "Творчество"},
+        {ItemSprite.ItemCategory.Archives, "Архивы"},
+        {ItemSprite.ItemCategory.Food, "Еда"},
     };
     
     private void Awake()
@@ -58,6 +62,7 @@ public class NotepadManager : MonoBehaviour
             if (pair.Value.IsCompleted && !pair.Value.IsCompletionRewardUsed)
             {
                 entry.EntryTop.ChangeButtonInteractivity(true);
+                entry.EntryTop.Cross.SetActive(true);
             }
             else
             {
@@ -72,7 +77,7 @@ public class NotepadManager : MonoBehaviour
                 cell.CellImage.sprite = item.IsGathered ? item.Sprite : item.GrayscaleSprite;
                 cell.CellImage.SetNativeSize();
                 cell.CellImage.preserveAspect = true;
-                cell.CellImage.rectTransform.sizeDelta = new Vector2(cell.CellImage.rectTransform.sizeDelta.x, 12);
+                cell.CellImage.rectTransform.sizeDelta = new Vector2(cell.CellImage.rectTransform.sizeDelta.x, 8);
 
                 entry.Cells.Add(cell);
             }
@@ -126,6 +131,8 @@ public class NotepadManager : MonoBehaviour
             info.IsCompleted = true;
             //всё что касается завершения
             entry.EntryTop.ChangeButtonInteractivity(true);
+            entry.EntryTop.Cross.SetActive(true);
+            _notepadButton.GetComponent<Animator>().Play("ButtonReady");
         }
 
         Scoring.NotepadCategories[item.Category] = info;
@@ -152,9 +159,34 @@ public class NotepadManager : MonoBehaviour
         Scoring.NotepadCategories[cat] = info;
         
         ScoreManager.instance.IncreaseMood(6);
-        DeactivateNotepad();
-        _cutsceneScreen.gameObject.SetActive(true);
+        _cutscene.gameObject.SetActive(true);
+
         //играть катсцену с анимацией (наверно просто преобразуем категорию в стринг названия анимации
+        switch (cat)
+        {
+            case ItemSprite.ItemCategory.Instruments:
+                _cutscene.Animator.Play("MoodInstruments");
+            break;
+            case ItemSprite.ItemCategory.Archives:
+                _cutscene.Animator.Play("MoodArchives");
+            break;
+            case ItemSprite.ItemCategory.Art:
+                _cutscene.Animator.Play("MoodArt");
+            break;
+            case ItemSprite.ItemCategory.Everyday:
+                _cutscene.Animator.Play("MoodEveryday");
+            break;
+            case ItemSprite.ItemCategory.Food:
+                _cutscene.Animator.Play("MoodFood");
+            break;
+            case ItemSprite.ItemCategory.Sports:
+                _cutscene.Animator.Play("MoodSports");
+            break;
+            case ItemSprite.ItemCategory.Toys:
+                _cutscene.Animator.Play("MoodToys");
+            break;
+        }
+        
         StartCoroutine(TestCoroutine());
 
     }
@@ -170,7 +202,10 @@ public class NotepadManager : MonoBehaviour
 
     private IEnumerator TestCoroutine()
     {
-        yield return new WaitForSeconds(2f);
-        _cutsceneScreen.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.001f);
+        _cutscene.Image.SetNativeSize();
+        
+        yield return new WaitForSeconds(2.6f);
+        _cutscene.gameObject.SetActive(false);
     }
 }

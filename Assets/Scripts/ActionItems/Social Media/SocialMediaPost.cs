@@ -27,8 +27,6 @@ public class SocialMediaPost : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPostClick()
     {
-        //МОЖЕТ НАДО СДЕЛАТЬ ПОПАП КОТОРЫЙ ПРОСТО ПРОДУБЛИРУЕТ ПОСТ И ПОКАЖЕТ ЭФФЕКТ
-        
         switch (Type)
         {
             case PostType.Positive:
@@ -38,7 +36,7 @@ public class SocialMediaPost : MonoBehaviour, IPointerEnterHandler, IPointerExit
                 }
                 else
                 {
-                    ScoreManager.instance.IncreaseEscapism(); //точно 20????
+                    ScoreManager.instance.IncreaseEscapism(5);
                 }
 
                 _manager.ImpactSigns.text += "+";

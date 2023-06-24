@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890208649022106032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.32, y: 0.23, z: 0}
-  m_LocalScale: {x: 1.8585098, y: 1.2121094, z: 1}
+  m_LocalPosition: {x: 0.62, y: -2.95, z: 0}
+  m_LocalScale: {x: 3.6705568, y: 1.9999806, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3091368459672812550}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3091368459672812550}
   - component: {fileID: 3091368459672812545}
   - component: {fileID: 3091368459672812551}
-  - component: {fileID: 2212266665257232771}
+  - component: {fileID: 6370514207062582153}
   m_Layer: 7
   m_Name: Telescope
   m_TagString: Untagged
@@ -111,8 +111,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3091368459672812544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.45, y: -1.47, z: 0}
-  m_LocalScale: {x: 1.2741, y: 1.2741, z: 1.2741}
+  m_LocalPosition: {x: -0.41, y: 1.19, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 430700317062929892}
@@ -160,8 +160,8 @@ SpriteRenderer:
   m_SortingLayerID: -1311786185
   m_SortingLayer: 2
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: 348bb8d5ad33e7d4da3b254423d2562a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 37787d8235a9a0f45a3b155c6142d7d8, type: 3}
+  m_Color: {r: 0.8479441, g: 0.9071308, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e556ce59a09b994aa5cb2e8288fa1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &2212266665257232771
+--- !u!61 &6370514207062582153
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,16 +196,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2709389, y: 0.64755213}
+  m_Offset: {x: 0.63026464, y: -1.7207226}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2.44, y: 2.97}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.54, y: 6.78}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.95229846, y: 1.2951043}
+  m_Size: {x: 1.9184792, y: 3.3385556}
   m_EdgeRadius: 0

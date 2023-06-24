@@ -1,14 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Utils
 {
-    public static bool RectOverlaps(RectTransform rectTrans1, RectTransform rectTrans2)
-{
-    Rect rect1 = new Rect(rectTrans1.localPosition.x, rectTrans1.localPosition.y, rectTrans1.rect.width, rectTrans1.rect.height);
-    Rect rect2 = new Rect(rectTrans2.localPosition.x, rectTrans2.localPosition.y, rectTrans2.rect.width, rectTrans2.rect.height);
+    public static IEnumerator TypeText(string message, TextMeshProUGUI textOutput)
+    {
+        char[] characterArray = message.ToCharArray();
+        SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[11]);
 
-    return rect1.Overlaps(rect2);
-}
+        foreach (char letter in characterArray)
+        {
+            textOutput.text += letter;
+            yield return new WaitForSeconds(.08f);
+        }
+
+        SoundManager.Instance.StopEffects();
+
+        yield return new WaitForSeconds(1f);
+    }
 }

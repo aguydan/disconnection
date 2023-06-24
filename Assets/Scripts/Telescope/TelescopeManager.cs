@@ -31,7 +31,6 @@ public class TelescopeManager : MonoBehaviour
     public void SetTelescopeRoomIndex()
     {
         Scoring.TelescopeRoomIndex = Random.Range(1, 5);
-        Debug.Log(Scoring.TelescopeRoomIndex);
         Scoring.IsTelescopeIndexSet = true;
     }
 
@@ -47,6 +46,7 @@ public class TelescopeManager : MonoBehaviour
 
         CursorManager.Instance.ChangeCursorVisibility(false);
         _hero.StopReceivingInput = true;
+        SoundManager.Instance.StopFootsteps();
         _telescopeDisplay.gameObject.SetActive(true);
     }
 

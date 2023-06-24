@@ -22,7 +22,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
 
     private void Update()
     {
-        if (!(SceneManager.GetActiveScene().name == "Finale"))
+        if (!(SceneManager.GetActiveScene().name == "Finale" || SceneManager.GetActiveScene().name == "BadEnding"))
         {
             distanceToHero = Vector2.Distance(transform.position, GameManager.instance.heroPosition);
         }
@@ -51,14 +51,14 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         }
         else
         {
-            SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[2]);
             NotepadManager.Instance.UpdateNotepad(gameObject.GetComponent<Item>());
             
             if (hasPositivePoints && distanceToHero < 4)
             {
+                SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[2]);
                 Scoring.WinningItemSprites.Add(look.sprite);
                 
-                ScoreManager.instance.IncreaseEscapism();
+                ScoreManager.instance.IncreaseEscapism(20);
                 if (ActionItemManager.instance.IsActionItemCreated)
                 {
                     WhatActionItemToDeactivate(ActionItemManager.instance._whoDid);
@@ -70,6 +70,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             }
             else if (distanceToHero < 4)
             {
+                SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[2]);
                 ScoreManager.instance.DecreaseEscapism();
                 
                 if (ActionItemManager.instance.HasMusicPlayerStarted)
@@ -79,7 +80,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
                     {
                         SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[9]);
                         ActionItemManager.instance.IsPlayerCompleted = true;
-                        ActionItemManager.instance.DeactivateMusicPlayer();
+                        AIMPManager.Instance.Animator.LaunchExitAnimation();
                     }
                 }
 
@@ -103,7 +104,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             {
                 case "musicPlayer":
                     ActionItemManager.instance.IsPlayerCompleted = true;
-                    ActionItemManager.instance.DeactivateMusicPlayer();
+                    AIMPManager.Instance.Animator.LaunchExitAnimation();
                 break;
                 case "VR":
                     ActionItemManager.instance.IsVRCompleted = true;

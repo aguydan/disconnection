@@ -8,9 +8,17 @@ public class AIMPManager : MonoBehaviour
     [SerializeField] AudioClip[] _AIMPSongs;
     [SerializeField] VolumeBasedOnDistance _volumeCalculator;
 
+    public MusicPlayerAnimator Animator;
+    public float Volume;
+
+    public static AIMPManager Instance;
+    
+    private void Awake() => Instance = this;
+    
     private void Update()
     {
         _AIMPSource.volume = _volumeCalculator.VolumeScaler;
+        Volume = _AIMPSource.volume;
     }
     
     public void PlayVolumeControlSong()
@@ -36,5 +44,11 @@ public class AIMPManager : MonoBehaviour
         {
             Scoring.AIMPSongIndex = 0;
         }
+    }
+
+    public void ActivateMusicPlayerProper()
+    {
+        Animator.gameObject.SetActive(true);
+        Animator.LaunchStartingAnimation();
     }
 }

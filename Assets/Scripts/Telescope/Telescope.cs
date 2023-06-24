@@ -11,6 +11,8 @@ public class Telescope : MonoBehaviour
     private Hero _hero;
     private bool _isInRange = false;
     private float _distanceToPlayer;
+    private int _keyPresses = 0;
+    private bool _isMoodBoostGranted = false;
 
     public void Init(TextMeshProUGUI text, Hero hero, TelescopeManager manager)
     {
@@ -30,7 +32,7 @@ public class Telescope : MonoBehaviour
             _isInRange = true;
             _text.alpha = 1;
         }
-        else if (_distanceToPlayer >= 4)
+        else if (_distanceToPlayer >= 4 && _distanceToPlayer < 7)
         {
             _isInRange = true;
             _text.alpha = 1 - (_distanceToPlayer / 6);
@@ -50,6 +52,14 @@ public class Telescope : MonoBehaviour
             else
             {
                 _manager.DisableTelescopeDisplay();
+            }
+
+            _keyPresses++;
+
+            if (_keyPresses >= 2 && !_isMoodBoostGranted)
+            {
+                ScoreManager.instance.IncreaseMood(2);
+                _isMoodBoostGranted = true;
             }
         }
     }

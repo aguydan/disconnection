@@ -9,11 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7133583950381936240, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.37506
+      value: 1.3227273
       objectReference: {fileID: 0}
     - target: {fileID: -7133583950381936240, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.94375
+      value: 1.6181818
       objectReference: {fileID: 0}
     - target: {fileID: 3093117428809481580, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
       propertyPath: m_RootOrder
@@ -62,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 3093117428809481581, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -383106487, guid: 9ab08489462aa0b4c84de90d1f5b0bbe, type: 3}
+      objectReference: {fileID: 829545401, guid: 28f76139dcbb87f4a96b3e6c578a77ca, type: 3}
     - target: {fileID: 3093117428809481582, guid: 3a058ef9023042a4a82e81ac98c248ae, type: 3}
       propertyPath: m_Name
       value: Social Media

@@ -24,7 +24,15 @@ public class UIManager : MonoBehaviour
 
     public void CallItemPopupNegative(string key)
     {
-        itemPopup.UpdateItemPopupNegative(key);
+        bool isAffectingMood = false;
+        
+        if (Random.Range(0, 4) == 0)
+        {
+            isAffectingMood = true;
+            ScoreManager.instance.DecreaseMood(2);
+        }
+        
+        itemPopup.UpdateItemPopupNegative(key, isAffectingMood);
         itemPopup.gameObject.SetActive(true);
         IsPopupActive = true;
     }

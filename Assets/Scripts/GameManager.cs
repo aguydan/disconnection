@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
+        AIMPManager.Instance.StopVolumeControlSong();
         SoundManager.Instance.StopEffects();
         _gameOverBlack.SetActive(true);
 

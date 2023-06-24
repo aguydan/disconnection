@@ -13,4 +13,5 @@ public class ItemObjects : ScriptableObject
 {
     public ItemObject[] PositiveItemObjects;
     public ItemObject[] NegativeItemObjects;
+    public ItemObject[] ExtraNegativeItemObjects;
 }
