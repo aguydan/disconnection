@@ -11,7 +11,8 @@ public class MusicPlayerAnimator : MonoBehaviour
 
     public void Update()
     {
-        _soundwaves.localScale = new Vector3(1, AIMPManager.Instance.Volume * 1.5f, 1);
+        _soundwaves.localScale = new Vector3(0.9f, AIMPManager.Instance.Volume * 1.2f, 0);
+        _soundwaves.transform.position = new Vector3(207.34f, 215.36f + AIMPManager.Instance.Volume * 32, 0);
     }
     
     public void LaunchStartingAnimation()

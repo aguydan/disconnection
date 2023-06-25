@@ -13,33 +13,26 @@ MonoBehaviour:
   m_Name: SM Posts
   m_EditorClassIdentifier: 
   PositivePosts:
-  - Category: 2
-    Sprite: {fileID: 21300000, guid: d55b94460a44e3a4c88c0aaa49c7b673, type: 3}
-  - Category: 0
-    Sprite: {fileID: 21300000, guid: 2b7f8f01299d4f940a7458675d982c3c, type: 3}
-  - Category: 1
-    Sprite: {fileID: 21300000, guid: 49b5e3e901532034ebc2c3d3efb32510, type: 3}
   - Category: 3
-    Sprite: {fileID: 21300000, guid: 49b5e3e901532034ebc2c3d3efb32510, type: 3}
-  - Category: 4
-    Sprite: {fileID: 21300000, guid: 49b5e3e901532034ebc2c3d3efb32510, type: 3}
+    Sprite: {fileID: 1076448288, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
   - Category: 5
-    Sprite: {fileID: 21300000, guid: 49b5e3e901532034ebc2c3d3efb32510, type: 3}
+    Sprite: {fileID: -1215561206, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - Category: 4
+    Sprite: {fileID: -681334044, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - Category: 2
+    Sprite: {fileID: -1168064749, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - Category: 1
+    Sprite: {fileID: 634751052, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - Category: 0
+    Sprite: {fileID: -1207003323, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
   - Category: 6
-    Sprite: {fileID: 21300000, guid: 49b5e3e901532034ebc2c3d3efb32510, type: 3}
+    Sprite: {fileID: -512736149, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
   NegativePosts:
-  - {fileID: 21300000, guid: 68b63e41011a8e348bc8b42adf2ab7ca, type: 3}
-  - {fileID: 21300000, guid: 68b63e41011a8e348bc8b42adf2ab7ca, type: 3}
-  - {fileID: 21300000, guid: 68b63e41011a8e348bc8b42adf2ab7ca, type: 3}
-  - {fileID: 21300000, guid: 68b63e41011a8e348bc8b42adf2ab7ca, type: 3}
-  SecretPosts:
-  - Sprite: {fileID: 21300000, guid: 0d14c8a3849b68a41a7e4322b9376f92, type: 3}
-    Comments:
-    - Sprite: {fileID: 21300000, guid: 2d1b28fbad0a732458557acb12815e2d, type: 3}
-      IsWinningComment: 1
-    - Sprite: {fileID: 21300000, guid: 9c090fb61e111b1458b96cfd58f22430, type: 3}
-      IsWinningComment: 0
-  - Sprite: {fileID: 21300000, guid: 0d14c8a3849b68a41a7e4322b9376f92, type: 3}
-    Comments:
-    - Sprite: {fileID: 21300000, guid: 9c090fb61e111b1458b96cfd58f22430, type: 3}
-      IsWinningComment: 1
+  - {fileID: -2118132582, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - {fileID: 890970106, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - {fileID: -1082824909, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - {fileID: 1705819345, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - {fileID: -1816396114, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - {fileID: -664276135, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  - {fileID: 1569914294, guid: 67026c1f6118540479d24c99846ae67a, type: 3}
+  SecretPosts: []

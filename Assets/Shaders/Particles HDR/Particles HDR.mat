@@ -41,7 +41,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _ColorHDR: {r: 152.30013, g: 152.30013, b: 152.30013, a: 1}
+    - _ColorHDR: {r: 89.45409, g: 89.45409, b: 89.45409, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &984496213632140452
 MonoBehaviour:

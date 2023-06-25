@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class NotepadButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    [SerializeField] private Animator _animator;
+    
     public void OnPointerDown(PointerEventData eventData)
     {
         NotepadManager.Instance.IsNotepadVisible = true;
@@ -15,6 +17,7 @@ public class NotepadButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         CursorManager.Instance.StopAutomaticCursor = true;
         
         CursorManager.Instance.EnableFingerCursor();
+        _animator.Play("NotepadButtonHover");
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -25,5 +28,7 @@ public class NotepadButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
             CursorManager.Instance.EnableCanGrabCursor();
         }
+
+        _animator.Play("New State");
     }
 }

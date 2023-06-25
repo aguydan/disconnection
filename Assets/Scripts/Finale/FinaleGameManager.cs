@@ -13,6 +13,9 @@ public class FinaleGameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _selfTypingText;
     [SerializeField] string[] _messages;
 
+    [SerializeField] private Animator _hero;
+    [SerializeField] private GameObject _fireStarter;
+
     public static FinaleGameManager Instance;
     public bool StopPlayerInput = false;
 
@@ -39,15 +42,43 @@ public class FinaleGameManager : MonoBehaviour
 
     private IEnumerator BadEndingSequence()
     {
+        _hero.Play("CharBadEndIdle");
+        
         yield return new WaitForSeconds(2f);
 
         for (int i = 0; i < _messages.Length; i++)
         {
             _selfTypingText.text = "";
 
-            if (i == 2) WinningItemSpawner.Instance.SpawnFiresOnItems();
-
+            if (i == 2)
+            {
+                _hero.Play("CharBadEnd1");
+                yield return new WaitForSeconds(1f);
+            }
+            
             yield return Utils.TypeText(_messages[i], _selfTypingText);
+
+            if (i == 3)
+            {
+                _hero.Play("CharBadEnd2");
+                yield return new WaitForSeconds(1f);
+            }
+
+            if (i == 6)
+            {
+                _hero.Play("CharBadEnd3");
+                _fireStarter.SetActive(true);
+            }
+
+            if (i == 7)
+            {
+                StartCoroutine(WinningItemSpawner.Instance.SpawnFiresOnItems());
+            }
+
+            if (i == 8)
+            {
+                yield return new WaitForSeconds(5f);
+            }
         }
 
         _finaleScreen.gameObject.SetActive(true);

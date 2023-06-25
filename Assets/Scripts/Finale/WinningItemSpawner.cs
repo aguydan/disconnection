@@ -49,23 +49,23 @@ public class WinningItemSpawner : MonoBehaviour
         
         float itemCount = Scoring.WinningItemSprites.Count;
 
-        for (int i = 0; i < _debugSprites.Length; i++) //itemCount!!!
+        for (int i = 0; i < itemCount; i++)
         {
             Vector2 spawnPosition = new Vector2(Random.Range(-4f, 2.2f), Random.Range(-2.2f, -6.4f));
 
             Item item = Instantiate(_itemPrefab, spawnPosition, Quaternion.Euler(0, 0, Random.Range(0, 40)));
-            item.look.sprite = _debugSprites[i];
-            // item.look.sprite = Scoring.WinningItemSprites[i];
+            item.look.sprite = Scoring.WinningItemSprites[i];
 
             _itemsBad.Add(item);
         }
     }
 
-    public void SpawnFiresOnItems()
+    public IEnumerator SpawnFiresOnItems()
     {
         foreach (Item item in _itemsBad)
         {
             Instantiate(_firePrefab, item.transform.position, _firePrefab.transform.rotation);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }

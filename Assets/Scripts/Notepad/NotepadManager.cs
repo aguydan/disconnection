@@ -63,6 +63,7 @@ public class NotepadManager : MonoBehaviour
             {
                 entry.EntryTop.ChangeButtonInteractivity(true);
                 entry.EntryTop.Cross.SetActive(true);
+                _notepadButton.GetComponent<Animator>().Play("ButtonReady");
             }
             else
             {
@@ -206,6 +207,9 @@ public class NotepadManager : MonoBehaviour
         _cutscene.Image.SetNativeSize();
         
         yield return new WaitForSeconds(2.6f);
+
+        _cutscene.GetComponent<Animator>().Play("CutsceneDisable");
+        yield return new WaitForSeconds(0.8f);
         _cutscene.gameObject.SetActive(false);
     }
 }

@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596516384652612482, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.6
+      value: 4.28
       objectReference: {fileID: 0}
     - target: {fileID: 596516384652612482, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.77
+      value: 4.4303427
       objectReference: {fileID: 0}
     - target: {fileID: 766602069063495473, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_Size.x
@@ -34,7 +34,11 @@ PrefabInstance:
     - target: {fileID: 766602069063495473, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -728120689, guid: e51ed3825e3af9241954c6652fddf819, type: 3}
+      objectReference: {fileID: -578108617, guid: 2a13c853ab9a4c74b8b94f8cff266c5e, type: 3}
+    - target: {fileID: 766602069063495473, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 812329348678277292, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_Name
       value: InteractableFurniture Variant 6

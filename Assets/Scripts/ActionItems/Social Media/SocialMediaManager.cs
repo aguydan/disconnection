@@ -63,9 +63,9 @@ public class SocialMediaManager : MonoBehaviour
         ActionItemManager.instance.IsActionItemCurrentlyVisible = false;
     }
 
-    public void FinishSocialMedia()
+    public IEnumerator FinishSocialMedia()
     {
-        //ЭТО БУДЕТ КОРУТИНА
+        yield return new WaitForSeconds(1f);
 
         CountOverallMoodImpact();
         
@@ -118,12 +118,12 @@ public class SocialMediaManager : MonoBehaviour
         
         PositivePost[] pp = _posts.PositivePosts;
         Sprite[] np = _posts.NegativePosts;
-        SecretPost[] secretPosts = _posts.SecretPosts;
+        // SecretPost[] secretPosts = _posts.SecretPosts;
 
         System.Random rng = new System.Random();
         rng.Shuffle(pp);
         rng.Shuffle(np);
-        rng.Shuffle(secretPosts);
+        // rng.Shuffle(secretPosts);
         
         IEnumerable<PositivePost> positivePosts = pp;
         IEnumerable<Sprite> negativePosts = np;
@@ -132,11 +132,14 @@ public class SocialMediaManager : MonoBehaviour
 
         void CreateArrayOfPosts()
         {
-            Sprite posSprite1 = positivePosts.Single(post => post.Category == winningCateg).Sprite;
-            Sprite posSprite2 = positivePosts.First(post => post.Category != winningCateg).Sprite;
+            Sprite mainSprite = positivePosts.Single(post => post.Category == winningCateg).Sprite;
+            Sprite[] secondSprites = new Sprite[2];
             
-            Sprite secretSprite = secretPosts[0].Sprite;
-            CreateSecretPostComments(secretPosts[0]);
+            secondSprites[0] = positivePosts.First(post => post.Category != winningCateg).Sprite;
+            secondSprites[1] = positivePosts.First(post => (post.Category != winningCateg) && (post.Sprite != secondSprites[0])).Sprite;
+            
+            // Sprite secretSprite = secretPosts[0].Sprite;
+            // CreateSecretPostComments(secretPosts[0]);
 
             Sprite[] negSprites = negativePosts.Take(_amountOfNegativePosts).ToArray();
             
@@ -148,9 +151,9 @@ public class SocialMediaManager : MonoBehaviour
                 
                 if (i < negSprites.Length) post.Init(PostType.Negative, negSprites[i], this);
 
-                if (i == negSprites.Length) post.Init(PostType.Positive, posSprite1, this, true);
-                if (i == negSprites.Length + 1) post.Init(PostType.Positive, posSprite2, this);
-                if (i == negSprites.Length + 2) post.Init(PostType.Secret, secretSprite, this);
+                if (i == negSprites.Length) post.Init(PostType.Positive, mainSprite, this, true);
+                if (i == negSprites.Length + 1) post.Init(PostType.Positive, secondSprites[0], this);
+                if (i == negSprites.Length + 2) post.Init(PostType.Positive, secondSprites[1], this);
 
                 _finalPosts[i] = post;
             }
@@ -159,25 +162,25 @@ public class SocialMediaManager : MonoBehaviour
             
             foreach (SocialMediaPost post in _finalPosts)
             {
-                post.transform.SetParent(_SM.Content);
+                post.transform.SetParent(_SM.Content, false);
             }
 
             foreach (Comment comment in _finalComments)
             {
-                comment.transform.SetParent(_SM.Content);
+                comment.transform.SetParent(_SM.Content, false);
                 comment.gameObject.SetActive(false);
             }
         }
 
-        void CreateSecretPostComments(SecretPost post)
-        {
-            foreach (CommentData data in post.Comments)
-            {
-                Comment comment = Instantiate(_commentPrefab);
-                comment.Init(data.Sprite, this, data.IsWinningComment);
-                _finalComments.Add(comment);
-            }
-        }
+        // void CreateSecretPostComments(SecretPost post)
+        // {
+        //     foreach (CommentData data in post.Comments)
+        //     {
+        //         Comment comment = Instantiate(_commentPrefab);
+        //         comment.Init(data.Sprite, this, data.IsWinningComment);
+        //         _finalComments.Add(comment);
+        //     }
+        // }
     }
 
     public void ChangeSecretPostState(bool isOpen)

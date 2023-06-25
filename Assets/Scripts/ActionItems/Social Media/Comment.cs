@@ -21,10 +21,12 @@ public class Comment : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (IsWinning)
         {
             _manager.ImpactSigns.text += "+";
+            _manager.ImpactSigns.GetComponent<Animator>().Play("Score Sign");
         }
         else
         {
             _manager.ImpactSigns.text += "-";
+            _manager.ImpactSigns.GetComponent<Animator>().Play("Score Sign");
         }
 
         _manager.Tries--;
@@ -32,7 +34,7 @@ public class Comment : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (_manager.Tries == 0)
         {
-            _manager.FinishSocialMedia();
+            StartCoroutine(_manager.FinishSocialMedia());
         }
     }
 

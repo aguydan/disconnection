@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class VRManager : MonoBehaviour
@@ -9,6 +10,9 @@ public class VRManager : MonoBehaviour
     [SerializeField] private Button _VRButton;
     [SerializeField] private Button _upperVRButton;
 
+    [SerializeField] private Volume _volume;
+    [SerializeField] private VolumeProfile _mainProfile;
+    
     public int AmountOfVRs = 0;
     bool _hasVRStarted = false;
     int _wrongItemsAmount;
@@ -40,6 +44,7 @@ public class VRManager : MonoBehaviour
         _VR.UpdateWrongItems();
         _VR.DecreaseWrongItemsSortingOrder();
         _VR.TurnItemsBack();
+        _volume.profile = _mainProfile;
         
         _VR.UpdateInteractableColliders(false);
         _upperVRButton.gameObject.SetActive(false);

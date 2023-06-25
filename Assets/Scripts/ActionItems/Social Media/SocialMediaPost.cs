@@ -40,10 +40,12 @@ public class SocialMediaPost : MonoBehaviour, IPointerEnterHandler, IPointerExit
                 }
 
                 _manager.ImpactSigns.text += "+";
+                _manager.ImpactSigns.GetComponent<Animator>().Play("Score Sign");
                 _manager.Tries--;
             break;
             case PostType.Negative:
                 _manager.ImpactSigns.text += "-";
+                _manager.ImpactSigns.GetComponent<Animator>().Play("Score Sign");
                 _manager.Tries--;
             break;
             case PostType.Secret:
@@ -53,7 +55,7 @@ public class SocialMediaPost : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         if (_manager.Tries == 0)
         {
-            _manager.FinishSocialMedia();
+            StartCoroutine(_manager.FinishSocialMedia());
         }
 
         GetComponent<Button>().interactable = false;

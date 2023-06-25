@@ -9,12 +9,15 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] Image _beginScreen;
     [SerializeField] GameObject _beginScreenItems;
+    [SerializeField] GameObject _scoreItems;
     [SerializeField] TextMeshProUGUI _textOutput;
     [SerializeField] string[] _messages;
+
+    private Coroutine _currentCoroutine;
     
     public void StartGame()
     {
-        StartCoroutine(BeginScreen());
+        _currentCoroutine = StartCoroutine(BeginScreen());
     }
 
     public void QuitGame()
@@ -43,11 +46,30 @@ public class MainMenu : MonoBehaviour
                 _beginScreenItems.SetActive(true);
             }
 
+            if (i == 6)
+            {
+                _beginScreenItems.SetActive(false);
+                // SoundManager.Instance.PlayEffectUnopposed(SoundManager.Instance.Effects[9]);
+                _scoreItems.SetActive(true);
+            }
+
+            if (i == 9)
+            {
+                _scoreItems.SetActive(false);
+            }
+
+
             yield return Utils.TypeText(_messages[i], _textOutput);
-            _beginScreenItems.SetActive(false);
         }
 
         SoundManager.Instance.StopMusic();
         yield return MenuGameManager.Instance.ContinueToNextScene("Game");
+    }
+
+    public void SkipBeginScreen()
+    {
+        StopCoroutine(_currentCoroutine);
+        SoundManager.Instance.StopMusic();
+        StartCoroutine(MenuGameManager.Instance.ContinueToNextScene("Game"));
     }
 }

@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 766602069063495473, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 812329348678277292, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_Name
-      value: InteractableFurniture
+      value: InteractableFurniture Variant 3
       objectReference: {fileID: 0}
     - target: {fileID: 812329348678277293, guid: 214a35e4248cf86478d8983c14433da5, type: 3}
       propertyPath: m_RootOrder
